@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shipping Policy - Anon eCommerce</title>
+  <link rel="shortcut icon" href="./assets/images/logo/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./assets/css/style-prefix.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    .policy-hero { background: linear-gradient(135deg, #1c1c2e 0%, #2d1b3d 100%); padding: 64px 0; text-align: center; color: white; position: relative; overflow: hidden; }
+    .policy-hero::before { content: ''; position: absolute; inset: 0; background: url('./assets/images/banner-2.jpg') center/cover no-repeat; opacity: 0.07; }
+    .policy-hero .container { position: relative; z-index: 1; }
+    .policy-breadcrumb { font-size: 13px; margin-bottom: 14px; }
+    .policy-breadcrumb a { color: #ff8f9c; text-decoration: none; }
+    .policy-breadcrumb span { color: #aaa; margin: 0 8px; }
+    .policy-hero h1 { font-size: 40px; font-weight: 800; margin: 0 0 8px; letter-spacing: -0.5px; }
+    .policy-hero p { color: #aaa; font-size: 14px; }
+    .policy-body { background: #f5f5f7; min-height: 600px; padding: 56px 0 80px; }
+    .policy-wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+    .policy-intro { background: white; border-radius: 14px; padding: 28px 32px; margin-bottom: 28px; border-left: 5px solid #ff8f9c; box-shadow: 0 2px 16px rgba(0,0,0,0.05); }
+    .policy-intro p { color: #555; font-size: 15px; line-height: 1.8; margin: 0; }
+    .policy-card { background: white; border-radius: 14px; box-shadow: 0 2px 16px rgba(0,0,0,0.05); overflow: hidden; margin-bottom: 28px; }
+    .policy-section { padding: 30px 36px; border-bottom: 1px solid #f5f5f5; display: flex; gap: 20px; align-items: flex-start; }
+    .policy-section:last-child { border-bottom: none; }
+    .section-num { flex-shrink: 0; width: 38px; height: 38px; background: #fff0f2; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #ff8f9c; font-weight: 800; font-size: 13px; margin-top: 2px; }
+    .section-body h2 { font-size: 17px; font-weight: 700; color: #1a1a1a; margin: 0 0 10px; }
+    .section-body p { color: #555; line-height: 1.8; font-size: 15px; margin: 0 0 8px; }
+    .section-body p:last-child { margin-bottom: 0; }
+    .section-body ul { color: #555; line-height: 1.8; font-size: 15px; margin: 8px 0 0 0; padding-left: 20px; }
+    .section-body ul li { margin-bottom: 6px; }
+    .policy-highlight { background: #fff8f9; border: 1px solid #ffd6de; border-radius: 10px; padding: 16px 20px; margin-top: 14px; }
+    .policy-highlight p { color: #d63864; font-size: 14px; font-weight: 500; margin: 0; line-height: 1.7; }
+    .shipping-table { width: 100%; border-collapse: collapse; margin-top: 16px; border-radius: 10px; overflow: hidden; font-size: 14px; }
+    .shipping-table thead tr { background: #1c1c2e; color: white; }
+    .shipping-table thead th { padding: 14px 16px; text-align: left; font-weight: 600; }
+    .shipping-table tbody tr { border-bottom: 1px solid #f0f0f0; }
+    .shipping-table tbody tr:last-child { border-bottom: none; }
+    .shipping-table tbody tr:nth-child(even) { background: #fafafa; }
+    .shipping-table tbody td { padding: 13px 16px; color: #444; }
+    .shipping-table .free-tag { color: #2e7d32; font-weight: 700; }
+    .shipping-partners { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    .partner-tag { background: #f5f5f7; border: 1px solid #e5e5e5; border-radius: 8px; padding: 8px 16px; font-size: 13px; color: #444; font-weight: 500; }
+    .policy-footer-nav { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; justify-content: center; }
+    .policy-footer-nav a { padding: 8px 18px; background: white; border: 1px solid #eee; border-radius: 8px; font-size: 13px; color: #555; text-decoration: none; transition: all 0.2s; }
+    .policy-footer-nav a:hover, .policy-footer-nav a.active { background: #ff8f9c; color: white; border-color: #ff8f9c; }
+    .back-home { display: inline-block; margin-top: 32px; padding: 13px 36px; background: #ff8f9c; color: white; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 15px; transition: background 0.2s; }
+    .back-home:hover { background: #e07b88; }
+    .service-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
+    .service-tile { background: #f9f9f9; border-radius: 10px; padding: 16px; text-align: center; border: 1px solid #eee; }
+    .service-tile .tile-icon { font-size: 26px; display: block; margin-bottom: 8px; }
+    .service-tile strong { font-size: 13px; color: #1a1a1a; display: block; margin-bottom: 4px; }
+    .service-tile span { font-size: 12px; color: #888; }
+    @media (max-width: 600px) { .service-tiles { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+
+  <div class="overlay" data-overlay></div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-top">
+      <div class="container">
+        <ul class="header-social-container">
+          <li><a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
+          <li><a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
+          <li><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
+          <li><a href="#" class="social-link"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+        </ul>
+        <div class="header-alert-news"><p><b>Free Shipping</b> This Week Order Over - ₹500</p></div>
+        <div class="header-top-actions"></div>
+      </div>
+    </div>
+    <div class="header-main">
+      <div class="container">
+        <a href="index.html" class="header-logo">
+          <img src="./assets/images/logo/logo.svg" alt="Anon's logo" width="120" height="36">
+        </a>
+        <div class="header-search-container">
+          <input type="search" name="search" class="search-field" placeholder="Enter your product name...">
+          <button class="search-btn"><ion-icon name="search-outline"></ion-icon></button>
+        </div>
+        <div class="header-user-actions">
+          <button class="action-btn"><ion-icon name="person-outline"></ion-icon></button>
+          <a href="wishlist.html" class="action-btn"><ion-icon name="heart-outline"></ion-icon><span class="count">0</span></a>
+          <a href="cart.html" class="action-btn"><ion-icon name="bag-handle-outline"></ion-icon><span class="count">0</span></a>
+        </div>
+      </div>
+    </div>
+    <nav class="desktop-navigation-menu">
+      <div class="container">
+        <ul class="desktop-menu-category-list">
+          <li class="menu-category"><a href="index.html" class="menu-title">Home</a></li>
+          <li class="menu-category"><a href="category.html?cat=Mens" class="menu-title">Men's</a></li>
+          <li class="menu-category"><a href="category.html?cat=Womens" class="menu-title">Women's</a></li>
+          <li class="menu-category"><a href="category.html?cat=Jewellery" class="menu-title">Jewelry</a></li>
+          <li class="menu-category"><a href="#" class="menu-title">Sports</a></li>
+          <li class="menu-category"><a href="category.html?cat=offers" class="menu-title">Hot Offers</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="mobile-bottom-navigation">
+      <button class="action-btn" data-mobile-menu-open-btn><ion-icon name="menu-outline"></ion-icon></button>
+      <a href="cart.html" class="action-btn"><ion-icon name="bag-handle-outline"></ion-icon><span class="count">0</span></a>
+      <a href="index.html" class="action-btn"><ion-icon name="home-outline"></ion-icon></a>
+      <a href="wishlist.html" class="action-btn"><ion-icon name="heart-outline"></ion-icon><span class="count">0</span></a>
+      <button class="action-btn" data-mobile-menu-open-btn><ion-icon name="grid-outline"></ion-icon></button>
+    </div>
+    <nav class="mobile-navigation-menu has-scrollbar" data-mobile-menu>
+      <div class="menu-top">
+        <h2 class="menu-title">Menu</h2>
+        <button class="menu-close-btn" data-mobile-menu-close-btn><ion-icon name="close-outline"></ion-icon></button>
+      </div>
+      <ul class="mobile-menu-category-list">
+        <li class="menu-category"><a href="index.html" class="menu-title">Home</a></li>
+        <li class="menu-category"><a href="category.html?cat=Mens" class="menu-title">Men's</a></li>
+        <li class="menu-category"><a href="category.html?cat=Womens" class="menu-title">Women's</a></li>
+        <li class="menu-category"><a href="category.html?cat=Jewellery" class="menu-title">Jewelry</a></li>
+        <li class="menu-category"><a href="category.html?cat=offers" class="menu-title">Hot Offers</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <div class="policy-hero">
+      <div class="container">
+        <nav class="policy-breadcrumb">
+          <a href="index.html">Home</a><span>›</span>Shipping Policy
+        </nav>
+        <h1>Shipping Policy</h1>
+        <p>Last Updated: March 2026</p>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="policy-body">
+      <div class="policy-wrap">
+
+        <div class="policy-intro">
+          <p>We are committed to delivering your orders swiftly, safely, and reliably across India. Our logistics network covers 20,000+ pin codes through trusted courier partners. Please review our shipping policy to understand processing times, rates, and delivery timelines.</p>
+        </div>
+
+        <div class="policy-footer-nav">
+          <a href="terms-conditions.html">Terms &amp; Conditions</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="refund-returns.html">Refund &amp; Returns</a>
+          <a href="cancellation-policy.html">Cancellation Policy</a>
+          <a href="shipping-policy.html" class="active">Shipping Policy</a>
+        </div>
+
+        <div class="policy-card">
+
+          <div class="policy-section">
+            <div class="section-num">01</div>
+            <div class="section-body">
+              <h2>Order Processing Times</h2>
+              <p>All orders are processed within <strong>1 to 2 business days</strong> after you receive your order confirmation email (excluding weekends and public holidays). You will receive a shipping confirmation with tracking details once your order has been dispatched.</p>
+              <div class="service-tiles">
+                <div class="service-tile">
+                  <span class="tile-icon">📋</span>
+                  <strong>Order Placed</strong>
+                  <span>Confirmation email sent immediately</span>
+                </div>
+                <div class="service-tile">
+                  <span class="tile-icon">📦</span>
+                  <strong>Processing</strong>
+                  <span>1–2 business days</span>
+                </div>
+                <div class="service-tile">
+                  <span class="tile-icon">🚚</span>
+                  <strong>Dispatched</strong>
+                  <span>Tracking link sent via SMS &amp; email</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="policy-section">
+            <div class="section-num">02</div>
+            <div class="section-body">
+              <h2>Domestic Shipping Rates &amp; Delivery Estimates</h2>
+              <p>Shipping charges are calculated based on your order value and delivery location. The following rates apply across India:</p>
+              <table class="shipping-table">
+                <thead>
+                  <tr>
+                    <th>Shipping Option</th>
+                    <th>Estimated Delivery Time</th>
+                    <th>Charges</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Standard Delivery (Orders ≥ ₹500)</td>
+                    <td>3 to 7 business days</td>
+                    <td class="free-tag">FREE</td>
+                  </tr>
+                  <tr>
+                    <td>Standard Delivery (Orders &lt; ₹500)</td>
+                    <td>3 to 7 business days</td>
+                    <td>₹50 flat rate</td>
+                  </tr>
+                  <tr>
+                    <td>Express Delivery (Metro cities only)</td>
+                    <td>1 to 2 business days</td>
+                    <td>₹150</td>
+                  </tr>
+                  <tr>
+                    <td>Remote / Rural Locations</td>
+                    <td>5 to 10 business days</td>
+                    <td>₹80 flat rate</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p style="margin-top:12px;font-size:13px;color:#888;">* Metro cities include Mumbai, Delhi, Bengaluru, Chennai, Hyderabad, Kolkata, Pune, and Ahmedabad.</p>
+            </div>
+          </div>
+
+          <div class="policy-section">
+            <div class="section-num">03</div>
+            <div class="section-body">
+              <h2>Our Courier Partners</h2>
+              <p>We ship via trusted, pan-India courier partners to ensure reliable and timely delivery:</p>
+              <div class="shipping-partners">
+                <span class="partner-tag">🚛 Delhivery</span>
+                <span class="partner-tag">🚛 BlueDart</span>
+                <span class="partner-tag">🚛 Ecom Express</span>
+                <span class="partner-tag">🚛 DTDC</span>
+                <span class="partner-tag">🚛 XpressBees</span>
+                <span class="partner-tag">🚛 India Post</span>
+              </div>
+              <p style="margin-top:12px;">The courier partner assigned to your order may vary based on your delivery location and the nature of the product.</p>
+            </div>
+          </div>
+
+          <div class="policy-section">
+            <div class="section-num">04</div>
+            <div class="section-body">
+              <h2>Cash on Delivery (COD)</h2>
+              <p>We offer Cash on Delivery (COD) to <strong>20,000+ pin codes</strong> across India. Please note the following regarding COD orders:</p>
+              <ul>
+                <li>An additional <strong>handling fee of ₹40</strong> is applied to all COD orders.</li>
+                <li>COD availability and limits may vary by product category and order value.</li>
+                <li>Please keep the exact amount ready at the time of delivery.</li>
+                <li>COD is not available for orders above ₹10,000 or for certain product categories.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="policy-section">
+            <div class="section-num">05</div>
+            <div class="section-body">
+              <h2>Tracking Your Order</h2>
+              <p>Once your order has been shipped, you will receive an <strong>email and SMS notification</strong> with your tracking number and a direct link to the courier's tracking page.</p>
+              <p>Please allow <strong>24–48 hours</strong> after dispatch for the tracking information to become active on the courier's website.</p>
+              <div class="policy-highlight">
+                <p>&#9432; If you haven't received your order within 7 days of your shipping confirmation, please contact us at <a href="mailto:delivery@anon.in" style="color:#d63864;">delivery@anon.in</a> with your name and Order ID.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="policy-section">
+            <div class="section-num">06</div>
+            <div class="section-body">
+              <h2>P.O. Boxes &amp; Restricted Addresses</h2>
+              <p>Our courier partners typically require a signature upon delivery and cannot ship to P.O. Boxes. Please ensure you provide a complete residential or commercial address, including flat/house number, street name, landmark, city, state, and pin code.</p>
+            </div>
+          </div>
+
+          <div class="policy-section">
+            <div class="section-num">07</div>
+            <div class="section-body">
+              <h2>Delays &amp; Exceptions</h2>
+              <p>While we strive to meet all delivery timelines, unforeseen circumstances may occasionally cause delays. These include:</p>
+              <ul>
+                <li>National holidays or regional public holidays.</li>
+                <li>Severe weather conditions, natural disasters, or force majeure events.</li>
+                <li>Local strikes, curfews, or disruptions at pin code level.</li>
+                <li>High-volume periods (e.g., festivals, sale events).</li>
+              </ul>
+              <p>We will proactively communicate any significant delays to your registered email or phone number.</p>
+            </div>
+          </div>
+
+          <div class="policy-section">
+            <div class="section-num">08</div>
+            <div class="section-body">
+              <h2>Contact Us</h2>
+              <p>For any shipping-related queries, please contact us:</p>
+              <p>Email: <a href="mailto:delivery@anon.in" style="color:#ff8f9c;">delivery@anon.in</a></p>
+              <p>Phone: <a href="tel:+919876543210" style="color:#ff8f9c;">+91 98765 43210</a></p>
+              <p>Support Hours: Monday – Saturday, 9:00 AM – 6:00 PM IST</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div style="text-align:center;">
+          <a href="index.html" class="back-home">&#8592; Return to Home</a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-nav">
+      <div class="container">
+        <ul class="footer-nav-list">
+          <li class="footer-nav-item"><h2 class="nav-title">Popular Categories</h2></li>
+          <li class="footer-nav-item"><a href="#" class="footer-nav-link">Fashion</a></li>
+          <li class="footer-nav-item"><a href="#" class="footer-nav-link">Cosmetics</a></li>
+          <li class="footer-nav-item"><a href="#" class="footer-nav-link">Accessories</a></li>
+          <li class="footer-nav-item"><a href="#" class="footer-nav-link">Sports</a></li>
+        </ul>
+        <ul class="footer-nav-list">
+          <li class="footer-nav-item"><h2 class="nav-title">Our Policies</h2></li>
+          <li class="footer-nav-item"><a href="shipping-policy.html" class="footer-nav-link">Shipping Policy</a></li>
+          <li class="footer-nav-item"><a href="privacy-policy.html" class="footer-nav-link">Privacy Policy</a></li>
+          <li class="footer-nav-item"><a href="terms-conditions.html" class="footer-nav-link">Terms and Conditions</a></li>
+          <li class="footer-nav-item"><a href="refund-returns.html" class="footer-nav-link">Refund &amp; Returns</a></li>
+          <li class="footer-nav-item"><a href="cancellation-policy.html" class="footer-nav-link">Cancellation Policy</a></li>
+        </ul>
+        <ul class="footer-nav-list">
+          <li class="footer-nav-item"><h2 class="nav-title">Contact</h2></li>
+          <li class="footer-nav-item flex">
+            <div class="icon-box"><ion-icon name="location-outline"></ion-icon></div>
+            <address class="content">123 E-Commerce Tech Park, Bengaluru, Karnataka, India</address>
+          </li>
+          <li class="footer-nav-item flex">
+            <div class="icon-box"><ion-icon name="call-outline"></ion-icon></div>
+            <a href="tel:+919876543210" class="footer-nav-link">+91 98765 43210</a>
+          </li>
+          <li class="footer-nav-item flex">
+            <div class="icon-box"><ion-icon name="mail-outline"></ion-icon></div>
+            <a href="mailto:example@gmail.com" class="footer-nav-link">example@gmail.com</a>
+          </li>
+        </ul>
+        <ul class="footer-nav-list">
+          <li class="footer-nav-item"><h2 class="nav-title">Follow Us</h2></li>
+          <li>
+            <ul class="social-link">
+              <li class="footer-nav-item"><a href="#" class="footer-nav-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
+              <li class="footer-nav-item"><a href="#" class="footer-nav-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
+              <li class="footer-nav-item"><a href="#" class="footer-nav-link"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+              <li class="footer-nav-item"><a href="#" class="footer-nav-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <img src="./assets/images/payment.png" alt="payment method" class="payment-img">
+        <p class="copyright">Copyright &copy; <a href="#">Anon</a> all rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./assets/js/script.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

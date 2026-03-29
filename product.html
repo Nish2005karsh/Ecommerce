@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product - Anon eCommerce</title>
+
+  <link rel="shortcut icon" href="./assets/images/logo/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./assets/css/style-prefix.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    .pd-breadcrumb { background: #f7f7f7; padding: 12px 0; border-bottom: 1px solid #eee; font-size: 13px; color: #888; }
+    .pd-breadcrumb a { color: #ff8f9c; text-decoration: none; }
+    .pd-breadcrumb a:hover { text-decoration: underline; }
+    .pd-section { padding: 40px 0 60px; }
+    .pd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .pd-image-wrap { border-radius: 16px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.12); background: #f9f9f9; }
+    .pd-image-wrap img { width: 100%; height: 500px; object-fit: cover; display: block; transition: transform 0.4s; }
+    .pd-image-wrap:hover img { transform: scale(1.03); }
+    .pd-category-tag { display: inline-block; background: #fff0f2; color: #ff8f9c; padding: 5px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px; }
+    .pd-title { font-size: 28px; font-weight: 800; color: #1a1a1a; margin: 0 0 16px; line-height: 1.3; }
+    .pd-rating { display: flex; align-items: center; gap: 6px; margin-bottom: 22px; }
+    .pd-rating ion-icon { color: #e8a838; font-size: 20px; }
+    .pd-price-box { background: linear-gradient(135deg, #fff8f9, #fff0f2); border: 1px solid #ffd6de; border-radius: 12px; padding: 20px 24px; margin-bottom: 24px; }
+    .pd-sale-price { font-size: 34px; font-weight: 800; color: #ff8f9c; }
+    .pd-orig-price { font-size: 18px; color: #bbb; margin-left: 12px; }
+    .pd-discount-badge { display: inline-block; background: #ff8f9c; color: white; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 700; margin-left: 12px; vertical-align: middle; }
+    .pd-free-ship { font-size: 12px; color: #888; margin-top: 8px; }
+    .pd-description { color: #555; line-height: 1.8; font-size: 15px; margin-bottom: 28px; }
+    .pd-qty-label { font-weight: 600; color: #333; font-size: 15px; margin-bottom: 10px; display: block; }
+    .pd-qty-control { display: flex; align-items: center; border: 2px solid #eee; border-radius: 10px; overflow: hidden; width: fit-content; margin-bottom: 24px; }
+    .pd-qty-control button { width: 44px; height: 44px; background: none; border: none; font-size: 22px; cursor: pointer; color: #ff8f9c; font-weight: 700; transition: background 0.2s; }
+    .pd-qty-control button:hover { background: #fff0f2; }
+    .pd-qty-control span { min-width: 48px; text-align: center; font-size: 16px; font-weight: 700; color: #1a1a1a; }
+    .pd-btn-cart { flex: 1; min-width: 160px; padding: 15px 24px; background: #ff8f9c; color: white; border: none; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer; transition: background 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .pd-btn-cart:hover { background: #e07b88; }
+    .pd-btn-wish { flex: 1; min-width: 160px; padding: 15px 24px; background: white; color: #ff8f9c; border: 2px solid #ff8f9c; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .pd-btn-wish:hover, .pd-btn-wish.active { background: #fff0f2; }
+    .pd-action-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; }
+    .pd-meta { border-top: 1px solid #f0f0f0; padding-top: 18px; font-size: 14px; color: #777; }
+    .pd-meta p { margin: 6px 0; }
+    .pd-meta strong { color: #ff8f9c; }
+    .pd-trust { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 20px; padding-top: 18px; border-top: 1px solid #f0f0f0; }
+    .pd-trust-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #555; }
+    .pd-trust-item ion-icon { font-size: 20px; color: #ff8f9c; }
+    .related-section { background: #f8f8f8; padding: 60px 0; }
+    .related-title { font-size: 24px; font-weight: 800; color: #1a1a1a; text-align: center; margin: 0 0 36px; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+    .related-card { background: white; border-radius: 12px; overflow: hidden; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.07); transition: transform 0.2s, box-shadow 0.2s; }
+    .related-card:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0,0,0,0.14); }
+    .related-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
+    .related-card-body { padding: 14px; }
+
+    @media (max-width: 768px) {
+      .pd-grid { grid-template-columns: 1fr; gap: 28px; }
+      .pd-image-wrap img { height: 320px; }
+      .pd-title { font-size: 22px; }
+      .pd-sale-price { font-size: 26px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="overlay" data-overlay></div>
+
+  <!-- MODAL -->
+  <div class="modal" data-modal>
+    <div class="modal-close-overlay" data-modal-overlay></div>
+    <div class="modal-content">
+      <button class="modal-close-btn" data-modal-close>
+        <ion-icon name="close-outline"></ion-icon>
+      </button>
+      <div class="newsletter-img">
+        <img src="./assets/images/newsletter.png" alt="subscribe newsletter" width="400" height="400">
+      </div>
+      <div class="newsletter">
+        <form action="#">
+          <div class="newsletter-header">
+            <h3 class="newsletter-title">Subscribe Newsletter.</h3>
+            <p class="newsletter-desc">Subscribe the <b>Anon</b> to get latest products and discount update.</p>
+          </div>
+          <input type="email" name="email" class="email-field" placeholder="Email Address" required>
+          <button type="submit" class="btn-newsletter">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOTIFICATION TOAST -->
+  <div class="notification-toast" data-toast>
+    <button class="toast-close-btn" data-toast-close>
+      <ion-icon name="close-outline"></ion-icon>
+    </button>
+    <div class="toast-banner">
+      <img src="./assets/images/products/jewellery-1.jpg" alt="" width="80" height="70">
+    </div>
+    <div class="toast-detail">
+      <p class="toast-message">Added to cart!</p>
+      <p class="toast-title">Product</p>
+      <p class="toast-meta"><time datetime="PT0M">Just now</time></p>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-top">
+      <div class="container">
+        <ul class="header-social-container">
+          <li><a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
+          <li><a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
+          <li><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
+          <li><a href="#" class="social-link"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+        </ul>
+        <div class="header-alert-news">
+          <p><b>Free Shipping</b> This Week Order Over - ₹500</p>
+        </div>
+        <div class="header-top-actions"></div>
+      </div>
+    </div>
+
+    <div class="header-main">
+      <div class="container">
+        <a href="index.html" class="header-logo">
+          <img src="./assets/images/logo/logo.svg" alt="Anon's logo" width="120" height="36">
+        </a>
+        <div class="header-search-container">
+          <input type="search" name="search" class="search-field" placeholder="Enter your product name...">
+          <button class="search-btn"><ion-icon name="search-outline"></ion-icon></button>
+        </div>
+        <div class="header-user-actions">
+          <button class="action-btn"><ion-icon name="person-outline"></ion-icon></button>
+          <a href="wishlist.html" class="action-btn">
+            <ion-icon name="heart-outline"></ion-icon>
+            <span class="count">0</span>
+          </a>
+          <a href="cart.html" class="action-btn">
+            <ion-icon name="bag-handle-outline"></ion-icon>
+            <span class="count">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <nav class="desktop-navigation-menu">
+      <div class="container">
+        <ul class="desktop-menu-category-list">
+          <li class="menu-category"><a href="index.html" class="menu-title">Home</a></li>
+          <li class="menu-category">
+            <a href="category.html?cat=Mens" class="menu-title">Men's</a>
+            <ul class="dropdown-list">
+              <li class="dropdown-item"><a href="#">Shirt</a></li>
+              <li class="dropdown-item"><a href="#">Shorts & Jeans</a></li>
+              <li class="dropdown-item"><a href="#">Safety Shoes</a></li>
+              <li class="dropdown-item"><a href="#">Wallet</a></li>
+            </ul>
+          </li>
+          <li class="menu-category">
+            <a href="category.html?cat=Womens" class="menu-title">Women's</a>
+            <ul class="dropdown-list">
+              <li class="dropdown-item"><a href="#">Dress & Frock</a></li>
+              <li class="dropdown-item"><a href="#">Earrings</a></li>
+              <li class="dropdown-item"><a href="#">Necklace</a></li>
+              <li class="dropdown-item"><a href="#">Makeup Kit</a></li>
+            </ul>
+          </li>
+          <li class="menu-category">
+            <a href="category.html?cat=Jewellery" class="menu-title">Jewelry</a>
+            <ul class="dropdown-list">
+              <li class="dropdown-item"><a href="#">Earrings</a></li>
+              <li class="dropdown-item"><a href="#">Couple Rings</a></li>
+              <li class="dropdown-item"><a href="#">Necklace</a></li>
+              <li class="dropdown-item"><a href="#">Bracelets</a></li>
+            </ul>
+          </li>
+          <li class="menu-category">
+            <a href="#" class="menu-title">Sports</a>
+            <ul class="dropdown-list">
+              <li class="dropdown-item"><a href="#">Running Shoes</a></li>
+              <li class="dropdown-item"><a href="#">Cricket</a></li>
+              <li class="dropdown-item"><a href="#">Gym Wear</a></li>
+            </ul>
+          </li>
+          <li class="menu-category"><a href="category.html?cat=offers" class="menu-title">Hot Offers</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="mobile-bottom-navigation">
+      <button class="action-btn" data-mobile-menu-open-btn><ion-icon name="menu-outline"></ion-icon></button>
+      <a href="cart.html" class="action-btn">
+        <ion-icon name="bag-handle-outline"></ion-icon>
+        <span class="count">0</span>
+      </a>
+      <a href="index.html" class="action-btn"><ion-icon name="home-outline"></ion-icon></a>
+      <a href="wishlist.html" class="action-btn">
+        <ion-icon name="heart-outline"></ion-icon>
+        <span class="count">0</span>
+      </a>
+      <button class="action-btn" data-mobile-menu-open-btn><ion-icon name="grid-outline"></ion-icon></button>
+    </div>
+
+    <nav class="mobile-navigation-menu has-scrollbar" data-mobile-menu>
+      <div class="menu-top">
+        <h2 class="menu-title">Menu</h2>
+        <button class="menu-close-btn" data-mobile-menu-close-btn>
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
+      </div>
+      <ul class="mobile-menu-category-list">
+        <li class="menu-category"><a href="index.html" class="menu-title">Home</a></li>
+        <li class="menu-category"><a href="category.html?cat=Mens" class="menu-title">Men's</a></li>
+        <li class="menu-category"><a href="category.html?cat=Womens" class="menu-title">Women's</a></li>
+        <li class="menu-category"><a href="category.html?cat=Jewellery" class="menu-title">Jewelry</a></li>
+        <li class="menu-category"><a href="#" class="menu-title">Sports</a></li>
+        <li class="menu-category"><a href="category.html?cat=offers" class="menu-title">Hot Offers</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- BREADCRUMB -->
+    <div class="pd-breadcrumb">
+      <div class="container">
+        <a href="index.html">Home</a>
+        <span style="margin:0 8px;color:#bbb;">›</span>
+        <span id="breadcrumb-category" style="color:#ff8f9c;cursor:pointer;"></span>
+        <span style="margin:0 8px;color:#bbb;">›</span>
+        <span id="breadcrumb-name" style="color:#555;"></span>
+      </div>
+    </div>
+
+    <!-- PRODUCT DETAIL -->
+    <section class="pd-section">
+      <div class="container">
+        <div class="pd-grid">
+
+          <!-- LEFT: IMAGE -->
+          <div class="pd-image-wrap">
+            <img id="product-img" src="" alt="Product Image">
+          </div>
+
+          <!-- RIGHT: INFO -->
+          <div>
+            <span class="pd-category-tag" id="product-category"></span>
+            <h1 class="pd-title" id="product-name"></h1>
+
+            <div class="pd-rating" id="product-rating"></div>
+
+            <div class="pd-price-box">
+              <div style="display:flex;align-items:center;flex-wrap:wrap;">
+                <span class="pd-sale-price" id="product-price"></span>
+                <del class="pd-orig-price" id="product-original-price"></del>
+                <span class="pd-discount-badge" id="product-discount"></span>
+              </div>
+              <p class="pd-free-ship">&#10003; Inclusive of all taxes &nbsp;|&nbsp; &#10003; Free shipping on orders over ₹500</p>
+            </div>
+
+            <p class="pd-description" id="product-description"></p>
+
+            <span class="pd-qty-label">Quantity</span>
+            <div class="pd-qty-control">
+              <button onclick="decrementQty()">−</button>
+              <span id="qty-display">1</span>
+              <button onclick="incrementQty()">+</button>
+            </div>
+
+            <div class="pd-action-row">
+              <button class="pd-btn-cart" onclick="addToCartFromDetail()">
+                <ion-icon name="bag-handle-outline"></ion-icon> Add to Cart
+              </button>
+              <button class="pd-btn-wish" id="wishlist-btn" onclick="toggleWishlistFromDetail()">
+                <ion-icon name="heart-outline" id="wish-icon"></ion-icon> Add to Wishlist
+              </button>
+            </div>
+
+            <div class="pd-trust">
+              <div class="pd-trust-item">
+                <ion-icon name="shield-checkmark-outline"></ion-icon>
+                <span>100% Authentic</span>
+              </div>
+              <div class="pd-trust-item">
+                <ion-icon name="refresh-outline"></ion-icon>
+                <span>15-Day Returns</span>
+              </div>
+              <div class="pd-trust-item">
+                <ion-icon name="rocket-outline"></ion-icon>
+                <span>Fast Delivery</span>
+              </div>
+              <div class="pd-trust-item">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+                <span>Secure Payment</span>
+              </div>
+            </div>
+
+            <div class="pd-meta">
+              <p>Category: <strong id="product-meta-category"></strong></p>
+              <p style="margin-top:6px;">Availability: <strong style="color:#4caf50;">In Stock</strong> &nbsp;·&nbsp; Ships in 1–2 business days</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RELATED PRODUCTS -->
+    <section class="related-section">
+      <div class="container">
+        <h2 class="related-title">You May Also Like</h2>
+        <div class="related-grid" id="related-container"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-category">
+      <div class="container">
+        <h2 class="footer-category-title">Brand directory</h2>
+        <div class="footer-category-box">
+          <h3 class="category-box-title">Fashion :</h3>
+          <a href="#" class="footer-category-link">T-shirt</a>
+          <a href="#" class="footer-category-link">Shirts</a>
+          <a href="#" class="footer-category-link">shorts & jeans</a>
+          <a href="#" class="footer-category-link">jacket</a>
+          <a href="#" class="footer-category-link">dress & frock</a>
+          <a href="#" class="footer-category-link">innerwear</a>
+          <a href="#" class="footer-category-link">hosiery</a>
+        </div>
+        <div class="footer-category-box">
+          <h3 class="category-box-title">footwear :</h3>
+          <a href="#" class="footer-category-link">sport</a>
+          <a href="#" class="footer-category-link">formal</a>
+          <a href="#" class="footer-category-link">Boots</a>
+          <a href="#" class="footer-category-link">casual</a>
+          <a href="#" class="footer-category-link">Party wear shoes</a>
+          <a href="#" class="footer-category-link">safety shoes</a>
+        </div>
+        <div class="footer-category-box">
+          <h3 class="category-box-title">jewellery :</h3>
+          <a href="#" class="footer-category-link">Necklace</a>
+          <a href="#" class="footer-category-link">Earrings</a>
+          <a href="#" class="footer-category-link">Couple rings</a>
+          <a href="#" class="footer-category-link">Bangles</a>
+          <a href="#" class="footer-category-link">bracelets</a>
+        </div>
+        <div class="footer-category-box">
+          <h3 class="category-box-title">cosmetics :</h3>
+          <a href="#" class="footer-category-link">Shampoo</a>
+          <a href="#" class="footer-category-link">Facewash</a>
+          <a href="#" class="footer-category-link">makeup kit</a>
+          <a href="#" class="footer-category-link">lipstick</a>
+          <a href="#" class="footer-category-link">perfume</a>
+          <a href="#" class="footer-category-link">sunscreen</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-nav">
+      <div class="container">
+        <ul class="footer-nav-list">
+          <li class="footer-nav-item"><h2 class="nav-title">Popular Categories</h2></li>
+          <li class="footer-nav-item"><a href="#" class="footer-nav-link">Fashion</a></li>
+          <li class="footer-nav-item"><a href="#" class="footer-nav-link">Electronic</a></li>
+          <li class="footer-nav-item"><a href="#" class="footer-nav-link">Cosmetic</a></li>
+          <li class="footer-nav-item"><a href="#" class="footer-nav-link">Watches</a></li>
+        </ul>
+        <ul class="footer-nav-list">
+          <li class="footer-nav-item"><h2 class="nav-title">Our Company</h2></li>
+          <li class="footer-nav-item"><a href="shipping-policy.html" class="footer-nav-link">Shipping Policy</a></li>
+          <li class="footer-nav-item"><a href="privacy-policy.html" class="footer-nav-link">Privacy Policy</a></li>
+          <li class="footer-nav-item"><a href="terms-conditions.html" class="footer-nav-link">Terms and conditions</a></li>
+          <li class="footer-nav-item"><a href="refund-returns.html" class="footer-nav-link">Refund & Returns</a></li>
+          <li class="footer-nav-item"><a href="cancellation-policy.html" class="footer-nav-link">Cancellation Policy</a></li>
+        </ul>
+        <ul class="footer-nav-list">
+          <li class="footer-nav-item"><h2 class="nav-title">Contact</h2></li>
+          <li class="footer-nav-item flex">
+            <div class="icon-box"><ion-icon name="location-outline"></ion-icon></div>
+            <address class="content">123 E-Commerce Tech Park, Bengaluru, Karnataka, India</address>
+          </li>
+          <li class="footer-nav-item flex">
+            <div class="icon-box"><ion-icon name="call-outline"></ion-icon></div>
+            <a href="tel:+919876543210" class="footer-nav-link">+91 98765 43210</a>
+          </li>
+          <li class="footer-nav-item flex">
+            <div class="icon-box"><ion-icon name="mail-outline"></ion-icon></div>
+            <a href="mailto:example@gmail.com" class="footer-nav-link">example@gmail.com</a>
+          </li>
+        </ul>
+        <ul class="footer-nav-list">
+          <li class="footer-nav-item"><h2 class="nav-title">Follow Us</h2></li>
+          <li>
+            <ul class="social-link">
+              <li class="footer-nav-item"><a href="#" class="footer-nav-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
+              <li class="footer-nav-item"><a href="#" class="footer-nav-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
+              <li class="footer-nav-item"><a href="#" class="footer-nav-link"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+              <li class="footer-nav-item"><a href="#" class="footer-nav-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <img src="./assets/images/payment.png" alt="payment method" class="payment-img">
+        <p class="copyright">Copyright &copy; <a href="#">Anon</a> all rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./assets/js/script.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="./assets/js/products.js"></script>
+  <script src="./assets/js/cart_wishlist.js"></script>
+
+  <script>
+    let currentProductId = null;
+    let qty = 1;
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const params = new URLSearchParams(window.location.search);
+      currentProductId = parseInt(params.get('id'));
+
+      if (!currentProductId) { window.location = 'index.html'; return; }
+
+      const product = products.find(p => p.id === currentProductId);
+      if (!product) { window.location = 'index.html'; return; }
+
+      // Page title
+      document.title = product.name + ' - Anon eCommerce';
+
+      // Breadcrumb
+      document.getElementById('breadcrumb-category').textContent = product.category;
+      document.getElementById('breadcrumb-category').onclick = () => window.location = 'index.html';
+      document.getElementById('breadcrumb-name').textContent = product.name;
+
+      // Image
+      document.getElementById('product-img').src = product.image;
+      document.getElementById('product-img').alt = product.name;
+
+      // Category
+      document.getElementById('product-category').textContent = product.category;
+      document.getElementById('product-meta-category').textContent = product.category;
+
+      // Name
+      document.getElementById('product-name').textContent = product.name;
+
+      // Rating
+      const ratingDiv = document.getElementById('product-rating');
+      let starsHtml = '';
+      for (let i = 1; i <= 5; i++) {
+        starsHtml += i <= product.rating
+          ? '<ion-icon name="star"></ion-icon>'
+          : '<ion-icon name="star-outline"></ion-icon>';
+      }
+      ratingDiv.innerHTML = starsHtml + `<span style="color:#666;font-size:14px;margin-left:8px;">${product.rating}.0 out of 5</span>`;
+
+      // Price
+      const discount = Math.round((1 - product.price / product.originalPrice) * 100);
+      document.getElementById('product-price').textContent = '₹' + product.price;
+      document.getElementById('product-original-price').textContent = '₹' + product.originalPrice;
+      document.getElementById('product-discount').textContent = discount + '% OFF';
+
+      // Description
+      document.getElementById('product-description').textContent = product.description || 'A premium quality product from Anon eCommerce.';
+
+      // Wishlist button state
+      refreshWishlistBtn();
+
+      // Related products
+      renderRelated(product);
+
+      // Update badge counts
+      updateBadges();
+    });
+
+    function incrementQty() {
+      qty++;
+      document.getElementById('qty-display').textContent = qty;
+    }
+
+    function decrementQty() {
+      if (qty > 1) {
+        qty--;
+        document.getElementById('qty-display').textContent = qty;
+      }
+    }
+
+    function addToCartFromDetail() {
+      const product = products.find(p => p.id === currentProductId);
+      if (!product) return;
+      const cart = getCart();
+      const existing = cart.find(item => item.id === currentProductId);
+      if (existing) {
+        existing.quantity += qty;
+      } else {
+        cart.push({ ...product, quantity: qty });
+      }
+      saveCart(cart);
+      showToast(product.name);
+    }
+
+    function toggleWishlistFromDetail() {
+      toggleWishlist(currentProductId);
+      refreshWishlistBtn();
+    }
+
+    function refreshWishlistBtn() {
+      const btn = document.getElementById('wishlist-btn');
+      const icon = document.getElementById('wish-icon');
+      const isLiked = getWishlist().some(item => item.id === currentProductId);
+      if (isLiked) {
+        btn.innerHTML = '<ion-icon name="heart" id="wish-icon"></ion-icon> In Wishlist';
+        btn.style.background = '#fff0f2';
+        btn.classList.add('active');
+      } else {
+        btn.innerHTML = '<ion-icon name="heart-outline" id="wish-icon"></ion-icon> Add to Wishlist';
+        btn.style.background = 'white';
+        btn.classList.remove('active');
+      }
+    }
+
+    function renderRelated(currentProduct) {
+      const container = document.getElementById('related-container');
+      if (!container) return;
+
+      let related = products.filter(p => p.category === currentProduct.category && p.id !== currentProduct.id);
+      if (related.length < 4) {
+        const others = products.filter(p => p.id !== currentProduct.id && !related.some(r => r.id === p.id));
+        related = [...related, ...others].slice(0, 4);
+      } else {
+        related = related.slice(0, 4);
+      }
+
+      container.innerHTML = related.map(p => {
+        const disc = Math.round((1 - p.price / p.originalPrice) * 100);
+        let stars = '';
+        for (let i = 1; i <= 5; i++) {
+          stars += i <= p.rating
+            ? '<ion-icon name="star" style="color:#e8a838;font-size:13px;"></ion-icon>'
+            : '<ion-icon name="star-outline" style="color:#e8a838;font-size:13px;"></ion-icon>';
+        }
+        return `
+          <div class="related-card" onclick="window.location='product.html?id=${p.id}'">
+            <div style="position:relative;">
+              <img src="${p.image}" alt="${p.name}">
+              <span style="position:absolute;top:10px;left:10px;background:#ff8f9c;color:white;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:700;">${disc}% OFF</span>
+            </div>
+            <div class="related-card-body">
+              <p style="font-size:11px;color:#ff8f9c;text-transform:uppercase;font-weight:600;letter-spacing:0.6px;margin:0 0 4px;">${p.category}</p>
+              <h4 style="font-size:14px;font-weight:600;color:#1a1a1a;margin:0 0 8px;line-height:1.3;">${p.name}</h4>
+              <div style="display:flex;gap:1px;margin-bottom:8px;">${stars}</div>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <span style="font-size:16px;font-weight:700;color:#ff8f9c;">₹${p.price}</span>
+                <del style="font-size:12px;color:#bbb;">₹${p.originalPrice}</del>
+              </div>
+            </div>
+          </div>`;
+      }).join('');
+    }
+  </script>
+
+</body>
+</html>

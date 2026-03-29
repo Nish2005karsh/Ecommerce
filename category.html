@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop by Category - Anon</title>
+
+  <link rel="shortcut icon" href="./assets/images/logo/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./assets/css/style-prefix.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    .category-hero {
+      background: linear-gradient(135deg, #1c1c2e 0%, #2d1b3d 100%);
+      padding: 48px 0 36px;
+      text-align: center;
+    }
+    .category-hero .hero-title {
+      font-size: 32px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+    .category-hero .hero-subtitle {
+      color: rgba(255,255,255,0.65);
+      font-size: 15px;
+    }
+    .category-hero .breadcrumb {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      font-size: 13px;
+    }
+    .category-hero .breadcrumb a { color: rgba(255,255,255,0.6); text-decoration: none; }
+    .category-hero .breadcrumb a:hover { color: #ff8f9c; }
+    .category-hero .breadcrumb span { color: rgba(255,255,255,0.4); }
+    .category-hero .breadcrumb .current { color: #ff8f9c; font-weight: 600; }
+
+    .category-filter-bar {
+      background: #fff;
+      border-bottom: 1px solid #f0f0f0;
+      padding: 14px 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .category-filter-bar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .filter-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .filter-pill {
+      padding: 6px 16px;
+      border-radius: 20px;
+      border: 1.5px solid #e0e0e0;
+      background: #fff;
+      color: #555;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+      text-decoration: none;
+    }
+    .filter-pill:hover, .filter-pill.active {
+      background: #ff8f9c;
+      border-color: #ff8f9c;
+      color: #fff;
+    }
+    .sort-select {
+      padding: 8px 14px;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 13px;
+      font-family: inherit;
+      color: #555;
+      background: #fff;
+      cursor: pointer;
+      outline: none;
+    }
+    .sort-select:focus { border-color: #ff8f9c; }
+
+    .category-main {
+      padding: 40px 0 60px;
+      background: #f8f9fa;
+      min-height: 60vh;
+    }
+    .results-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    .results-count {
+      font-size: 14px;
+      color: #888;
+    }
+    .results-count strong { color: #1a1a1a; }
+
+    #product-container.product-grid {
+      background: transparent;
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 80px 20px;
+      grid-column: 1 / -1;
+    }
+    .no-results ion-icon {
+      font-size: 64px;
+      color: #ddd;
+      display: block;
+      margin: 0 auto 20px;
+    }
+    .no-results p { font-size: 18px; color: #999; }
+  </style>
+</head>
+
+<body>
+
+  <div class="overlay" data-overlay></div>
+
+  <!--
+    - HEADER
+  -->
+
+  <header>
+
+    <div class="header-top">
+      <div class="container">
+        <ul class="header-social-container">
+          <li><a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
+          <li><a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
+          <li><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
+          <li><a href="#" class="social-link"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+        </ul>
+        <div class="header-alert-news">
+          <p><b>Free Shipping</b> This Week Order Over - ₹55</p>
+        </div>
+        <div class="header-top-actions"></div>
+      </div>
+    </div>
+
+    <div class="header-main">
+      <div class="container">
+        <a href="index.html" class="header-logo">
+          <img src="./assets/images/logo/logo.svg" alt="Anon's logo" width="120" height="36">
+        </a>
+        <div class="header-search-container">
+          <input type="search" name="search" class="search-field" placeholder="Enter your product name..." id="search-input">
+          <button class="search-btn" onclick="handleSearch()">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+        </div>
+        <div class="header-user-actions">
+          <button class="action-btn"><ion-icon name="person-outline"></ion-icon></button>
+          <a href="wishlist.html" class="action-btn">
+            <ion-icon name="heart-outline"></ion-icon>
+            <span class="count">0</span>
+          </a>
+          <a href="cart.html" class="action-btn">
+            <ion-icon name="bag-handle-outline"></ion-icon>
+            <span class="count">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <nav class="desktop-navigation-menu">
+      <div class="container">
+        <ul class="desktop-menu-category-list">
+          <li class="menu-category">
+            <a href="index.html" class="menu-title">Home</a>
+          </li>
+          <li class="menu-category">
+            <a href="category.html" class="menu-title">Categories</a>
+            <div class="dropdown-panel">
+              <ul class="dropdown-panel-list">
+                <li class="menu-title"><a href="#">Electronics</a></li>
+                <li class="panel-list-item"><a href="#">Desktop</a></li>
+                <li class="panel-list-item"><a href="#">Laptop</a></li>
+                <li class="panel-list-item"><a href="#">Camera</a></li>
+                <li class="panel-list-item"><a href="#">Tablet</a></li>
+                <li class="panel-list-item"><a href="#">Headphone</a></li>
+                <li class="panel-list-item"><a href="#"><img src="./assets/images/electronics-banner-1.jpg" alt="headphone collection" width="250" height="119"></a></li>
+              </ul>
+              <ul class="dropdown-panel-list">
+                <li class="menu-title"><a href="#">Men's</a></li>
+                <li class="panel-list-item"><a href="#">Formal</a></li>
+                <li class="panel-list-item"><a href="#">Casual</a></li>
+                <li class="panel-list-item"><a href="#">Sports</a></li>
+                <li class="panel-list-item"><a href="#">Jacket</a></li>
+                <li class="panel-list-item"><a href="#">Sunglasses</a></li>
+                <li class="panel-list-item"><a href="#"><img src="./assets/images/mens-banner.jpg" alt="men's fashion" width="250" height="119"></a></li>
+              </ul>
+              <ul class="dropdown-panel-list">
+                <li class="menu-title"><a href="#">Women's</a></li>
+                <li class="panel-list-item"><a href="#">Formal</a></li>
+                <li class="panel-list-item"><a href="#">Casual</a></li>
+                <li class="panel-list-item"><a href="#">Perfume</a></li>
+                <li class="panel-list-item"><a href="#">Cosmetics</a></li>
+                <li class="panel-list-item"><a href="#">Bags</a></li>
+                <li class="panel-list-item"><a href="#"><img src="./assets/images/womens-banner.jpg" alt="women's fashion" width="250" height="119"></a></li>
+              </ul>
+              <ul class="dropdown-panel-list">
+                <li class="menu-title"><a href="#">Electronics</a></li>
+                <li class="panel-list-item"><a href="#">Smart Watch</a></li>
+                <li class="panel-list-item"><a href="#">Smart TV</a></li>
+                <li class="panel-list-item"><a href="#">Keyboard</a></li>
+                <li class="panel-list-item"><a href="#">Mouse</a></li>
+                <li class="panel-list-item"><a href="#">Microphone</a></li>
+                <li class="panel-list-item"><a href="#"><img src="./assets/images/electronics-banner-2.jpg" alt="mouse collection" width="250" height="119"></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="menu-category">
+            <a href="category.html?cat=Mens" class="menu-title">Men's</a>
+            <ul class="dropdown-list">
+              <li class="dropdown-item"><a href="#">Shirt</a></li>
+              <li class="dropdown-item"><a href="#">Shorts &amp; Jeans</a></li>
+              <li class="dropdown-item"><a href="#">Safety Shoes</a></li>
+              <li class="dropdown-item"><a href="#">Wallet</a></li>
+            </ul>
+          </li>
+          <li class="menu-category">
+            <a href="category.html?cat=Womens" class="menu-title">Women's</a>
+            <ul class="dropdown-list">
+              <li class="dropdown-item"><a href="#">Dress &amp; Frock</a></li>
+              <li class="dropdown-item"><a href="#">Earrings</a></li>
+              <li class="dropdown-item"><a href="#">Necklace</a></li>
+              <li class="dropdown-item"><a href="#">Makeup Kit</a></li>
+            </ul>
+          </li>
+          <li class="menu-category">
+            <a href="category.html?cat=Jewellery" class="menu-title">Jewelry</a>
+            <ul class="dropdown-list">
+              <li class="dropdown-item"><a href="#">Earrings</a></li>
+              <li class="dropdown-item"><a href="#">Couple Rings</a></li>
+              <li class="dropdown-item"><a href="#">Necklace</a></li>
+              <li class="dropdown-item"><a href="#">Bracelets</a></li>
+            </ul>
+          </li>
+          <li class="menu-category">
+            <a href="category.html?cat=Perfume" class="menu-title">Perfume</a>
+            <ul class="dropdown-list">
+              <li class="dropdown-item"><a href="#">Clothes Perfume</a></li>
+              <li class="dropdown-item"><a href="#">Deodorant</a></li>
+              <li class="dropdown-item"><a href="#">Flower Fragrance</a></li>
+              <li class="dropdown-item"><a href="#">Air Freshener</a></li>
+            </ul>
+          </li>
+          <li class="menu-category">
+            <a href="#" class="menu-title">Blog</a>
+          </li>
+          <li class="menu-category">
+            <a href="category.html?cat=offers" class="menu-title">Hot Offers</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="mobile-bottom-navigation">
+      <button class="action-btn" data-mobile-menu-open-btn>
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
+      <a href="cart.html" class="action-btn">
+        <ion-icon name="bag-handle-outline"></ion-icon>
+        <span class="count">0</span>
+      </a>
+      <a href="index.html" class="action-btn">
+        <ion-icon name="home-outline"></ion-icon>
+      </a>
+      <a href="wishlist.html" class="action-btn">
+        <ion-icon name="heart-outline"></ion-icon>
+        <span class="count">0</span>
+      </a>
+      <button class="action-btn" data-mobile-menu-open-btn>
+        <ion-icon name="grid-outline"></ion-icon>
+      </button>
+    </div>
+
+    <nav class="mobile-navigation-menu has-scrollbar" data-mobile-menu>
+      <div class="menu-top">
+        <h2 class="menu-title">Menu</h2>
+        <button class="menu-close-btn" data-mobile-menu-close-btn>
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
+      </div>
+      <ul class="mobile-menu-category-list">
+        <li class="menu-category">
+          <a href="index.html" class="menu-title">Home</a>
+        </li>
+        <li class="menu-category">
+          <button class="accordion-menu" data-accordion-btn>
+            <p class="menu-title">Men's</p>
+            <div>
+              <ion-icon name="add-outline" class="add-icon"></ion-icon>
+              <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+            </div>
+          </button>
+          <ul class="submenu-category-list" data-accordion>
+            <li class="submenu-category"><a href="#" class="submenu-title">Shirt</a></li>
+            <li class="submenu-category"><a href="#" class="submenu-title">Shorts &amp; Jeans</a></li>
+            <li class="submenu-category"><a href="#" class="submenu-title">Safety Shoes</a></li>
+            <li class="submenu-category"><a href="#" class="submenu-title">Wallet</a></li>
+          </ul>
+        </li>
+        <li class="menu-category">
+          <button class="accordion-menu" data-accordion-btn>
+            <p class="menu-title">Women's</p>
+            <div>
+              <ion-icon name="add-outline" class="add-icon"></ion-icon>
+              <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+            </div>
+          </button>
+          <ul class="submenu-category-list" data-accordion>
+            <li class="submenu-category"><a href="#" class="submenu-title">Dress &amp; Frock</a></li>
+            <li class="submenu-category"><a href="#" class="submenu-title">Earrings</a></li>
+            <li class="submenu-category"><a href="#" class="submenu-title">Necklace</a></li>
+            <li class="submenu-category"><a href="#" class="submenu-title">Makeup Kit</a></li>
+          </ul>
+        </li>
+        <li class="menu-category">
+          <button class="accordion-menu" data-accordion-btn>
+            <p class="menu-title">Jewelry</p>
+            <div>
+              <ion-icon name="add-outline" class="add-icon"></ion-icon>
+              <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+            </div>
+          </button>
+          <ul class="submenu-category-list" data-accordion>
+            <li class="submenu-category"><a href="#" class="submenu-title">Earrings</a></li>
+            <li class="submenu-category"><a href="#" class="submenu-title">Couple Rings</a></li>
+            <li class="submenu-category"><a href="#" class="submenu-title">Necklace</a></li>
+            <li class="submenu-category"><a href="#" class="submenu-title">Bracelets</a></li>
+          </ul>
+        </li>
+        <li class="menu-category">
+          <button class="accordion-menu" data-accordion-btn>
+            <p class="menu-title">Perfume</p>
+            <div>
+              <ion-icon name="add-outline" class="add-icon"></ion-icon>
+              <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+            </div>
+          </button>
+          <ul class="submenu-category-list" data-accordion>
+            <li class="submenu-category"><a href="#" class="submenu-title">Clothes Perfume</a></li>
+            <li class="submenu-category"><a href="#" class="submenu-title">Deodorant</a></li>
+            <li class="submenu-category"><a href="#" class="submenu-title">Flower Fragrance</a></li>
+            <li class="submenu-category"><a href="#" class="submenu-title">Air Freshener</a></li>
+          </ul>
+        </li>
+        <li class="menu-category"><a href="#" class="menu-title">Blog</a></li>
+        <li class="menu-category"><a href="category.html?cat=offers" class="menu-title">Hot Offers</a></li>
+      </ul>
+    </nav>
+
+  </header>
+
+
+  <!--
+    - CATEGORY HERO
+  -->
+
+  <section class="category-hero">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>›</span>
+        <span class="current" id="breadcrumb-cat">All Products</span>
+      </div>
+      <h1 class="hero-title" id="page-title">All Products</h1>
+      <p class="hero-subtitle" id="page-subtitle">Browse our complete collection</p>
+    </div>
+  </section>
+
+
+  <!--
+    - FILTER BAR
+  -->
+
+  <div class="category-filter-bar">
+    <div class="container">
+      <div class="filter-pills" id="filter-pills">
+        <a href="category.html" class="filter-pill" data-cat="">All</a>
+        <a href="category.html?cat=Mens" class="filter-pill" data-cat="Mens">Men's</a>
+        <a href="category.html?cat=Womens" class="filter-pill" data-cat="Womens">Women's</a>
+        <a href="category.html?cat=Jewellery" class="filter-pill" data-cat="Jewellery">Jewelry</a>
+        <a href="category.html?cat=Perfume" class="filter-pill" data-cat="Perfume">Perfume</a>
+        <a href="category.html?cat=Sports" class="filter-pill" data-cat="Sports">Sports</a>
+        <a href="category.html?cat=Accessories" class="filter-pill" data-cat="Accessories">Accessories</a>
+        <a href="category.html?cat=offers" class="filter-pill" data-cat="offers">Hot Offers</a>
+      </div>
+      <select class="sort-select" id="sort-select" onchange="applySortAndRender()">
+        <option value="default">Sort: Default</option>
+        <option value="price-asc">Price: Low to High</option>
+        <option value="price-desc">Price: High to Low</option>
+        <option value="rating">Top Rated</option>
+        <option value="discount">Biggest Discount</option>
+      </select>
+    </div>
+  </div>
+
+
+  <!--
+    - PRODUCTS
+  -->
+
+  <main class="category-main">
+    <div class="container">
+      <div class="results-header">
+        <p class="results-count" id="results-count"><strong>0</strong> products found</p>
+      </div>
+      <div id="product-container" class="product-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px;">
+      </div>
+    </div>
+  </main>
+
+
+  <!--
+    - FOOTER
+  -->
+
+  <footer>
+
+    <div class="footer-nav">
+      <div class="container">
+
+        <ul class="footer-nav-list">
+          <li class="footer-nav-item"><h2 class="nav-title">Popular Categories</h2></li>
+          <li class="footer-nav-item"><a href="category.html?cat=Mens" class="footer-nav-link">Men's Fashion</a></li>
+          <li class="footer-nav-item"><a href="category.html?cat=Womens" class="footer-nav-link">Women's Fashion</a></li>
+          <li class="footer-nav-item"><a href="category.html?cat=Jewellery" class="footer-nav-link">Jewellery</a></li>
+          <li class="footer-nav-item"><a href="category.html?cat=Perfume" class="footer-nav-link">Perfume</a></li>
+          <li class="footer-nav-item"><a href="category.html?cat=Sports" class="footer-nav-link">Sports</a></li>
+        </ul>
+
+        <ul class="footer-nav-list">
+          <li class="footer-nav-item"><h2 class="nav-title">Our Company</h2></li>
+          <li class="footer-nav-item"><a href="shipping-policy.html" class="footer-nav-link">Shipping Policy</a></li>
+          <li class="footer-nav-item"><a href="privacy-policy.html" class="footer-nav-link">Privacy Policy</a></li>
+          <li class="footer-nav-item"><a href="terms-conditions.html" class="footer-nav-link">Terms & Conditions</a></li>
+          <li class="footer-nav-item"><a href="refund-returns.html" class="footer-nav-link">Refund & Returns</a></li>
+          <li class="footer-nav-item"><a href="cancellation-policy.html" class="footer-nav-link">Cancellation Policy</a></li>
+        </ul>
+
+        <ul class="footer-nav-list">
+          <li class="footer-nav-item"><h2 class="nav-title">Contact</h2></li>
+          <li class="footer-nav-item flex">
+            <div class="icon-box"><ion-icon name="location-outline"></ion-icon></div>
+            <address class="content">123 E-Commerce Tech Park, Bengaluru, Karnataka, India</address>
+          </li>
+          <li class="footer-nav-item flex">
+            <div class="icon-box"><ion-icon name="call-outline"></ion-icon></div>
+            <a href="tel:+919876543210" class="footer-nav-link">+91 98765 43210</a>
+          </li>
+          <li class="footer-nav-item flex">
+            <div class="icon-box"><ion-icon name="mail-outline"></ion-icon></div>
+            <a href="mailto:example@gmail.com" class="footer-nav-link">example@gmail.com</a>
+          </li>
+        </ul>
+
+        <ul class="footer-nav-list">
+          <li class="footer-nav-item"><h2 class="nav-title">Follow Us</h2></li>
+          <li>
+            <ul class="social-link">
+              <li class="footer-nav-item"><a href="#" class="footer-nav-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
+              <li class="footer-nav-item"><a href="#" class="footer-nav-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
+              <li class="footer-nav-item"><a href="#" class="footer-nav-link"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+              <li class="footer-nav-item"><a href="#" class="footer-nav-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
+            </ul>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <img src="./assets/images/payment.png" alt="payment method" class="payment-img">
+        <p class="copyright">Copyright &copy; <a href="#">Anon</a> all rights reserved.</p>
+      </div>
+    </div>
+
+  </footer>
+
+
+  <script src="./assets/js/script.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="./assets/js/products.js"></script>
+  <script src="./assets/js/cart_wishlist.js"></script>
+
+  <script>
+    // Category page logic — runs after DOMContentLoaded (from cart_wishlist.js)
+    // Override the default renderProducts to filter by URL param
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const catParam = urlParams.get('cat') || '';
+
+    // Category metadata
+    const categoryMeta = {
+      'Mens':        { title: "Men's Collection", subtitle: "Premium menswear — shirts, jackets, casual & formal" },
+      'Womens':      { title: "Women's Collection", subtitle: "Elegant womenswear — dresses, tops, blouses & more" },
+      'Jewellery':   { title: "Jewellery", subtitle: "Rings, necklaces, earrings, bangles & more" },
+      'Perfume':     { title: "Perfume & Fragrance", subtitle: "Long-lasting fragrances for every mood and occasion" },
+      'Sports':      { title: "Sports & Fitness", subtitle: "Gear up for your active lifestyle" },
+      'Accessories': { title: "Accessories", subtitle: "Belts, watches and everyday essentials" },
+      'offers':      { title: "Hot Offers", subtitle: "Biggest discounts — limited time deals" },
+    };
+
+    function getCategoryLabel(cat) {
+      const labels = { Mens: "Men's", Womens: "Women's", Jewellery: "Jewelry", Perfume: "Perfume",
+        Sports: "Sports", Accessories: "Accessories", offers: "Hot Offers" };
+      return labels[cat] || "All Products";
+    }
+
+    function getFilteredProducts(cat, sortBy) {
+      let list;
+      if (!cat) {
+        list = [...products];
+      } else if (cat === 'offers') {
+        list = products.filter(p => Math.round((1 - p.price / p.originalPrice) * 100) >= 30);
+      } else {
+        list = products.filter(p => p.category === cat);
+      }
+
+      if (sortBy === 'price-asc') list.sort((a, b) => a.price - b.price);
+      else if (sortBy === 'price-desc') list.sort((a, b) => b.price - a.price);
+      else if (sortBy === 'rating') list.sort((a, b) => b.rating - a.rating);
+      else if (sortBy === 'discount') list.sort((a, b) =>
+        (1 - b.price / b.originalPrice) - (1 - a.price / a.originalPrice));
+
+      return list;
+    }
+
+    function generateStarsHTML(rating) {
+      let html = '';
+      for (let i = 1; i <= 5; i++) {
+        html += i <= rating ? '<ion-icon name="star"></ion-icon>' : '<ion-icon name="star-outline"></ion-icon>';
+      }
+      return html;
+    }
+
+    function renderCategoryProducts(productList) {
+      const container = document.getElementById('product-container');
+      const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+
+      container.innerHTML = '';
+
+      if (productList.length === 0) {
+        container.innerHTML = `<div class="no-results">
+          <ion-icon name="bag-outline"></ion-icon>
+          <p>No products found in this category.</p>
+          <a href="category.html" style="display:inline-block;margin-top:20px;padding:12px 28px;background:#ff8f9c;color:white;border-radius:8px;text-decoration:none;font-weight:600;">Browse All Products</a>
+        </div>`;
+        return;
+      }
+
+      productList.forEach(product => {
+        const isLiked = wishlist.some(item => item.id === product.id);
+        const heartIcon = isLiked ? 'heart' : 'heart-outline';
+        const discount = Math.round((1 - product.price / product.originalPrice) * 100);
+
+        container.innerHTML += `
+          <div class="showcase" onclick="window.location='product.html?id=${product.id}'" style="cursor:pointer;">
+            <div class="showcase-banner">
+              <img src="${product.image}" alt="${product.name}" class="product-img default" style="height:260px;">
+              <p class="showcase-badge pink">${discount}% Off</p>
+              <div class="showcase-actions">
+                <button class="btn-action" onclick="event.stopPropagation(); catToggleWishlist(${product.id})" title="${isLiked ? 'Remove from Wishlist' : 'Add to Wishlist'}">
+                  <ion-icon name="${heartIcon}"></ion-icon>
+                </button>
+                <button class="btn-action" onclick="event.stopPropagation(); window.location='product.html?id=${product.id}'" title="Quick View">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </button>
+                <button class="btn-action" onclick="event.stopPropagation(); addToCart(${product.id})" title="Add to Cart">
+                  <ion-icon name="add-outline"></ion-icon>
+                </button>
+              </div>
+            </div>
+            <div class="showcase-content">
+              <a href="product.html?id=${product.id}" class="showcase-category" onclick="event.stopPropagation();">${product.category}</a>
+              <a href="product.html?id=${product.id}" style="text-decoration:none;" onclick="event.stopPropagation();">
+                <h3 class="showcase-title">${product.name}</h3>
+              </a>
+              <div class="showcase-rating">
+                ${generateStarsHTML(product.rating)}
+                <span style="color:#888;font-size:12px;margin-left:4px;">(${product.rating}.0)</span>
+              </div>
+              <div class="price-box">
+                <p class="price">&#8377;${product.price}</p>
+                <del>&#8377;${product.originalPrice}</del>
+              </div>
+            </div>
+          </div>`;
+      });
+
+      document.getElementById('results-count').innerHTML =
+        `<strong>${productList.length}</strong> product${productList.length !== 1 ? 's' : ''} found`;
+    }
+
+    function catToggleWishlist(productId) {
+      toggleWishlist(productId);
+      applySortAndRender();
+    }
+
+    function applySortAndRender() {
+      const sort = document.getElementById('sort-select').value;
+      const list = getFilteredProducts(catParam, sort);
+      renderCategoryProducts(list);
+      updateBadges();
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      // Set page header text
+      const meta = catParam ? categoryMeta[catParam] : null;
+      const label = getCategoryLabel(catParam);
+
+      document.getElementById('breadcrumb-cat').textContent = label;
+      document.getElementById('page-title').textContent = meta ? meta.title : 'All Products';
+      document.getElementById('page-subtitle').textContent = meta ? meta.subtitle : 'Browse our complete collection';
+      document.title = (meta ? meta.title : 'All Products') + ' - Anon';
+
+      // Mark active filter pill
+      document.querySelectorAll('.filter-pill').forEach(pill => {
+        if (pill.dataset.cat === catParam) pill.classList.add('active');
+      });
+
+      // Initial render
+      applySortAndRender();
+      updateBadges();
+    });
+
+    function handleSearch() {
+      const q = document.getElementById('search-input').value.trim().toLowerCase();
+      if (!q) { applySortAndRender(); return; }
+      const sort = document.getElementById('sort-select').value;
+      let list = getFilteredProducts(catParam, sort);
+      list = list.filter(p => p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q));
+      renderCategoryProducts(list);
+    }
+    document.getElementById('search-input').addEventListener('keyup', e => {
+      if (e.key === 'Enter') handleSearch();
+    });
+  </script>
+
+</body>
+</html>
