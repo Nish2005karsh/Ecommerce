@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Refund &amp; Returns - Anon eCommerce</title>
+  <link rel="shortcut icon" href="./assets/images/logo/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./assets/css/style-prefix.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    .policy-hero { background: linear-gradient(135deg, #1c1c2e 0%, #2d1b3d 100%); padding: 64px 0; text-align: center; color: white; position: relative; overflow: hidden; }
+    .policy-hero::before { content: ''; position: absolute; inset: 0; background: url('./assets/images/banner-3.jpg') center/cover no-repeat; opacity: 0.07; }
+    .policy-hero .container { position: relative; z-index: 1; }
+    .policy-breadcrumb { font-size: 13px; margin-bottom: 14px; }
+    .policy-breadcrumb a { color: #ff8f9c; text-decoration: none; }
+    .policy-breadcrumb span { color: #aaa; margin: 0 8px; }
+    .policy-hero h1 { font-size: 40px; font-weight: 800; margin: 0 0 8px; letter-spacing: -0.5px; }
+    .policy-hero p { color: #aaa; font-size: 14px; }
+    .policy-body { background: #f5f5f7; min-height: 600px; padding: 56px 0 80px; }
+    .policy-wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+    .policy-intro { background: white; border-radius: 14px; padding: 28px 32px; margin-bottom: 28px; border-left: 5px solid #ff8f9c; box-shadow: 0 2px 16px rgba(0,0,0,0.05); }
+    .policy-intro p { color: #555; font-size: 15px; line-height: 1.8; margin: 0; }
+    .policy-card { background: white; border-radius: 14px; box-shadow: 0 2px 16px rgba(0,0,0,0.05); overflow: hidden; margin-bottom: 28px; }
+    .policy-section { padding: 30px 36px; border-bottom: 1px solid #f5f5f5; display: flex; gap: 20px; align-items: flex-start; }
+    .policy-section:last-child { border-bottom: none; }
+    .section-num { flex-shrink: 0; width: 38px; height: 38px; background: #fff0f2; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #ff8f9c; font-weight: 800; font-size: 13px; margin-top: 2px; }
+    .section-body h2 { font-size: 17px; font-weight: 700; color: #1a1a1a; margin: 0 0 10px; }
+    .section-body p { color: #555; line-height: 1.8; font-size: 15px; margin: 0 0 8px; }
+    .section-body p:last-child { margin-bottom: 0; }
+    .section-body ul { color: #555; line-height: 1.8; font-size: 15px; margin: 8px 0 0 0; padding-left: 20px; }
+    .section-body ul li { margin-bottom: 6px; }
+    .policy-highlight { background: #fff8f9; border: 1px solid #ffd6de; border-radius: 10px; padding: 16px 20px; margin-top: 14px; }
+    .policy-highlight p { color: #d63864; font-size: 14px; font-weight: 500; margin: 0; line-height: 1.7; }
+    .policy-footer-nav { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; justify-content: center; }
+    .policy-footer-nav a { padding: 8px 18px; background: white; border: 1px solid #eee; border-radius: 8px; font-size: 13px; color: #555; text-decoration: none; transition: all 0.2s; }
+    .policy-footer-nav a:hover, .policy-footer-nav a.active { background: #ff8f9c; color: white; border-color: #ff8f9c; }
+    .back-home { display: inline-block; margin-top: 32px; padding: 13px 36px; background: #ff8f9c; color: white; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 15px; transition: background 0.2s; }
+    .back-home:hover { background: #e07b88; }
+    .step-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 14px; }
+    .step-card { background: #f9f9f9; border-radius: 10px; padding: 16px; text-align: center; }
+    .step-card .step-icon { font-size: 28px; display: block; margin-bottom: 8px; }
+    .step-card p { font-size: 13px; color: #555; margin: 0; line-height: 1.5; }
+    .step-card strong { display: block; font-size: 14px; color: #1a1a1a; margin-bottom: 4px; }
+    @media (max-width: 600px) { .step-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <div class="overlay" data-overlay></div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-top">
+      <div class="container">
+        <ul class="header-social-container">
+          <li><a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
+          <li><a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
+          <li><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
+          <li><a href="#" class="social-link"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+        </ul>
+        <div class="header-alert-news"><p><b>Free Shipping</b> This Week Order Over - ₹500</p></div>
+        <div class="header-top-actions"></div>
+      </div>
+    </div>
+    <div class="header-main">
+      <div class="container">
+        <a href="index.html" class="header-logo">
+          <img src="./assets/images/logo/logo.svg" alt="Anon's logo" width="120" height="36">
+        </a>
+        <div class="header-search-container">
+          <input type="search" name="search" class="search-field" placeholder="Enter your product name...">
+          <button class="search-btn"><ion-icon name="search-outline"></ion-icon></button>
+        </div>
+        <div class="header-user-actions">
+          <button class="action-btn"><ion-icon name="person-outline"></ion-icon></button>
+          <a href="wishlist.html" class="action-btn"><ion-icon name="heart-outline"></ion-icon><span class="count">0</span></a>
+          <a href="cart.html" class="action-btn"><ion-icon name="bag-handle-outline"></ion-icon><span class="count">0</span></a>
+        </div>
+      </div>
+    </div>
+    <nav class="desktop-navigation-menu">
+      <div class="container">
+        <ul class="desktop-menu-category-list">
+          <li class="menu-category"><a href="index.html" class="menu-title">Home</a></li>
+          <li class="menu-category"><a href="category.html?cat=Mens" class="menu-title">Men's</a></li>
+          <li class="menu-category"><a href="category.html?cat=Womens" class="menu-title">Women's</a></li>
+
+          <li class="menu-category"><a href="#" class="menu-title">Sports</a></li>
+          <li class="menu-category"><a href="category.html?cat=offers" class="menu-title">Hot Offers</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="mobile-bottom-navigation">
+      <button class="action-btn" data-mobile-menu-open-btn><ion-icon name="menu-outline"></ion-icon></button>
+      <a href="cart.html" class="action-btn"><ion-icon name="bag-handle-outline"></ion-icon><span class="count">0</span></a>
+      <a href="index.html" class="action-btn"><ion-icon name="home-outline"></ion-icon></a>
+      <a href="wishlist.html" class="action-btn"><ion-icon name="heart-outline"></ion-icon><span class="count">0</span></a>
+      <button class="action-btn" data-mobile-menu-open-btn><ion-icon name="grid-outline"></ion-icon></button>
+    </div>
+    <nav class="mobile-navigation-menu has-scrollbar" data-mobile-menu>
+      <div class="menu-top">
+        <h2 class="menu-title">Menu</h2>
+        <button class="menu-close-btn" data-mobile-menu-close-btn><ion-icon name="close-outline"></ion-icon></button>
+      </div>
+      <ul class="mobile-menu-category-list">
+        <li class="menu-category"><a href="index.html" class="menu-title">Home</a></li>
+        <li class="menu-category"><a href="category.html?cat=Mens" class="menu-title">Men's</a></li>
+        <li class="menu-category"><a href="category.html?cat=Womens" class="menu-title">Women's</a></li>
+
+        <li class="menu-category"><a href="category.html?cat=offers" class="menu-title">Hot Offers</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <div class="policy-hero">
+      <div class="container">
+        <nav class="policy-breadcrumb">
+          <a href="index.html">Home</a><span>›</span>Refund &amp; Returns
+        </nav>
+        <h1>Refund &amp; Returns Policy</h1>
+        <p>Last Updated: March 2026</p>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="policy-body">
+      <div class="policy-wrap">
+
+        <div class="policy-intro">
+          <p>We want you to be completely satisfied with every purchase at Anon eCommerce. If you are not entirely happy with your item for any reason, we offer a straightforward 15-day return window from the date of final delivery. Please read the policy below carefully before initiating a return.</p>
+        </div>
+
+        <div class="policy-footer-nav">
+          <a href="terms-conditions.html">Terms &amp; Conditions</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="refund-returns.html" class="active">Refund &amp; Returns</a>
+          <a href="cancellation-policy.html">Cancellation Policy</a>
+          <a href="shipping-policy.html">Shipping Policy</a>
+        </div>
+
+        <div class="policy-card">
+
+          <div class="policy-section">
+            <div class="section-num">01</div>
+            <div class="section-body">
+              <h2>Return Window</h2>
+              <p>You may return eligible items within <strong>15 days</strong> from the date of final delivery. Returns requested after this window will not be accepted.</p>
+              <div class="step-grid">
+                <div class="step-card">
+                  <span class="step-icon">📦</span>
+                  <strong>Step 1</strong>
+                  <p>Initiate return via "My Orders" in your account within 15 days of delivery.</p>
+                </div>
+                <div class="step-card">
+                  <span class="step-icon">🚚</span>
+                  <strong>Step 2</strong>
+                  <p>Our courier partner picks up the package from your address within 2–4 business days.</p>
+                </div>
+                <div class="step-card">
+                  <span class="step-icon">✅</span>
+                  <strong>Step 3</strong>
+                  <p>Refund is processed within 5–7 business days after quality inspection.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="policy-section">
+            <div class="section-num">02</div>
+            <div class="section-body">
+              <h2>Eligibility for Returns</h2>
+              <p>To be eligible for a return, the following conditions must be met:</p>
+              <ul>
+                <li>The item must be <strong>unused, unwashed, and unaltered</strong> — in the exact condition you received it.</li>
+                <li>The item must be in its <strong>original packaging</strong> with all tags, labels, and protective seals intact.</li>
+                <li>You must provide the <strong>original invoice or electronic proof of purchase</strong>.</li>
+                <li>The return must be initiated within the 15-day window.</li>
+              </ul>
+              <div class="policy-highlight">
+                <p>&#9888; <strong>Non-returnable items:</strong> Perishable goods, intimate/sanitary wear (innerwear, swimwear), hazardous materials, gift cards, and personalised or customised products are not eligible for return.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="policy-section">
+            <div class="section-num">03</div>
+            <div class="section-body">
+              <h2>Quality Check &amp; Refund Processing</h2>
+              <p>Once we receive your returned item, our quality assurance team will inspect it within 2 business days. You will be notified of the inspection outcome via email and SMS.</p>
+              <ul>
+                <li>If the return is <strong>approved</strong>, your refund will be processed to the original payment method — credit/debit card, UPI, net banking, or wallet.</li>
+                <li>Refunds are typically credited within <strong>5–7 business days</strong>, depending on your bank's processing timelines.</li>
+                <li>For <strong>Cash on Delivery (COD)</strong> orders, refunds will be transferred via NEFT/IMPS to your designated bank account, or as store credit at your preference.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="policy-section">
+            <div class="section-num">04</div>
+            <div class="section-body">
+              <h2>Defective or Damaged Products</h2>
+              <p>If you receive a product that is damaged, defective, or significantly different from what was described, please notify us within <strong>48 hours of delivery</strong> with photographic or video evidence of the issue.</p>
+              <p>In such cases, we will arrange a <strong>free-of-cost replacement</strong> or a <strong>full refund</strong> — whichever you prefer — with no return shipping charge.</p>
+            </div>
+          </div>
+
+          <div class="policy-section">
+            <div class="section-num">05</div>
+            <div class="section-body">
+              <h2>Return Shipping</h2>
+              <p>We provide <strong>free return pick-up</strong> for all eligible returns. Our delivery partner will collect the package from your registered delivery address within 2–4 business days of your return request being approved.</p>
+              <p>In cases of multiple recurring returns without valid reasons, we reserve the right to apply an adjustment fee for return logistics or restrict future return privileges.</p>
+            </div>
+          </div>
+
+          <div class="policy-section">
+            <div class="section-num">06</div>
+            <div class="section-body">
+              <h2>Contact Us</h2>
+              <p>For any questions about your return or refund, please contact us:</p>
+              <p>Email: <a href="mailto:returns@anon.in" style="color:#ff8f9c;">returns@anon.in</a></p>
+              <p>Phone: <a href="tel:+919876543210" style="color:#ff8f9c;">+91 98765 43210</a></p>
+              <p>Support Hours: Monday – Saturday, 9:00 AM – 6:00 PM IST</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div style="text-align:center;">
+          <a href="index.html" class="back-home">&#8592; Return to Home</a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-nav">
+      <div class="container">
+        <ul class="footer-nav-list">
+          <li class="footer-nav-item"><h2 class="nav-title">Popular Categories</h2></li>
+          <li class="footer-nav-item"><a href="#" class="footer-nav-link">Fashion</a></li>
+          <li class="footer-nav-item"><a href="#" class="footer-nav-link">Cosmetics</a></li>
+          <li class="footer-nav-item"><a href="#" class="footer-nav-link">Accessories</a></li>
+          <li class="footer-nav-item"><a href="#" class="footer-nav-link">Sports</a></li>
+        </ul>
+        <ul class="footer-nav-list">
+          <li class="footer-nav-item"><h2 class="nav-title">Our Policies</h2></li>
+          <li class="footer-nav-item"><a href="shipping-policy.html" class="footer-nav-link">Shipping Policy</a></li>
+          <li class="footer-nav-item"><a href="privacy-policy.html" class="footer-nav-link">Privacy Policy</a></li>
+          <li class="footer-nav-item"><a href="terms-conditions.html" class="footer-nav-link">Terms and Conditions</a></li>
+          <li class="footer-nav-item"><a href="refund-returns.html" class="footer-nav-link">Refund &amp; Returns</a></li>
+          <li class="footer-nav-item"><a href="cancellation-policy.html" class="footer-nav-link">Cancellation Policy</a></li>
+        </ul>
+        <ul class="footer-nav-list">
+          <li class="footer-nav-item"><h2 class="nav-title">Contact</h2></li>
+          <li class="footer-nav-item flex">
+            <div class="icon-box"><ion-icon name="location-outline"></ion-icon></div>
+            <address class="content">123 E-Commerce Tech Park, Bengaluru, Karnataka, India</address>
+          </li>
+          <li class="footer-nav-item flex">
+            <div class="icon-box"><ion-icon name="call-outline"></ion-icon></div>
+            <a href="tel:+919876543210" class="footer-nav-link">+91 98765 43210</a>
+          </li>
+          <li class="footer-nav-item flex">
+            <div class="icon-box"><ion-icon name="mail-outline"></ion-icon></div>
+            <a href="mailto:example@gmail.com" class="footer-nav-link">example@gmail.com</a>
+          </li>
+        </ul>
+        <ul class="footer-nav-list">
+          <li class="footer-nav-item"><h2 class="nav-title">Follow Us</h2></li>
+          <li>
+            <ul class="social-link">
+              <li class="footer-nav-item"><a href="#" class="footer-nav-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
+              <li class="footer-nav-item"><a href="#" class="footer-nav-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
+              <li class="footer-nav-item"><a href="#" class="footer-nav-link"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+              <li class="footer-nav-item"><a href="#" class="footer-nav-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <img src="./assets/images/payment.png" alt="payment method" class="payment-img">
+        <p class="copyright">Copyright &copy; <a href="#">Anon</a> all rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./assets/js/script.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
