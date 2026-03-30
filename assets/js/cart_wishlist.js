@@ -28,9 +28,10 @@ function saveWishlist(wishlist) {
 
 function addToCart(productId) {
   const cart = getCart();
-  const product = products.find(p => p.id === productId);
+  const productList = window.allProducts || [];
+  const product = productList.find(p => p.id == productId);
   if (product) {
-    const existing = cart.find(item => item.id === productId);
+    const existing = cart.find(item => item.id == productId);
     if (existing) {
       existing.quantity += 1;
     } else {
@@ -80,9 +81,10 @@ function showToast(productName) {
 
 function toggleWishlist(productId) {
   const wishlist = getWishlist();
-  const product = products.find(p => p.id === productId);
+  const productList = window.allProducts || [];
+  const product = productList.find(p => p.id == productId);
   if (product) {
-    const existingIndex = wishlist.findIndex(item => item.id === productId);
+    const existingIndex = wishlist.findIndex(item => item.id == productId);
     if (existingIndex > -1) {
       wishlist.splice(existingIndex, 1);
     } else {
@@ -90,6 +92,10 @@ function toggleWishlist(productId) {
     }
     saveWishlist(wishlist);
   }
+}
+
+function addToWishlist(productId) {
+  toggleWishlist(productId);
 }
 
 function updateBadges() {
@@ -171,8 +177,8 @@ function renderCart() {
         <span style="font-size:16px;color:#666;">Subtotal (${cart.reduce((a, i) => a + i.quantity, 0)} items)</span>
         <span style="font-size:22px;font-weight:800;color:#ff8f9c;">&#8377;${total}</span>
       </div>
-      <p style="font-size:13px;color:#aaa;margin-bottom:16px;">Shipping and taxes calculated at checkout.</p>
-      <button style="width:100%;padding:14px;background:#ff8f9c;color:white;border:none;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;" onmouseover="this.style.background='#e07b88'" onmouseout="this.style.background='#ff8f9c'">Proceed to Checkout</button>
+      <p style="font-size:13px;color:#aaa;margin-bottom:16px;">Free shipping on all orders!</p>
+      <button onclick="window.location.href='checkout.html'" style="width:100%;padding:14px;background:#111;color:white;border:none;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;font-family:'Poppins',sans-serif;letter-spacing:0.3px;transition:background 0.2s;" onmouseover="this.style.background='#e74c3c'" onmouseout="this.style.background='#111'">🛒 Proceed to Checkout →</button>
     </div>`;
 }
 
@@ -244,55 +250,7 @@ function generateStars(rating) {
   return html;
 }
 
-// Render product grid on homepage
-function renderProducts() {
-  const container = document.getElementById('product-container');
-  if (!container) return;
-
-  container.innerHTML = '';
-
-  products.forEach(product => {
-    const isLiked = getWishlist().some(item => item.id === product.id);
-    const heartIcon = isLiked ? 'heart' : 'heart-outline';
-    const discount = Math.round((1 - product.price / product.originalPrice) * 100);
-
-    container.innerHTML += `
-      <div class="showcase" onclick="window.location='product.html?id=${product.id}'" style="cursor:pointer;">
-        <div class="showcase-banner">
-          <img src="${product.image}" alt="${product.name}" class="product-img default" style="height:260px;">
-          <p class="showcase-badge pink">${discount}% Off</p>
-          <div class="showcase-actions">
-            <button class="btn-action" onclick="event.stopPropagation(); toggleWishlist(${product.id}); renderProducts();" title="${isLiked ? 'Remove from Wishlist' : 'Add to Wishlist'}">
-              <ion-icon name="${heartIcon}"></ion-icon>
-            </button>
-            <button class="btn-action" onclick="event.stopPropagation(); window.location='product.html?id=${product.id}'" title="Quick View">
-              <ion-icon name="eye-outline"></ion-icon>
-            </button>
-            <button class="btn-action" onclick="event.stopPropagation(); addToCart(${product.id})" title="Add to Cart">
-              <ion-icon name="add-outline"></ion-icon>
-            </button>
-          </div>
-        </div>
-        <div class="showcase-content">
-          <a href="product.html?id=${product.id}" class="showcase-category" onclick="event.stopPropagation();">${product.category}</a>
-          <a href="product.html?id=${product.id}" style="text-decoration:none;" onclick="event.stopPropagation();">
-            <h3 class="showcase-title">${product.name}</h3>
-          </a>
-          <div class="showcase-rating">
-            ${generateStars(product.rating)}
-            <span style="color:#888;font-size:12px;margin-left:4px;">(${product.rating}.0)</span>
-          </div>
-          <div class="price-box">
-            <p class="price">&#8377;${product.price}</p>
-            <del>&#8377;${product.originalPrice}</del>
-          </div>
-        </div>
-      </div>`;
-  });
-}
-
 document.addEventListener('DOMContentLoaded', () => {
-  renderProducts();
   renderCart();
   renderWishlist();
   updateBadges();

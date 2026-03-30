@@ -3208,3 +3208,18 @@ footer {
   }
 
 }
+/* --- HIDDEN INACTIVE UI ELEMENTS --- */
+.header-social-container { display: none !important; }
+.menu-social-container { display: none !important; }
+.modal { display: none !important; }
+.service { display: none !important; }
+.cta-container { display: none !important; }
+
+/* --- HIDDEN REMAINING INACTIVE UI ELEMENTS --- */
+.blog { display: none !important; }
+.sidebar-category .product-showcase { display: none !important; }
+.category-btn { display: none !important; }
+
+/* --- HIDDEN TOAST & BEST SELLERS TITLE --- */
+[data-toast] { display: none !important; }
+.sidebar-top { display: none !important; }

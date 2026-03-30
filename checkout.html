@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Crawlcore Solutions</title>
+  <link rel="shortcut icon" href="./assets/images/logo/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./assets/css/style-prefix.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Poppins',sans-serif;background:#f5f5f7;color:#222;min-height:100vh}
+
+    /* ── Stepper ── */
+    .checkout-stepper{background:#fff;border-bottom:1px solid #eee;padding:20px 0}
+    .stepper-inner{max-width:900px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:0}
+    .step{display:flex;align-items:center;gap:10px;flex:1}
+    .step-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;border:2px solid #ddd;color:#aaa;background:#fff;transition:all .3s}
+    .step.active .step-num{background:#222;border-color:#222;color:#fff}
+    .step.done .step-num{background:#27ae60;border-color:#27ae60;color:#fff}
+    .step-label{font-size:13px;font-weight:500;color:#aaa;transition:color .3s}
+    .step.active .step-label,.step.done .step-label{color:#222}
+    .step-line{flex:1;height:2px;background:#ddd;margin:0 12px}
+    .step-line.done-line{background:#27ae60}
+
+    /* ── Layout ── */
+    .checkout-wrap{max-width:1100px;margin:36px auto;padding:0 20px;display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start}
+    @media(max-width:768px){.checkout-wrap{grid-template-columns:1fr}}
+
+    /* ── Cards ── */
+    .co-card{background:#fff;border-radius:14px;box-shadow:0 2px 16px rgba(0,0,0,.06);padding:32px;margin-bottom:20px}
+    .co-card h2{font-size:20px;font-weight:700;margin-bottom:24px;color:#111}
+
+    /* ── Auth notice banner ── */
+    .auth-notice{background:#f8f4e8;border:1px solid #e8d870;border-radius:10px;padding:14px 18px;display:flex;align-items:center;gap:10px;margin-bottom:24px;font-size:13px;color:#7a6500}
+
+    /* ── Auth side-by-side ── */
+    .auth-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+    @media(max-width:600px){.auth-grid{grid-template-columns:1fr}}
+    .auth-box{border:1px solid #e8e8e8;border-radius:12px;padding:28px}
+    .auth-box h3{font-size:18px;font-weight:700;margin-bottom:22px;color:#111}
+
+    /* ── Form inputs ── */
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    @media(max-width:500px){.form-row{grid-template-columns:1fr}}
+    .form-group{margin-bottom:16px}
+    .form-group label{display:block;font-size:12px;font-weight:600;color:#555;margin-bottom:6px}
+    .form-group label span{color:#e74c3c}
+    .form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;border:1px solid #ddd;border-radius:8px;font-size:14px;font-family:'Poppins',sans-serif;outline:none;transition:border .2s}
+    .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:#222}
+    .form-group .pw-wrap{position:relative}
+    .form-group .pw-wrap input{padding-right:44px}
+    .form-group .pw-toggle{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:#888;font-size:18px;line-height:1}
+    .form-group .hint{font-size:11px;color:#888;margin-top:6px;line-height:1.5}
+
+    /* ── Checkbox row ── */
+    .check-row{display:flex;align-items:center;gap:8px;font-size:13px;color:#555;margin-bottom:16px}
+    .check-row input[type=checkbox]{width:16px;height:16px;accent-color:#222;cursor:pointer}
+    .check-row a{color:#e74c3c;text-decoration:none}
+    .forgot{margin-left:auto;font-size:12px;color:#e74c3c;text-decoration:none}
+
+    /* ── Buttons ── */
+    .btn-primary{width:100%;padding:13px;background:#111;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Poppins',sans-serif;transition:background .2s;letter-spacing:0.3px}
+    .btn-primary:hover{background:#333}
+    .btn-secondary{padding:11px 24px;background:#fff;color:#111;border:2px solid #111;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Poppins',sans-serif;transition:all .2s}
+    .btn-secondary:hover{background:#111;color:#fff}
+    .btn-red{background:#e74c3c}
+    .btn-red:hover{background:#c0392b}
+
+    /* ── Payment options ── */
+    .payment-option{border:2px solid #e8e8e8;border-radius:12px;padding:18px 20px;cursor:pointer;display:flex;align-items:center;gap:16px;margin-bottom:12px;transition:all .2s}
+    .payment-option.selected{border-color:#222;background:#fafafa}
+    .payment-option.disabled{opacity:.6;cursor:not-allowed}
+    .payment-option input[type=radio]{width:18px;height:18px;accent-color:#222;flex-shrink:0}
+    .payment-option .po-icon{font-size:26px;flex-shrink:0}
+    .payment-option .po-info h4{font-size:14px;font-weight:700;margin-bottom:2px}
+    .payment-option .po-info p{font-size:12px;color:#888}
+    .coming-soon-badge{background:#f39c12;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;margin-left:8px;letter-spacing:0.5px}
+
+    /* ── Order summary card ── */
+    .summary-card{background:#fff;border-radius:14px;box-shadow:0 2px 16px rgba(0,0,0,.06);padding:24px;position:sticky;top:20px}
+    .summary-card h3{font-size:16px;font-weight:700;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid #f0f0f0}
+    .summary-item{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
+    .summary-item img{width:56px;height:56px;object-fit:contain;border-radius:8px;background:#f8f8f8;flex-shrink:0}
+    .summary-item .si-name{font-size:13px;font-weight:600;color:#222;margin-bottom:3px;line-height:1.4}
+    .summary-item .si-qty{font-size:12px;color:#888}
+    .summary-item .si-price{font-size:13px;font-weight:700;color:#e74c3c;margin-left:auto;white-space:nowrap}
+    .summary-divider{border:none;border-top:1px solid #f0f0f0;margin:14px 0}
+    .summary-row{display:flex;justify-content:space-between;font-size:13px;color:#555;margin-bottom:8px}
+    .summary-row.total{font-size:16px;font-weight:800;color:#111;margin-top:12px;padding-top:12px;border-top:2px solid #f0f0f0}
+
+    /* ── Error ── */
+    .err-msg{color:#e74c3c;font-size:12px;margin-top:6px;display:none}
+    .err-msg.show{display:block}
+
+    /* ── Success Confirmation ── */
+    .confirm-box{text-align:center;padding:40px 20px}
+    .confirm-icon{width:72px;height:72px;background:#e8f8ee;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:32px}
+    .confirm-box h2{font-size:24px;font-weight:800;color:#111;margin-bottom:10px}
+    .confirm-box p{font-size:14px;color:#666;line-height:1.7;margin-bottom:6px}
+    .order-id{font-weight:700;color:#e74c3c}
+    .confirm-actions{display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap}
+
+    /* ── User chip (logged in) ── */
+    .user-chip{display:flex;align-items:center;gap:10px;padding:12px 16px;background:#f0faf4;border:1px solid #c3e8ce;border-radius:10px;margin-bottom:20px}
+    .user-chip-avatar{width:36px;height:36px;background:#27ae60;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:15px}
+    .user-chip-info{flex:1}
+    .user-chip-info p{font-size:13px;font-weight:600;color:#155724;margin-bottom:1px}
+    .user-chip-info span{font-size:12px;color:#555}
+    .user-chip-logout{font-size:12px;color:#e74c3c;text-decoration:none;cursor:pointer;background:none;border:none;font-family:'Poppins',sans-serif}
+
+    /* ── Address display card ── */
+    .addr-display{border:1px solid #e8e8e8;border-radius:10px;padding:16px;margin-bottom:16px;font-size:13px;line-height:1.7;color:#555}
+    .addr-display h4{font-size:14px;font-weight:700;color:#111;margin-bottom:6px}
+    .section-hidden{display:none}
+  </style>
+</head>
+<body>
+
+  <!-- HEADER (slim checkout header) -->
+  <header style="background:#fff;border-bottom:1px solid #eee;padding:14px 0;">
+    <div style="max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;">
+      <a href="index.html">
+        <img src="./assets/images/logo/logo.svg" alt="Logo" style="height:36px;">
+      </a>
+      <div style="font-size:13px;color:#888;display:flex;align-items:center;gap:8px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#27ae60" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Secure Checkout
+      </div>
+    </div>
+  </header>
+
+  <!-- STEPPER -->
+  <div class="checkout-stepper">
+    <div class="stepper-inner">
+      <div class="step active" id="step-indicator-1">
+        <div class="step-num" id="sn1">1</div>
+        <div class="step-label">Account</div>
+      </div>
+      <div class="step-line" id="line-1"></div>
+      <div class="step" id="step-indicator-2">
+        <div class="step-num" id="sn2">2</div>
+        <div class="step-label">Delivery</div>
+      </div>
+      <div class="step-line" id="line-2"></div>
+      <div class="step" id="step-indicator-3">
+        <div class="step-num" id="sn3">3</div>
+        <div class="step-label">Payment</div>
+      </div>
+      <div class="step-line" id="line-3"></div>
+      <div class="step" id="step-indicator-4">
+        <div class="step-num" id="sn4">4</div>
+        <div class="step-label">Confirm</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="checkout-wrap">
+
+    <!-- LEFT COLUMN: Steps -->
+    <div>
+
+      <!-- ════ STEP 1: AUTH ════ -->
+      <div id="step-auth">
+        <div class="auth-notice">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Please <strong style="margin:0 3px;">log in</strong> or <strong style="margin:0 3px;">register</strong> to complete your purchase.
+        </div>
+
+        <div class="auth-grid">
+
+          <!-- Sign In -->
+          <div class="auth-box" id="box-signin">
+            <h3>Sign In</h3>
+            <div class="form-group">
+              <label>Username or email <span>*</span></label>
+              <input type="email" id="si-email" placeholder="">
+              <div class="err-msg" id="si-email-err">Please enter a valid email.</div>
+            </div>
+            <div class="form-group">
+              <label>Password <span>*</span></label>
+              <div class="pw-wrap">
+                <input type="password" id="si-password" placeholder="">
+                <button class="pw-toggle" onclick="togglePw('si-password',this)">👁</button>
+              </div>
+              <div class="err-msg" id="si-pw-err">Incorrect email or password.</div>
+            </div>
+            <div class="check-row">
+              <input type="checkbox" id="stay-signed"> <label for="stay-signed">Stay signed in</label>
+              <a href="#" class="forgot">Forgot your password?</a>
+            </div>
+            <button class="btn-primary" onclick="doSignIn()">Log in</button>
+          </div>
+
+          <!-- Sign Up -->
+          <div class="auth-box" id="box-signup">
+            <h3>Sign Up</h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label>First name <span>*</span></label>
+                <input type="text" id="su-fname" placeholder="">
+              </div>
+              <div class="form-group">
+                <label>Last name <span>*</span></label>
+                <input type="text" id="su-lname" placeholder="">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email address <span>*</span></label>
+              <input type="email" id="su-email" placeholder="">
+              <div class="err-msg" id="su-email-err">Enter a valid email address.</div>
+            </div>
+            <div class="form-group">
+              <label>Password <span>*</span></label>
+              <div class="pw-wrap">
+                <input type="password" id="su-password" placeholder="Min 6 characters">
+                <button class="pw-toggle" onclick="togglePw('su-password',this)">👁</button>
+              </div>
+              <div class="err-msg" id="su-pw-err">Password must be at least 6 characters.</div>
+            </div>
+            <div class="err-msg" id="su-dup-err" style="margin-bottom:10px;">An account with this email already exists. Please sign in.</div>
+            <p class="hint" style="font-size:12px;color:#888;margin-bottom:14px;line-height:1.6;">Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our <a href="privacy-policy.html" style="color:#e74c3c;">privacy policy</a>.</p>
+            <button class="btn-primary" onclick="doSignUp()">Register</button>
+          </div>
+
+        </div>
+      </div>
+      <!-- end step-auth -->
+
+      <!-- ════ STEP 2: DELIVERY ADDRESS ════ -->
+      <div id="step-address" class="section-hidden">
+        <div id="user-chip-div"></div>
+
+        <div class="co-card">
+          <h2>📦 Delivery Address</h2>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name <span>*</span></label>
+              <input type="text" id="addr-fname" placeholder="Rahul">
+            </div>
+            <div class="form-group">
+              <label>Last Name <span>*</span></label>
+              <input type="text" id="addr-lname" placeholder="Sharma">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Mobile Number <span>*</span></label>
+            <input type="tel" id="addr-phone" placeholder="+91 98765 43210" maxlength="10">
+          </div>
+
+          <div class="form-group">
+            <label>Flat / House No., Building, Company <span>*</span></label>
+            <input type="text" id="addr-line1" placeholder="e.g. A-12, Greenview Apartments">
+          </div>
+
+          <div class="form-group">
+            <label>Area, Street, Sector, Village</label>
+            <input type="text" id="addr-line2" placeholder="e.g. Sector 17, Vasundhara">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>City / Town <span>*</span></label>
+              <input type="text" id="addr-city" placeholder="e.g. Ghaziabad">
+            </div>
+            <div class="form-group">
+              <label>State <span>*</span></label>
+              <select id="addr-state">
+                <option value="">Select State</option>
+                <option>Andhra Pradesh</option><option>Arunachal Pradesh</option>
+                <option>Assam</option><option>Bihar</option><option>Chhattisgarh</option>
+                <option>Goa</option><option>Gujarat</option><option>Haryana</option>
+                <option>Himachal Pradesh</option><option>Jharkhand</option>
+                <option>Karnataka</option><option>Kerala</option><option>Madhya Pradesh</option>
+                <option>Maharashtra</option><option>Manipur</option><option>Meghalaya</option>
+                <option>Mizoram</option><option>Nagaland</option><option>Odisha</option>
+                <option>Punjab</option><option>Rajasthan</option><option>Sikkim</option>
+                <option>Tamil Nadu</option><option>Telangana</option><option>Tripura</option>
+                <option selected>Uttar Pradesh</option><option>Uttarakhand</option>
+                <option>West Bengal</option><option>Delhi</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>PIN Code <span>*</span></label>
+              <input type="text" id="addr-pin" placeholder="e.g. 201301" maxlength="6">
+            </div>
+            <div class="form-group">
+              <label>Landmark</label>
+              <input type="text" id="addr-landmark" placeholder="e.g. Near Civil Hospital">
+            </div>
+          </div>
+
+          <div class="err-msg" id="addr-err" style="margin-bottom:14px;font-size:13px;">Please fill all required fields correctly.</div>
+
+          <button class="btn-primary" onclick="goToPayment()">Continue to Payment →</button>
+        </div>
+      </div>
+      <!-- end step-address -->
+
+      <!-- ════ STEP 3: PAYMENT ════ -->
+      <div id="step-payment" class="section-hidden">
+        <div id="user-chip-div-2"></div>
+
+        <div class="co-card">
+          <h2>💳 Payment Method</h2>
+
+          <div class="addr-display" id="addr-summary-display" style="margin-bottom:20px;"></div>
+
+          <!-- COD -->
+          <div class="payment-option selected" id="po-cod" onclick="selectPayment('cod')">
+            <input type="radio" name="payment" id="radio-cod" checked>
+            <div class="po-icon">💵</div>
+            <div class="po-info">
+              <h4>Cash on Delivery (COD)</h4>
+              <p>Pay when your order arrives at your doorstep</p>
+            </div>
+          </div>
+
+          <!-- Online Payment — Coming Soon -->
+          <div class="payment-option disabled" id="po-online" style="position:relative;">
+            <input type="radio" name="payment" id="radio-online" disabled>
+            <div class="po-icon">💳</div>
+            <div class="po-info">
+              <h4>Online Payment <span class="coming-soon-badge">COMING SOON</span></h4>
+              <p>UPI, Credit/Debit Card, Net Banking</p>
+            </div>
+          </div>
+
+          <div class="err-msg" id="pay-err" style="margin-bottom:14px;">Please select a payment method.</div>
+
+          <div style="display:flex;gap:12px;margin-top:24px;">
+            <button class="btn-secondary" onclick="goToAddress()">← Back</button>
+            <button class="btn-primary" onclick="placeOrder()" id="place-order-btn">Place Order →</button>
+          </div>
+        </div>
+      </div>
+      <!-- end step-payment -->
+
+      <!-- ════ STEP 4: CONFIRMATION ════ -->
+      <div id="step-confirm" class="section-hidden">
+        <div class="co-card">
+          <div class="confirm-box">
+            <div class="confirm-icon">✅</div>
+            <h2>Order Placed Successfully!</h2>
+            <p>Thank you for shopping with <strong>Crawlcore Solutions</strong>.</p>
+            <p>Your Order ID: <span class="order-id" id="conf-order-id">—</span></p>
+            <p>You will receive a confirmation on <strong id="conf-email">—</strong></p>
+            <p style="margin-top:8px;color:#888;font-size:13px;">Our team will process your COD order within 1–2 business days.</p>
+            <div class="confirm-actions">
+              <a href="index.html"><button class="btn-secondary">← Continue Shopping</button></a>
+              <button class="btn-primary" style="width:auto;padding:12px 28px;" onclick="window.print()">🖨 Print Order</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- end left column -->
+
+    <!-- RIGHT COLUMN: Order Summary -->
+    <div>
+      <div class="summary-card">
+        <h3>Order Summary (<span id="summary-count">0</span> items)</h3>
+        <div id="summary-items"></div>
+        <hr class="summary-divider">
+        <div class="summary-row"><span>Subtotal</span><span id="sum-subtotal">₹0</span></div>
+        <div class="summary-row"><span>Shipping</span><span style="color:#27ae60;font-weight:600;">FREE</span></div>
+        <div class="summary-row"><span>GST (Incl.)</span><span>₹0</span></div>
+        <div class="summary-row total"><span>Total</span><span id="sum-total">₹0</span></div>
+      </div>
+    </div>
+
+  </div>
+  <!-- end checkout-wrap -->
+
+  <script>
+    // ══════════════════════════════════════════════════════
+    // UTIL: localStorage accounts DB
+    // ══════════════════════════════════════════════════════
+    function getAccounts() { return JSON.parse(localStorage.getItem('_co_accounts')||'{}'); }
+    function saveAccounts(a) { localStorage.setItem('_co_accounts', JSON.stringify(a)); }
+    function getSession() { return JSON.parse(localStorage.getItem('_co_session')||'null'); }
+    function saveSession(u) { localStorage.setItem('_co_session', JSON.stringify(u)); }
+    function clearSession() { localStorage.removeItem('_co_session'); }
+
+    function getCart() { return JSON.parse(localStorage.getItem('cart')||'[]'); }
+
+    // ══════════════════════════════════════════════════════
+    // INIT
+    // ══════════════════════════════════════════════════════
+    let currentStep = 1;
+    let selectedPayment = 'cod';
+    let currentUser = getSession();
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderSummary();
+      // If already logged in, skip auth step
+      if (currentUser) {
+        goToAddress();
+      }
+    });
+
+    // ══════════════════════════════════════════════════════
+    // ORDER SUMMARY
+    // ══════════════════════════════════════════════════════
+    function renderSummary() {
+      const cart = getCart();
+      const itemsEl = document.getElementById('summary-items');
+      const countEl = document.getElementById('summary-count');
+      const subtotalEl = document.getElementById('sum-subtotal');
+      const totalEl = document.getElementById('sum-total');
+
+      if (!cart.length) {
+        itemsEl.innerHTML = '<p style="font-size:13px;color:#aaa;text-align:center;padding:16px 0;">Your cart is empty.<br><a href="index.html" style="color:#e74c3c;">Continue Shopping</a></p>';
+        countEl.textContent = '0';
+        return;
+      }
+
+      let subtotal = 0;
+      let totalQty = 0;
+      let html = '';
+
+      cart.forEach(item => {
+        const lineTotal = item.price * item.quantity;
+        subtotal += lineTotal;
+        totalQty += item.quantity;
+        html += `
+          <div class="summary-item">
+            <img src="${item.image}" alt="${item.name}" onerror="this.src='./assets/images/products/clothes-1.jpg'">
+            <div style="flex:1">
+              <div class="si-name">${item.name}</div>
+              <div class="si-qty">Qty: ${item.quantity}</div>
+            </div>
+            <div class="si-price">₹${lineTotal.toLocaleString('en-IN')}</div>
+          </div>`;
+      });
+
+      itemsEl.innerHTML = html;
+      countEl.textContent = totalQty;
+      subtotalEl.textContent = '₹' + subtotal.toLocaleString('en-IN');
+      totalEl.textContent = '₹' + subtotal.toLocaleString('en-IN');
+    }
+
+    // ══════════════════════════════════════════════════════
+    // STEP NAVIGATION
+    // ══════════════════════════════════════════════════════
+    function setStep(n) {
+      ['step-auth','step-address','step-payment','step-confirm'].forEach((id, i) => {
+        document.getElementById(id).classList.toggle('section-hidden', i+1 !== n);
+      });
+      for (let i = 1; i <= 4; i++) {
+        const ind = document.getElementById('step-indicator-'+i);
+        const num = document.getElementById('sn'+i);
+        ind.classList.remove('active','done');
+        if (i < n) { ind.classList.add('done'); num.textContent = '✓'; }
+        else if (i === n) { ind.classList.add('active'); num.textContent = i; }
+        else { num.textContent = i; }
+      }
+      for (let i = 1; i <= 3; i++) {
+        const line = document.getElementById('line-'+i);
+        if (line) line.classList.toggle('done-line', i < n);
+      }
+      currentStep = n;
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    // ══════════════════════════════════════════════════════
+    // AUTH
+    // ══════════════════════════════════════════════════════
+    function togglePw(id, btn) {
+      const inp = document.getElementById(id);
+      if (inp.type === 'password') { inp.type = 'text'; btn.textContent = '🙈'; }
+      else { inp.type = 'password'; btn.textContent = '👁'; }
+    }
+
+    function showErr(id, show) {
+      const el = document.getElementById(id);
+      if (el) el.classList.toggle('show', show);
+    }
+
+    function doSignIn() {
+      const email = document.getElementById('si-email').value.trim().toLowerCase();
+      const pw = document.getElementById('si-password').value;
+      let ok = true;
+
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showErr('si-email-err', true); ok = false; } else { showErr('si-email-err', false); }
+
+      if (!ok) return;
+
+      const accounts = getAccounts();
+      if (!accounts[email] || accounts[email].pw !== btoa(pw)) {
+        showErr('si-pw-err', true);
+        return;
+      }
+      showErr('si-pw-err', false);
+      currentUser = { email, name: accounts[email].name };
+      saveSession(currentUser);
+      goToAddress();
+    }
+
+    function doSignUp() {
+      const fname = document.getElementById('su-fname').value.trim();
+      const lname = document.getElementById('su-lname').value.trim();
+      const email = document.getElementById('su-email').value.trim().toLowerCase();
+      const pw = document.getElementById('su-password').value;
+      let ok = true;
+
+      showErr('su-email-err', false);
+      showErr('su-pw-err', false);
+      showErr('su-dup-err', false);
+
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showErr('su-email-err', true); ok = false; }
+      if (pw.length < 6) { showErr('su-pw-err', true); ok = false; }
+      if (!fname || !lname) { ok = false; }
+      if (!ok) return;
+
+      const accounts = getAccounts();
+      if (accounts[email]) { showErr('su-dup-err', true); return; }
+
+      accounts[email] = { pw: btoa(pw), name: fname + ' ' + lname };
+      saveAccounts(accounts);
+      currentUser = { email, name: fname + ' ' + lname };
+      saveSession(currentUser);
+      goToAddress();
+    }
+
+    // ══════════════════════════════════════════════════════
+    // STEP 2: ADDRESS
+    // ══════════════════════════════════════════════════════
+    function goToAddress() {
+      setStep(2);
+      // Pre-fill name from user
+      if (currentUser) {
+        const parts = (currentUser.name || '').split(' ');
+        document.getElementById('addr-fname').value = parts[0] || '';
+        document.getElementById('addr-lname').value = parts.slice(1).join(' ') || '';
+      }
+      renderUserChip('user-chip-div');
+    }
+
+    function renderUserChip(targetId) {
+      if (!currentUser) return;
+      const chip = `
+        <div class="user-chip">
+          <div class="user-chip-avatar">${(currentUser.name||'U')[0].toUpperCase()}</div>
+          <div class="user-chip-info">
+            <p>${currentUser.name}</p>
+            <span>${currentUser.email}</span>
+          </div>
+          <button class="user-chip-logout" onclick="logout()">Log out</button>
+        </div>`;
+      const el = document.getElementById(targetId);
+      if (el) el.innerHTML = chip;
+    }
+
+    function logout() {
+      clearSession();
+      currentUser = null;
+      setStep(1);
+    }
+
+    function goToPayment() {
+      const fname = document.getElementById('addr-fname').value.trim();
+      const lname = document.getElementById('addr-lname').value.trim();
+      const phone = document.getElementById('addr-phone').value.trim();
+      const line1 = document.getElementById('addr-line1').value.trim();
+      const city  = document.getElementById('addr-city').value.trim();
+      const state = document.getElementById('addr-state').value;
+      const pin   = document.getElementById('addr-pin').value.trim();
+
+      const errEl = document.getElementById('addr-err');
+      if (!fname || !lname || !phone || phone.length < 10 || !line1 || !city || !state || pin.length !== 6) {
+        errEl.classList.add('show');
+        return;
+      }
+      errEl.classList.remove('show');
+
+      // Show address summary on payment step
+      const line2 = document.getElementById('addr-line2').value.trim();
+      const lmark = document.getElementById('addr-landmark').value.trim();
+      document.getElementById('addr-summary-display').innerHTML = `
+        <h4>📍 Delivering to: ${fname} ${lname}</h4>
+        ${line1}${line2 ? ', '+line2 : ''}<br>
+        ${city}, ${state} – ${pin}${lmark ? '<br>Landmark: '+lmark : ''}<br>
+        📞 ${phone}
+      `;
+
+      renderUserChip('user-chip-div-2');
+      setStep(3);
+    }
+
+    // ══════════════════════════════════════════════════════
+    // STEP 3: PAYMENT
+    // ══════════════════════════════════════════════════════
+    function selectPayment(method) {
+      selectedPayment = method;
+      document.getElementById('po-cod').classList.toggle('selected', method === 'cod');
+      document.getElementById('radio-cod').checked = method === 'cod';
+    }
+
+    function placeOrder() {
+      const cart = getCart();
+      if (!cart.length) {
+        alert('Your cart is empty!');
+        return;
+      }
+
+      const btn = document.getElementById('place-order-btn');
+      btn.disabled = true;
+      btn.textContent = 'Placing Order…';
+
+      setTimeout(() => {
+        // Generate order ID
+        const orderId = 'CRL' + Date.now().toString().slice(-8).toUpperCase();
+
+        // Save order to localStorage
+        const orders = JSON.parse(localStorage.getItem('_orders') || '[]');
+        orders.push({
+          id: orderId,
+          user: currentUser.email,
+          items: cart,
+          payment: 'COD',
+          address: {
+            name: document.getElementById('addr-fname').value + ' ' + document.getElementById('addr-lname').value,
+            phone: document.getElementById('addr-phone').value,
+            line1: document.getElementById('addr-line1').value,
+            line2: document.getElementById('addr-line2').value,
+            city: document.getElementById('addr-city').value,
+            state: document.getElementById('addr-state').value,
+            pin: document.getElementById('addr-pin').value,
+          },
+          date: new Date().toISOString(),
+          status: 'Confirmed'
+        });
+        localStorage.setItem('_orders', JSON.stringify(orders));
+
+        // Clear cart
+        localStorage.setItem('cart', JSON.stringify([]));
+
+        // Show confirmation
+        document.getElementById('conf-order-id').textContent = '#' + orderId;
+        document.getElementById('conf-email').textContent = currentUser.email;
+
+        setStep(4);
+        btn.disabled = false;
+        btn.textContent = 'Place Order →';
+      }, 1200);
+    }
+  </script>
+
+  <script src="./assets/js/script.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+<script>
+(function(){
+  const forms = document.querySelectorAll('.newsletter form, form:has(.btn-newsletter), form:has(.email-field)');
+  forms.forEach(function(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      const emailEl = form.querySelector('input[type="email"]');
+      if(!emailEl || !emailEl.value) return;
+      // Store in localStorage
+      const subs = JSON.parse(localStorage.getItem('_subscribers')||'[]');
+      if(!subs.includes(emailEl.value)){
+        subs.push(emailEl.value);
+        localStorage.setItem('_subscribers', JSON.stringify(subs));
+      }
+      // Close modal if open
+      const modal = document.querySelector('[data-modal]');
+      const overlay = document.querySelector('[data-overlay]');
+      if(modal){ modal.classList.remove('active'); }
+      if(overlay){ overlay.classList.remove('active'); }
+      // Show toast
+      let toast = document.getElementById('_nl_toast');
+      if(!toast){
+        toast = document.createElement('div');
+        toast.id = '_nl_toast';
+        toast.style.cssText='position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#27ae60;color:#fff;padding:14px 28px;border-radius:10px;font-family:Poppins,sans-serif;font-size:14px;font-weight:600;z-index:9999;box-shadow:0 4px 20px rgba(0,0,0,0.2);transition:opacity 0.4s;';
+        document.body.appendChild(toast);
+      }
+      toast.textContent = '✅ Thank you for subscribing!';
+      toast.style.opacity='1';
+      emailEl.value='';
+      setTimeout(function(){ toast.style.opacity='0'; }, 3500);
+    });
+  });
+})();
+</script>
+</body>
+</html>
