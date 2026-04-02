@@ -1,53 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cancellation Policy - Anon eCommerce</title>
+  <title>Cancellation Policy - Crawlcore Solutions</title>
   <link rel="shortcut icon" href="./assets/images/logo/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="./assets/css/style-prefix.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
   <style>
-    .policy-hero { background: linear-gradient(135deg, #1c1c2e 0%, #2d1b3d 100%); padding: 64px 0; text-align: center; color: white; position: relative; overflow: hidden; }
-    .policy-hero::before { content: ''; position: absolute; inset: 0; background: url('./assets/images/banner-1.jpg') center/cover no-repeat; opacity: 0.07; }
-    .policy-hero .container { position: relative; z-index: 1; }
+    .policy-hero {
+      background: linear-gradient(135deg, #1c1c2e 0%, #2d1b3d 100%);
+      padding: 64px 0;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
 
-    .policy-hero h1 { font-size: 40px; font-weight: 800; margin: 0 0 8px; letter-spacing: -0.5px; }
-    .policy-hero p { color: #aaa; font-size: 14px; }
-    .policy-body { background: #f5f5f7; min-height: 600px; padding: 56px 0 80px; }
-    .policy-wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
-    .policy-intro { background: white; border-radius: 14px; padding: 28px 32px; margin-bottom: 28px; border-left: 5px solid #ff8f9c; box-shadow: 0 2px 16px rgba(0,0,0,0.05); }
-    .policy-intro p { color: #555; font-size: 15px; line-height: 1.8; margin: 0; }
-    .policy-card { background: white; border-radius: 14px; box-shadow: 0 2px 16px rgba(0,0,0,0.05); overflow: hidden; margin-bottom: 28px; }
-    .policy-section { padding: 30px 36px; border-bottom: 1px solid #f5f5f5; display: flex; gap: 20px; align-items: flex-start; }
-    .policy-section:last-child { border-bottom: none; }
-    .section-num { flex-shrink: 0; width: 38px; height: 38px; background: #fff0f2; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #ff8f9c; font-weight: 800; font-size: 13px; margin-top: 2px; }
-    .section-body h2 { font-size: 17px; font-weight: 700; color: #1a1a1a; margin: 0 0 10px; }
-    .section-body p { color: #555; line-height: 1.8; font-size: 15px; margin: 0 0 8px; }
-    .section-body p:last-child { margin-bottom: 0; }
-    .section-body ul { color: #555; line-height: 1.8; font-size: 15px; margin: 8px 0 0 0; padding-left: 20px; }
-    .section-body ul li { margin-bottom: 6px; }
-    .policy-highlight { background: #fff8f9; border: 1px solid #ffd6de; border-radius: 10px; padding: 16px 20px; margin-top: 14px; }
-    .policy-highlight p { color: #d63864; font-size: 14px; font-weight: 500; margin: 0; line-height: 1.7; }
-    .cancel-status { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
-    .status-card { border-radius: 10px; padding: 18px 20px; }
-    .status-card.can { background: #f0fff4; border: 1px solid #a8e6b8; }
-    .status-card.cannot { background: #fff5f5; border: 1px solid #ffbebe; }
-    .status-card strong { font-size: 14px; display: block; margin-bottom: 6px; }
-    .status-card.can strong { color: #2e7d32; }
-    .status-card.cannot strong { color: #c62828; }
-    .status-card p { font-size: 14px; color: #555; margin: 0; line-height: 1.6; }
-    .policy-footer-nav { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; justify-content: center; }
-    .policy-footer-nav a { padding: 8px 18px; background: white; border: 1px solid #eee; border-radius: 8px; font-size: 13px; color: #555; text-decoration: none; transition: all 0.2s; }
-    .policy-footer-nav a:hover, .policy-footer-nav a.active { background: #ff8f9c; color: white; border-color: #ff8f9c; }
-    .back-home { display: inline-block; margin-top: 32px; padding: 13px 36px; background: #ff8f9c; color: white; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 15px; transition: background 0.2s; }
-    .back-home:hover { background: #e07b88; }
-    @media (max-width: 600px) { .cancel-status { grid-template-columns: 1fr; } }
+    .policy-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('./assets/images/banner-1.jpg') center/cover no-repeat;
+      opacity: 0.07;
+    }
+
+    .policy-hero .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .policy-hero h1 {
+      font-size: 40px;
+      font-weight: 800;
+      margin: 0 0 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .policy-hero p {
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    .policy-body {
+      background: #f5f5f7;
+      min-height: 600px;
+      padding: 56px 0 80px;
+    }
+
+    .policy-wrap {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .policy-intro {
+      background: white;
+      border-radius: 14px;
+      padding: 28px 32px;
+      margin-bottom: 28px;
+      border-left: 5px solid #ff8f9c;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.05);
+    }
+
+    .policy-intro p {
+      color: #555;
+      font-size: 15px;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .policy-card {
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+
+    .policy-section {
+      padding: 30px 36px;
+      border-bottom: 1px solid #f5f5f5;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .policy-section:last-child {
+      border-bottom: none;
+    }
+
+    .section-num {
+      flex-shrink: 0;
+      width: 38px;
+      height: 38px;
+      background: #fff0f2;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ff8f9c;
+      font-weight: 800;
+      font-size: 13px;
+      margin-top: 2px;
+    }
+
+    .section-body h2 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin: 0 0 10px;
+    }
+
+    .section-body p {
+      color: #555;
+      line-height: 1.8;
+      font-size: 15px;
+      margin: 0 0 8px;
+    }
+
+    .section-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-body ul {
+      color: #555;
+      line-height: 1.8;
+      font-size: 15px;
+      margin: 8px 0 0 0;
+      padding-left: 20px;
+    }
+
+    .section-body ul li {
+      margin-bottom: 6px;
+    }
+
+    .policy-highlight {
+      background: #fff8f9;
+      border: 1px solid #ffd6de;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-top: 14px;
+    }
+
+    .policy-highlight p {
+      color: #d63864;
+      font-size: 14px;
+      font-weight: 500;
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    .cancel-status {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .status-card {
+      border-radius: 10px;
+      padding: 18px 20px;
+    }
+
+    .status-card.can {
+      background: #f0fff4;
+      border: 1px solid #a8e6b8;
+    }
+
+    .status-card.cannot {
+      background: #fff5f5;
+      border: 1px solid #ffbebe;
+    }
+
+    .status-card strong {
+      font-size: 14px;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .status-card.can strong {
+      color: #2e7d32;
+    }
+
+    .status-card.cannot strong {
+      color: #c62828;
+    }
+
+    .status-card p {
+      font-size: 14px;
+      color: #555;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .policy-footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 28px;
+      justify-content: center;
+    }
+
+    .policy-footer-nav a {
+      padding: 8px 18px;
+      background: white;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #555;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .policy-footer-nav a:hover,
+    .policy-footer-nav a.active {
+      background: #ff8f9c;
+      color: white;
+      border-color: #ff8f9c;
+    }
+
+    .back-home {
+      display: inline-block;
+      margin-top: 32px;
+      padding: 13px 36px;
+      background: #ff8f9c;
+      color: white;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      transition: background 0.2s;
+    }
+
+    .back-home:hover {
+      background: #e07b88;
+    }
+
+    @media (max-width: 600px) {
+      .cancel-status {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
+
 <body>
 
   <div class="overlay" data-overlay></div>
@@ -62,23 +264,27 @@
           <li><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
           <li><a href="#" class="social-link"><ion-icon name="logo-linkedin"></ion-icon></a></li>
         </ul>
-        <div class="header-alert-news"><p><b>Free Shipping</b> This Week Order Over - ₹500</p></div>
+        <div class="header-alert-news">
+          <p><b>Free Shipping</b> This Week Order Over - ₹500</p>
+        </div>
         <div class="header-top-actions"></div>
       </div>
     </div>
     <div class="header-main">
       <div class="container">
         <a href="index.html" class="header-logo">
-          <img src="./assets/images/logo/logo.svg" alt="Anon's logo" width="120" height="36">
+          <img src="./assets/images/logo/logo.png" alt="Crawlcore's logo" width="120" height="36">
         </a>
         <div class="header-search-container">
           <input type="search" name="search" class="search-field" placeholder="Enter your product name...">
           <button class="search-btn"><ion-icon name="search-outline"></ion-icon></button>
         </div>
         <div class="header-user-actions">
-          <button class="action-btn"><ion-icon name="person-outline"></ion-icon></button>
-          <a href="wishlist.html" class="action-btn"><ion-icon name="heart-outline"></ion-icon><span class="count">0</span></a>
-          <a href="cart.html" class="action-btn"><ion-icon name="bag-handle-outline"></ion-icon><span class="count">0</span></a>
+
+          <a href="wishlist.html" class="action-btn"><ion-icon name="heart-outline"></ion-icon><span
+              class="count">0</span></a>
+          <a href="cart.html" class="action-btn"><ion-icon name="bag-handle-outline"></ion-icon><span
+              class="count">0</span></a>
         </div>
       </div>
     </div>
@@ -96,9 +302,11 @@
     </nav>
     <div class="mobile-bottom-navigation">
       <button class="action-btn" data-mobile-menu-open-btn><ion-icon name="menu-outline"></ion-icon></button>
-      <a href="cart.html" class="action-btn"><ion-icon name="bag-handle-outline"></ion-icon><span class="count">0</span></a>
+      <a href="cart.html" class="action-btn"><ion-icon name="bag-handle-outline"></ion-icon><span
+          class="count">0</span></a>
       <a href="index.html" class="action-btn"><ion-icon name="home-outline"></ion-icon></a>
-      <a href="wishlist.html" class="action-btn"><ion-icon name="heart-outline"></ion-icon><span class="count">0</span></a>
+      <a href="wishlist.html" class="action-btn"><ion-icon name="heart-outline"></ion-icon><span
+          class="count">0</span></a>
       <button class="action-btn" data-mobile-menu-open-btn><ion-icon name="grid-outline"></ion-icon></button>
     </div>
     <nav class="mobile-navigation-menu has-scrollbar" data-mobile-menu>
@@ -116,7 +324,7 @@
     </nav>
   </header>
 
-  
+
   <main>
     <div class="policy-hero">
       <div class="container">
@@ -130,7 +338,8 @@
       <div class="policy-wrap">
         <div class="policy-intro">
           <p>
-            At <strong>Crawlcore Solutions Private Limited</strong>, we understand that you may sometimes change your mind. Our cancellation policy is designed to be transparent and fair. Please review the conditions below.
+            At <strong>Crawlcore Solutions Private Limited</strong>, we understand that you may sometimes change your
+            mind. Our cancellation policy is designed to be transparent and fair. Please review the conditions below.
           </p>
         </div>
 
@@ -139,8 +348,9 @@
             <div class="section-num">01</div>
             <div class="section-body">
               <h2>Order Cancellation Before Dispatch</h2>
-              <p>You may cancel your order within <strong>12 hours</strong> of placing it, provided it has not yet been processed or dispatched from our facility.</p>
-              
+              <p>You may cancel your order within <strong>12 hours</strong> of placing it, provided it has not yet been
+                processed or dispatched from our facility.</p>
+
               <div class="cancel-status">
                 <div class="status-card can">
                   <strong>✅ Eligible</strong>
@@ -152,7 +362,10 @@
                 </div>
               </div>
 
-              <p style="margin-top:15px;">To request a cancellation, please email us at <strong>support@crawlcoresolutions.com</strong> or call us at <strong>+91 9983685627</strong> with your Order ID.</p>
+              <p style="margin-top:15px;">To request a cancellation, please email us at
+                <strong>Crawlcoresolution@gmail.com</strong> or call us at <strong>+91 9983685627</strong> with your
+                Order ID.
+              </p>
             </div>
           </div>
 
@@ -160,7 +373,10 @@
             <div class="section-num">02</div>
             <div class="section-body">
               <h2>Orders Already Dispatched</h2>
-              <p>Once your order has been shipped, it cannot be cancelled. However, you may be eligible for a return or exchange as per our <a href="refund-returns.html" style="color:#ff8f9c;text-decoration:none;font-weight:600;">Refund and Returns Policy</a> after you receive the item.</p>
+              <p>Once your order has been shipped, it cannot be cancelled. However, you may be eligible for a return or
+                exchange as per our <a href="refund-returns.html"
+                  style="color:#ff8f9c;text-decoration:none;font-weight:600;">Refund and Returns Policy</a> after you
+                receive the item.</p>
             </div>
           </div>
 
@@ -168,7 +384,9 @@
             <div class="section-num">03</div>
             <div class="section-body">
               <h2>Prepaid Orders</h2>
-              <p>If your prepaid order is successfully cancelled before dispatch, a full refund will be issued to your original method of payment (Credit Card, Debit Card, UPI, etc.) within <strong>5–10 business days</strong>. Banks may take additional time to reflect the amount in your statement.</p>
+              <p>If your prepaid order is successfully cancelled before dispatch, a full refund will be issued to your
+                original method of payment (Credit Card, Debit Card, UPI, etc.) within <strong>5–10 business
+                  days</strong>. Banks may take additional time to reflect the amount in your statement.</p>
             </div>
           </div>
 
@@ -183,7 +401,8 @@
                 <li>Shipping to your specific location is temporarily unavailable.</li>
                 <li>Presence of a pricing or technical error on the website.</li>
               </ul>
-              <p>In such cases, we will notify you promptly via email or phone and issue a full refund for any payments made.</p>
+              <p>In such cases, we will notify you promptly via email or phone and issue a full refund for any payments
+                made.</p>
             </div>
           </div>
 
@@ -193,12 +412,25 @@
               <h2>Contact Assistance</h2>
               <p>If you have questions about your cancellation or need immediate help:</p>
               <div style="margin-top:10px;">
-                <p><strong>Email:</strong> support@crawlcoresolutions.com</p>
+                <p><strong>Email:</strong> Crawlcoresolution@gmail.com</p>
                 <p><strong>Phone:</strong> +91 9983685627</p>
                 <p><strong>Working Hours:</strong> Mon - Sat, 10:00 AM - 6:00 PM</p>
               </div>
             </div>
           </div>
+        </div>
+
+        <div class="policy-footer-nav">
+          <a href="index.html">Home</a>
+          <a href="category.html">Shop</a>
+          <a href="services.html">Services</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="terms-conditions.html">Terms & Condition</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="refund-returns.html">Refund & Returns</a>
+          <a href="cancellation-policy.html" class="active">Cancellation Policy</a>
+          <a href="shipping-policy.html">Shipping Policy</a>
         </div>
 
         <div style="text-align:center;">
@@ -210,46 +442,77 @@
 
 
   <!-- FOOTER -->
-    <!-- FOOTER -->
+  <!-- FOOTER -->
   <footer style="background:#fff; border-top:1px solid #e8e8e8; font-family:'Poppins',sans-serif;">
-    <div style="max-width:1200px; margin:0 auto; padding:52px 24px 36px; display:grid; grid-template-columns:1fr 1.2fr 1fr 1fr; gap:48px;">
+    <div
+      style="max-width:1200px; margin:0 auto; padding:52px 24px 36px; display:grid; grid-template-columns:1fr 1.2fr 1fr 1fr; gap:48px;">
       <div>
-        <a href="index.html" style="display:inline-block; margin-bottom:14px;"><img src="./assets/images/logo/logo.svg" alt="Crawlcore Solutions" style="height:48px; width:auto;"></a>
-        <p style="font-size:13px; font-weight:700; color:#222; line-height:1.55; margin:0; text-transform:uppercase; letter-spacing:0.3px;">Crawlcore Solutions<br>Private Limited</p>
+        <a href="index.html" style="display:inline-block; margin-bottom:14px;"><img src="./assets/images/logo/logo.png"
+            alt="Crawlcore Solutions" style="height:48px; width:auto;"></a>
+        <p
+          style="font-size:13px; font-weight:700; color:#222; line-height:1.55; margin:0; text-transform:uppercase; letter-spacing:0.3px;">
+          Crawlcore Solutions<br>Private Limited</p>
       </div>
       <div>
         <h3 style="font-size:15px; font-weight:700; color:#111; margin:0 0 20px; letter-spacing:0.2px;">Company</h3>
         <div style="display:flex; gap:10px; margin-bottom:16px; align-items:flex-start;">
-          <span style="margin-top:2px; flex-shrink:0; color:#555;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-          <p style="font-size:13px; color:#555; line-height:1.7; margin:0;">UG 27, Shakuntala Complex,<br>Aurangabad, Mathura,<br>Uttar Pradesh – 281006</p>
+          <span style="margin-top:2px; flex-shrink:0; color:#555;"><svg width="16" height="16" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg></span>
+          <p style="font-size:13px; color:#555; line-height:1.7; margin:0;">UG 27, Shakuntala Complex,<br>Aurangabad,
+            Mathura,<br>Uttar Pradesh – 281006</p>
         </div>
         <div style="display:flex; gap:10px; margin-bottom:14px; align-items:center;">
-          <span style="color:#555; flex-shrink:0;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.1 11.6a19.53 19.53 0 0 1-3.07-8.67A2 2 0 0 1 3 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg></span>
+          <span style="color:#555; flex-shrink:0;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.1 11.6a19.53 19.53 0 0 1-3.07-8.67A2 2 0 0 1 3 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z" />
+            </svg></span>
           <a href="tel:+919983685627" style="font-size:13px; color:#555; text-decoration:none;">+91 9983685627</a>
         </div>
         <div style="display:flex; gap:10px; align-items:center;">
-          <span style="color:#555; flex-shrink:0;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
-          <a href="mailto:support@crawlcoresolutions.com" style="font-size:13px; color:#555; text-decoration:none;">support@crawlcoresolutions.com</a>
+          <span style="color:#555; flex-shrink:0;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg></span>
+          <a href="mailto:Crawlcoresolution@gmail.com"
+            style="font-size:13px; color:#555; text-decoration:none;">Crawlcoresolution@gmail.com</a>
         </div>
       </div>
       <div>
         <h3 style="font-size:15px; font-weight:700; color:#111; margin:0 0 20px; letter-spacing:0.2px;">Information</h3>
         <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px;">
-          <li><a href="index.html" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Home</a></li>
-          <li><a href="category.html" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Shop</a></li>
-          <li><a href="services.html" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Services</a></li>
-          <li><a href="#" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">About</a></li>
-          <li><a href="#" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Contact</a></li>
+          <li><a href="index.html"
+              style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Home</a></li>
+          <li><a href="category.html"
+              style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Shop</a></li>
+          <li><a href="services.html"
+              style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Services</a></li>
+          <li><a href="about.html"
+              style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">About</a></li>
+          <li><a href="contact.html"
+              style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Contact</a></li>
         </ul>
       </div>
       <div>
         <h3 style="font-size:15px; font-weight:700; color:#111; margin:0 0 20px; letter-spacing:0.2px;">Contact</h3>
         <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px;">
-          <li><a href="terms-conditions.html" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Terms &amp; Conditions</a></li>
-          <li><a href="privacy-policy.html" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Privacy Policy</a></li>
-          <li><a href="refund-returns.html" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s; line-height:1.5;">Refund &amp; Returns</a></li>
-          <li><a href="cancellation-policy.html" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Cancellation Policy</a></li>
-          <li><a href="shipping-policy.html" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Shipping Policy</a></li>
+          <li><a href="terms-conditions.html"
+              style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Terms &amp;
+              Conditions</a></li>
+          <li><a href="privacy-policy.html"
+              style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Privacy Policy</a></li>
+          <li><a href="refund-returns.html"
+              style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s; line-height:1.5;">Refund
+              &amp; Returns</a></li>
+          <li><a href="cancellation-policy.html"
+              style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Cancellation Policy</a>
+          </li>
+          <li><a href="shipping-policy.html"
+              style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Shipping Policy</a></li>
         </ul>
       </div>
     </div>
@@ -262,4 +525,5 @@
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
+
 </html>

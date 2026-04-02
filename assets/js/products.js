@@ -10,308 +10,366 @@ const USD_TO_INR = 83;
 // All images are specific, relevant clothing photos from Unsplash
 // --------------------------------------------------------------------------
 const curatedClothes = [
+  {
+    id: 1001, name: "3D Moon Night Lamp – Rechargeable With 7 Color Changing Features, 15CM – Elegant Plastic Design For Beautiful Indoor Lighting",
+    category: "Home decor",
+    tags: ["lamp", "decor", "lighting", "gift"],
+    price: 500, originalPrice: 999, rating: 5,
+    image: "https://www.jaipurcraftonline.com/cdn/shop/files/71YCIVElApL._SL1500.jpg",
+    description: "Bring the moon to your room with this stunning 3D Moon Lamp. Features 7 color-changing modes, rechargeable battery, and a sleek wooden stand. Perfect for living rooms, bedrooms, and as a unique gift."
+  },
 
   // ── MEN'S CLOTHING (25 items) ──────────────────────────────────────────
   {
     id: 201, name: "Classic White Polo Shirt", category: "Mens",
+    tags: ["shirt", "polo", "formal", "white", "cotton"],
     price: 699, originalPrice: 1099, rating: 4,
     image: "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?w=400&h=500&fit=crop",
     description: "Premium cotton polo shirt with ribbed collar and cuffs. Comfortable and versatile for casual and semi-formal occasions. Machine washable."
   },
   {
     id: 202, name: "Blue Slim Denim Jacket", category: "Mens",
+    tags: ["jacket", "denim", "casual", "blue"],
     price: 1499, originalPrice: 2299, rating: 4,
-    image: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&h=500&fit=crop",
+    image: "https://assets.ajio.com/medias/sys_master/root/20240607/ignh/6663373805ac7d77bbac3d3e/-473Wx593H-700055276-navy-MODEL.jpg",
     description: "Classic slim-fit denim jacket with button-front closure and chest pockets. Made from heavyweight 100% cotton denim. Perfect with jeans or chinos."
   },
   {
     id: 203, name: "Slim Fit Chino Pants", category: "Mens",
+    tags: ["pants", "chinos", "formal", "casual", "slim"],
     price: 1199, originalPrice: 1799, rating: 4,
     image: "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=400&h=500&fit=crop",
     description: "Tailored slim-fit chinos in a stretch cotton-blend fabric. Easy-care, wrinkle-resistant. Great for the office and casual outings."
   },
   {
     id: 204, name: "Graphic Print T-Shirt", category: "Mens",
+    tags: ["t-shirt", "casual", "printed", "cotton"],
     price: 499, originalPrice: 799, rating: 4,
     image: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=400&h=500&fit=crop",
     description: "Urban graphic tee made from 100% soft cotton. Round neck, short sleeves, relaxed fit. Ideal for casual everyday wear."
   },
   {
     id: 205, name: "Winter Fleece Hoodie", category: "Mens",
+    tags: ["hoodie", "jacket", "fleece", "winter", "casual"],
     price: 1299, originalPrice: 1999, rating: 5,
-    image: "https://images.unsplash.com/photo-1509942774463-acf339cf87d5?w=400&h=500&fit=crop",
+    image: "https://img.fruugo.com/product/0/26/1696556260_0340_0340.jpg",
     description: "Cosy fleece-lined hoodie with kangaroo pockets and adjustable drawstring. Soft brushed interior for extra warmth."
   },
   {
     id: 206, name: "Formal White Oxford Shirt", category: "Mens",
+    tags: ["shirt", "formal", "white", "oxford"],
     price: 899, originalPrice: 1399, rating: 4,
     image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400&h=500&fit=crop",
     description: "Crisp 100% cotton Oxford shirt with spread collar and button-down placket. Wrinkle-resistant. Perfect for office and formal events."
   },
   {
     id: 207, name: "Black Track Pants", category: "Mens",
+    tags: ["pants", "trackpants", "sports", "casual", "black"],
     price: 799, originalPrice: 1299, rating: 4,
-    image: "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=400&h=500&fit=crop",
+    image: "https://americantall.com/cdn/shop/files/American-Tall-Men-Athletic-Stripe-Pants-Black-side.jpg?v=1700858428&width=1500",
     description: "Lightweight polyester track pants with moisture-wicking fabric and elastic waistband. Ideal for gym, running, and casual wear."
   },
   {
     id: 208, name: "V-Neck Wool Sweater", category: "Mens",
+    tags: ["sweater", "winter", "casual", "wool", "v-neck"],
     price: 1699, originalPrice: 2499, rating: 4,
-    image: "https://images.unsplash.com/photo-1614975141055-35b4063e9421?w=400&h=500&fit=crop",
+    image: "https://johnstonsofelgin.com/cdn/shop/files/KAP05594_HA0308-SFALIGHTGREY71_RT.jpg?v=1751964464&width=1445",
     description: "Warm knitted V-neck sweater made from soft wool-blend yarn. Slim fit, ribbed cuffs and hem. Great layered over a shirt."
   },
   {
     id: 209, name: "Multi-Pocket Cargo Shorts", category: "Mens",
+    tags: ["shorts", "cargo", "casual", "cotton"],
     price: 949, originalPrice: 1499, rating: 4,
-    image: "https://images.unsplash.com/photo-1565084888279-aca607ecce0c?w=400&h=500&fit=crop",
+    image: "https://i.etsystatic.com/15466570/r/il/cd36c8/2475950809/il_570xN.2475950809_lmpp.jpg",
     description: "Durable cotton cargo shorts with multiple zip pockets. Adjustable waistband for a perfect fit. Great for outdoor and casual use."
   },
   {
     id: 210, name: "Linen Summer Shirt", category: "Mens",
+    tags: ["shirt", "casual", "linen", "summer"],
     price: 799, originalPrice: 1199, rating: 4,
-    image: "https://images.unsplash.com/photo-1563630423918-b58f07336ac9?w=400&h=500&fit=crop",
+    image: "https://assets.manufactum.de/assets/img/0014/00143235/0014323596-01.jpg/men-linen-shirt.jpg?w=0&scale.option=fill&h=400&canvas.aspectratio=1%3A1&canvas.width=133.3000%25&canvas.height=100.0000%25&q=90",
     description: "Breathy 100% linen shirt perfect for hot weather. Relaxed fit, classic collar, full button placket. Available in beige, white, sky blue."
   },
   {
     id: 211, name: "Insulated Bomber Jacket", category: "Mens",
+    tags: ["jacket", "bomber", "winter", "casual"],
     price: 2299, originalPrice: 3499, rating: 5,
-    image: "https://images.unsplash.com/photo-1544923246-77307dd654cb?w=400&h=500&fit=crop",
+    image: "https://canadasportswear.com/cdn/shop/files/L09300-Navy-front_400x@2x.jpg?v=1737558783",
     description: "Water-resistant bomber jacket with ribbed collar, cuffs, and hem. Lightweight insulation keeps you warm without the bulk."
   },
   {
     id: 212, name: "Striped Casual T-Shirt", category: "Mens",
+    tags: ["t-shirt", "casual", "striped", "cotton"],
     price: 449, originalPrice: 699, rating: 4,
     image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=500&fit=crop",
     description: "Soft cotton striped crew-neck tee. Relaxed unisex fit. Machine washable. A must-have wardrobe essential."
   },
   {
     id: 213, name: "Long Sleeve Henley Top", category: "Mens",
+    tags: ["shirt", "henley", "casual", "layering"],
     price: 599, originalPrice: 899, rating: 4,
-    image: "https://images.unsplash.com/photo-1566206091558-7f218b696731?w=400&h=500&fit=crop",
+    image: "https://communityclothing.co.uk/cdn/shop/files/Male_Long-Sleeve-Henley-Top_Grey-Marl_Thigh-Up-Front_2048x.jpg?v=1715594621",
     description: "Classic long-sleeve henley shirt with 3-button placket. Made from soft Jersey fabric. Great for layering or wearing solo."
   },
   {
     id: 214, name: "Sports Dry-Fit Jersey", category: "Mens",
+    tags: ["t-shirt", "sports", "dry-fit", "jersey"],
     price: 699, originalPrice: 1099, rating: 4,
-    image: "https://images.unsplash.com/photo-1571455786673-9d9d6c194f90?w=400&h=500&fit=crop",
+    image: "https://m.media-amazon.com/images/I/71vFJzHiQJL._AC_UY1100_.jpg",
     description: "Lightweight dry-fit sports jersey with moisture-wicking technology. Breathable mesh panels for ventilation. Ideal for all sports."
   },
   {
     id: 215, name: "Slim Fit Dark Jeans", category: "Mens",
+    tags: ["jeans", "denim", "skinee", "casual", "formal"],
     price: 1499, originalPrice: 2199, rating: 5,
     image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=400&h=500&fit=crop",
     description: "Premium dark wash slim-fit jeans with stretch denim for comfort. Five-pocket styling. Versatile for office or casual outings."
   },
   {
     id: 216, name: "Cotton Casual Kurta", category: "Mens",
+    tags: ["kurta", "ethnic", "cotton", "casual"],
     price: 899, originalPrice: 1399, rating: 4,
-    image: "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=400&h=500&fit=crop",
+    image: "https://i.etsystatic.com/60616762/r/il/98519e/7186713220/il_570xN.7186713220_hhkz.jpg",
     description: "Traditional Indian-style cotton kurta with mandarin collar and side slits. Comfortable for daily wear and festive occasions."
   },
   {
     id: 217, name: "Zip-Up Fleece Sweatshirt", category: "Mens",
+    tags: ["sweatshirt", "fleece", "winter", "casual"],
     price: 1099, originalPrice: 1799, rating: 4,
-    image: "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=400&h=500&fit=crop",
+    image: "https://xcdn.next.co.uk/common/items/default/default/itemimages/3_4Ratio/product/lge/129396s.jpg?im=Resize,width=750",
     description: "Full zip-up sweatshirt with soft fleece lining and two side pockets. Easy to layer over tees or under jackets."
   },
   {
     id: 218, name: "Round Neck Printed Tee", category: "Mens",
+    tags: ["t-shirt", "casual", "printed", "cotton"],
     price: 399, originalPrice: 599, rating: 3,
-    image: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&h=500&fit=crop",
+    image: "https://fortcollins.co.in/cdn/shop/files/fort-collins-men-black-round-neck-graphic-print-t-shirt-with-embroidery-7445ts-3.webp?v=1725282303&width=1117",
     description: "Fun printed round-neck tee for everyday casual wear. Soft breathable cotton. Available in multiple designs and colors."
   },
   {
     id: 219, name: "Smart Formal Blazer", category: "Mens",
+    tags: ["blazer", "jacket", "formal", "office"],
     price: 3499, originalPrice: 4999, rating: 5,
-    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=400&h=500&fit=crop",
+    image: "https://imagescdn.louisphilippe.com/img/app/product/3/39638320-13259551.jpg?auto=format&w=390",
     description: "Tailored slim-fit single-breasted blazer. Notch lapel with two-button closure. Perfect for business meetings and formal events."
   },
   {
     id: 220, name: "Cotton Athletic Shorts", category: "Mens",
+    tags: ["shorts", "sports", "athletic", "cotton", "casual"],
     price: 499, originalPrice: 799, rating: 4,
-    image: "https://images.unsplash.com/photo-1588117305388-c2631a279f82?w=400&h=500&fit=crop",
+    image: "https://shop.goldsgym.com/cdn/shop/files/white-mens-gym-shorts-long_2048x.jpg?v=1746450697",
     description: "Breathable cotton-blend athletic shorts with elastic waistband and drawstring. Ideal for gym, yoga, and casual use."
   },
   {
     id: 221, name: "Washed Denim Jeans", category: "Mens",
+    tags: ["jeans", "denim", "casual", "blue"],
     price: 1299, originalPrice: 1999, rating: 4,
     image: "https://images.unsplash.com/photo-1604176354204-9268737828e4?w=400&h=500&fit=crop",
     description: "Classic five-pocket washed denim jeans. Regular fit with button fly and belt loops. A wardrobe staple for all seasons."
   },
   {
     id: 222, name: "Check Flannel Shirt", category: "Mens",
+    tags: ["shirt", "flannel", "check", "winter", "casual"],
     price: 899, originalPrice: 1299, rating: 4,
-    image: "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?w=400&h=500&fit=crop",
+    image: "https://thursdayboots.com/cdn/shop/files/1024x1024-BuffaloCheckShirt-Red-080724-Front-2x.jpg?v=1725662052&width=2048",
     description: "Cozy check flannel shirt in a brushed cotton fabric. Button front with chest pockets. Great for layering in cooler weather."
   },
   {
     id: 223, name: "Puffer Winter Jacket", category: "Mens",
+    tags: ["jacket", "puffer", "winter", "insulated"],
     price: 2999, originalPrice: 4499, rating: 5,
-    image: "https://images.unsplash.com/photo-1551537482-f2075a1d41f2?w=400&h=500&fit=crop",
+    image: "https://www.titus-shop.com/cdn/shop/files/actions_d52525da-8136-4298-82dc-8c2a74169362.jpg?v=1756209067&width=1500",
     description: "Insulated puffer jacket with water-resistant shell and baffle stitching. Packable design with stuff sack included."
   },
   {
     id: 224, name: "Printed Ethnic Kurta Set", category: "Mens",
+    tags: ["kurta", "ethnic", "cotton", "set"],
     price: 1499, originalPrice: 2299, rating: 4,
-    image: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=400&h=500&fit=crop",
+    image: "https://m.media-amazon.com/images/I/41xgkabie4L._AC_UY1100_.jpg",
     description: "Block-print cotton kurta paired with matching churidar pants. Comfortable fit with side slits. Perfect for festivals and celebrations."
   },
   {
     id: 225, name: "Beige Casual Chinos", category: "Mens",
+    tags: ["pants", "chinos", "casual", "beige", "linen"],
     price: 999, originalPrice: 1599, rating: 4,
-    image: "https://images.unsplash.com/photo-1593032465175-481ac7f401a0?w=400&h=500&fit=crop",
+    image: "https://savilerowco.com/cdn/shop/files/mct332bei_model-2.jpg?v=1721211923&width=2000",
     description: "Relaxed-fit beige chinos in a lightweight cotton-linen blend. Versatile enough for the office or a weekend outing."
   },
 
   // ── WOMEN'S CLOTHING (25 items) ────────────────────────────────────────
   {
     id: 301, name: "Summer Floral Dress", category: "Womens",
+    tags: ["dress", "floral", "summer", "casual"],
     price: 1199, originalPrice: 1799, rating: 4,
     image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=400&h=500&fit=crop",
     description: "Light and flowy summer dress with a delicate floral print. V-neckline, short sleeves, and a tiered skirt for effortless style."
   },
   {
     id: 302, name: "High-Waist Skinny Jeans", category: "Womens",
+    tags: ["jeans", "denim", "skinee", "casual", "high-waist"],
     price: 1499, originalPrice: 2199, rating: 5,
-    image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400&h=500&fit=crop",
+    image: "https://www.tallsize.com/cdn/shop/products/HIgh_Waist_Skinny_Jeans_Blue_3__04547.1644007861.450.800.jpg?v=1680109507&width=720",
     description: "Flattering high-waist skinny jeans in a stretch denim fabric. Five-pocket styling with button-fly closure. Perfect for any occasion."
   },
   {
     id: 303, name: "Chiffon Ruffle Blouse", category: "Womens",
+    tags: ["top", "blouse", "chiffon", "formal", "ruffle"],
     price: 699, originalPrice: 1099, rating: 4,
-    image: "https://images.unsplash.com/photo-1604575026879-f62b3b3d5e57?w=400&h=500&fit=crop",
+    image: "https://image.made-in-china.com/155f0j00eoLbqnMkltkv/Spring-2023-V-Neck-White-Long-Sleeves-Chiffon-Ruffle-Blouse-Women-Blouses-Elegant-Tops.webp",
     description: "Elegant chiffon blouse with delicate ruffle detailing along the neckline. Flowy and lightweight, perfect for work or evening outings."
   },
   {
     id: 304, name: "Boho Maxi Skirt", category: "Womens",
+    tags: ["skirt", "maxi", "boho", "casual", "summer"],
     price: 999, originalPrice: 1499, rating: 4,
-    image: "https://images.unsplash.com/photo-1583496661160-fb5218afa8fc?w=400&h=500&fit=crop",
+    image: "https://plus.unsplash.com/premium_photo-1661434690173-45f71bf5b906?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Ym9obyUyMGZhc2hpb258ZW58MHx8MHx8fDA%3Dg",
     description: "Floor-length bohemian maxi skirt in lightweight woven fabric. Elasticated waistband and side slits for ease of movement."
   },
   {
     id: 305, name: "Cashmere Wrap Cardigan", category: "Womens",
+    tags: ["cardigan", "sweater", "winter", "cashmere", "casual"],
     price: 2199, originalPrice: 3299, rating: 5,
-    image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&h=500&fit=crop",
+    image: "https://m.media-amazon.com/images/I/81QRYhKb8nL._AC_UY1000_.jpg",
     description: "Soft cashmere-blend wrap cardigan in a relaxed fit. Tie belt at waist for a flattering silhouette. Luxuriously warm and comfortable."
   },
   {
     id: 306, name: "Crop Top - Solid Colours", category: "Womens",
+    tags: ["top", "crop-top", "casual", "cotton"],
     price: 449, originalPrice: 699, rating: 4,
-    image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400&h=500&fit=crop",
+    image: "https://img.kwcdn.com/product/open/340b9beca4234083ac3c4408d97e1f8a-goods.jpeg?imageMogr2/auto-orient%7CimageView2/2/w/800/q/70/format/webp",
     description: "Trendy ribbed crop top with a square neckline and short sleeves. Made from a soft cotton-spandex blend for a comfortable fit."
   },
   {
     id: 307, name: "Evening Maxi Gown", category: "Womens",
+    tags: ["dress", "gown", "formal", "party", "evening"],
     price: 2499, originalPrice: 3799, rating: 5,
     image: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=400&h=500&fit=crop",
     description: "Stunning floor-length evening gown with a fitted bodice and flared skirt. Concealed back zip. Available in navy, wine, and emerald."
   },
   {
     id: 308, name: "Wide-Leg Linen Trousers", category: "Womens",
+    tags: ["pants", "trousers", "linen", "casual", "summer"],
     price: 1099, originalPrice: 1699, rating: 4,
     image: "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=400&h=500&fit=crop",
     description: "Relaxed wide-leg trousers in breathable linen. Elasticated waistband with tie detail. Cool and stylish for summer days."
   },
   {
     id: 309, name: "High-Waist Yoga Leggings", category: "Womens",
+    tags: ["pants", "leggings", "sports", "yoga", "casual"],
     price: 899, originalPrice: 1399, rating: 5,
-    image: "https://images.unsplash.com/photo-1548690312-e3b507d8c110?w=400&h=500&fit=crop",
+    image: "https://leeloactive.com/cdn/shop/files/extra-high-waist-full-length-leggings-black-873656.jpg?v=1731464366&width=1024",
     description: "4-way stretch high-waist yoga leggings. Moisture-wicking, squat-proof fabric. Deep waistband for tummy control and comfort."
   },
   {
     id: 310, name: "Satin Slip Camisole", category: "Womens",
+    tags: ["top", "camisole", "satin", "party", "casual"],
     price: 799, originalPrice: 1199, rating: 4,
-    image: "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=400&h=500&fit=crop",
+    image: "https://www.camixa.com/cdn/shop/files/CAMI-SILK_Black-Satin-Camisole-Top_5.jpg?v=1708840464&width=1080",
     description: "Silky satin camisole with adjustable spaghetti straps and lace trim. Can be worn as a top or layered under a blazer."
   },
   {
     id: 311, name: "Women's Denim Jacket", category: "Womens",
+    tags: ["jacket", "denim", "casual", "blue"],
     price: 1599, originalPrice: 2399, rating: 4,
-    image: "https://images.unsplash.com/photo-1555689502-c4b22d76c56f?w=400&h=500&fit=crop",
+    image: "https://freemans.scene7.com/is/image/OttoUK/600w/Aniston-Cropped-Denim-Jacket~430139FRSP.jpg",
     description: "Classic cropped denim jacket with button front and chest flap pockets. A forever-staple that pairs with everything."
   },
   {
     id: 312, name: "Party Wear Mini Dress", category: "Womens",
+    tags: ["dress", "mini-dress", "party", "formal"],
     price: 1799, originalPrice: 2699, rating: 5,
     image: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&h=500&fit=crop",
     description: "Glamorous mini dress perfect for parties. Flattering A-line silhouette with embroidery detailing. Concealed back zip closure."
   },
   {
     id: 313, name: "Off-Shoulder Ruffle Top", category: "Womens",
+    tags: ["top", "off-shoulder", "casual", "summer", "ruffle"],
     price: 649, originalPrice: 999, rating: 4,
-    image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&h=500&fit=crop",
+    image: "https://images.unsplash.com/photo-1624443593970-88f1f5e4dbb6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDN8fHxlbnwwfHx8fHw%3D",
     description: "Trendy off-shoulder top with ruffle neckline detail. Made from lightweight fabric. Perfect for beach trips and vacations."
   },
   {
     id: 314, name: "Printed Anarkali Kurti", category: "Womens",
+    tags: ["kurti", "kurta", "ethnic", "printed", "cotton"],
     price: 1199, originalPrice: 1799, rating: 5,
-    image: "https://images.unsplash.com/photo-1590330297626-d7aff25a0431?w=400&h=500&fit=crop",
+    image: "https://yashgallery.com/cdn/shop/files/A7404199copy.jpg?v=1752068384&width=1445",
     description: "Beautiful block-printed anarkali kurti in pure cotton. Three-quarter sleeves with round neckline. Ideal for festive and casual occasions."
   },
   {
     id: 315, name: "Palazzo Pants - Ethnic Print", category: "Womens",
+    tags: ["pants", "palazzo", "ethnic", "printed", "casual"],
     price: 799, originalPrice: 1299, rating: 4,
-    image: "https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?w=400&h=500&fit=crop",
+    image: "https://i5.walmartimages.com/seo/qolati-Wide-Legs-Pants-for-Women-Boho-Ethnic-Print-Drawstring-High-Waisted-Palazzo-Pants-Casual-Loose-Yoga-Lounge-Trousers-with-Pockets_fc112fbe-6e10-49d8-9148-3be142291d51.5f4d9923300f9b965061bbd7ff000cd2.jpeg",
     description: "Flowy printed palazzo pants with an elasticated waistband. Comfortable fit, versatile styling with kurtas or tops."
   },
   {
     id: 316, name: "Floral Puff-Sleeve Blouse", category: "Womens",
+    tags: ["top", "blouse", "floral", "puff-sleeve", "casual"],
     price: 749, originalPrice: 1199, rating: 4,
-    image: "https://images.unsplash.com/photo-1590735213920-68192a487bc2?w=400&h=500&fit=crop",
+    image: "https://shopbloomingdaily.com/cdn/shop/products/floral-puff-sleeve-chiffon-corset-top-feminine-and-elegant-blouse-womens-shirts-tops-313238_1200x.jpg?v=1686330949",
     description: "Charming floral-print blouse with statement puff sleeves. Lightweight rayon fabric that drapes beautifully."
   },
   {
     id: 317, name: "Straight-Leg Trousers", category: "Womens",
+    tags: ["pants", "trousers", "formal", "office"],
     price: 1299, originalPrice: 1999, rating: 4,
-    image: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400&h=500&fit=crop",
+    image: "https://m.media-amazon.com/images/I/81yU-FVlN2L._AC_UY1000_.jpg",
     description: "Tailored straight-leg trousers in a wrinkle-resistant fabric. High waist with concealed zip. Elegant and office-appropriate."
   },
   {
     id: 318, name: "A-Line Midi Skirt", category: "Womens",
+    tags: ["skirt", "midi-skirt", "a-line", "casual"],
     price: 899, originalPrice: 1399, rating: 4,
     image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=500&fit=crop",
     description: "Classic A-line midi skirt hitting below the knee. Elasticated waist and a full fit. Pairs perfectly with blouses and crop tops."
   },
   {
     id: 319, name: "Casual Cotton Sundress", category: "Womens",
+    tags: ["dress", "sundress", "casual", "cotton", "summer"],
     price: 999, originalPrice: 1499, rating: 4,
     image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=400&h=500&fit=crop",
     description: "Breezy cotton sundress with a floral print and spaghetti straps. Adjustable back tie for a customizable fit. Summer essential."
   },
   {
     id: 320, name: "Ribbed Turtleneck Top", category: "Womens",
+    tags: ["top", "turtleneck", "winter", "casual", "ribbed"],
     price: 699, originalPrice: 1099, rating: 4,
-    image: "https://images.unsplash.com/photo-1554568218-0f1715e72254?w=400&h=500&fit=crop",
+    image: "https://boody.com/cdn/shop/files/small_B10968_BLK_WomensRibbedTurtleneckTop_Black_1.jpg?v=1767947940",
     description: "Cosy ribbed turtleneck top in a fitted silhouette. Soft cotton-spandex blend with stretch. Perfect layering piece for winter."
   },
   {
     id: 321, name: "Sheer Wrap Maxi Dress", category: "Womens",
+    tags: ["dress", "maxi", "formal", "party", "wrap"],
     price: 1899, originalPrice: 2899, rating: 5,
     image: "https://images.unsplash.com/photo-1568252542512-9fe8fe9c87bb?w=400&h=500&fit=crop",
     description: "Elegant wrap-style maxi dress in sheer chiffon over a lining. Adjustable wrap tie. Perfect for weddings and special occasions."
   },
   {
     id: 322, name: "Active Workout Tank Top", category: "Womens",
+    tags: ["top", "tank-top", "sports", "workout", "active"],
     price: 549, originalPrice: 849, rating: 4,
-    image: "https://images.unsplash.com/photo-1485462537746-965f33f579be?w=400&h=500&fit=crop",
+    image: "https://hips.hearstapps.com/hmg-prod/images/whm240109-digital-ecomm-workout-tank-top-lead-66e9e3443df3e.png?crop=0.8885555972170146xw:1xh;center,top&resize=1200:*",
     description: "Racerback workout tank top with moisture-wicking fabric. Built-in shelf bra for light support. Ideal for the gym and yoga."
   },
   {
     id: 323, name: "Knit Long Cardigan", category: "Womens",
+    tags: ["cardigan", "sweater", "winter", "knit", "casual"],
     price: 1499, originalPrice: 2199, rating: 4,
     image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=400&h=500&fit=crop",
     description: "Cosy long open-front knit cardigan with pockets. Relaxed fit, perfect for layering over any outfit in cooler months."
   },
   {
     id: 324, name: "Tropical Print Co-ord Set", category: "Womens",
+    tags: ["set", "printed", "summer", "casual", "tropical"],
     price: 1799, originalPrice: 2699, rating: 5,
-    image: "https://images.unsplash.com/photo-1613512216745-4fe050ee5fc6?w=400&h=500&fit=crop",
+    image: "https://i.etsystatic.com/60380672/r/il/d5fd42/7030635508/il_570xN.7030635508_fgpm.jpg",
     description: "Matching co-ordinate set featuring a crop top and wide-leg trousers in a bold tropical print. Holiday-ready style."
   },
   {
     id: 325, name: "Embroidered Cotton Kurti", category: "Womens",
+    tags: ["kurti", "kurta", "ethnic", "embroidered", "cotton"],
     price: 1099, originalPrice: 1699, rating: 5,
-    image: "https://images.unsplash.com/photo-1578932750294-f5075e85f44a?w=400&h=500&fit=crop",
+    image: "https://wholetex.sgp1.cdn.digitaloceanspaces.com/full/heavy-khadi-cotton-embroidery-kurti-116.jpg",
     description: "Beautifully embroidered cotton kurti with a straight cut and side slits. Vibrant colors for festivals and family gatherings."
   },
 ];
@@ -323,10 +381,22 @@ function convertApiProduct(p) {
   const priceINR = Math.round(p.price * USD_TO_INR);
   const discountPct = Math.floor(Math.random() * 26) + 10; // 10–35%
   const originalINR = Math.round(priceINR * (1 + discountPct / 100));
+
+  // Categorical tags extraction
+  const lowerTitle = p.title.toLowerCase();
+  const tags = [];
+  if (lowerTitle.includes("shirt") || lowerTitle.includes("polo")) tags.push("shirt");
+  if (lowerTitle.includes("t-shirt") || lowerTitle.includes("tee")) tags.push("t-shirt");
+  if (lowerTitle.includes("jacket") || lowerTitle.includes("hoodie")) tags.push("jacket");
+  if (lowerTitle.includes("jeans") || lowerTitle.includes("pant")) tags.push("jeans");
+  if (lowerTitle.includes("dress") || lowerTitle.includes("gown")) tags.push("dress");
+  if (lowerTitle.includes("top") || lowerTitle.includes("blouse")) tags.push("top");
+
   return {
     id: p.id,
     name: p.title.length > 48 ? p.title.substring(0, 48).trim() + "…" : p.title,
     category: p.category === "men's clothing" ? "Mens" : "Womens",
+    tags: tags.length > 0 ? tags : [p.category === "men's clothing" ? "mens" : "womens"],
     price: priceINR,
     originalPrice: originalINR,
     rating: Math.round(p.rating.rate),
@@ -360,6 +430,8 @@ function renderProducts(productList) {
       "cursor:pointer", "display:flex", "flex-direction:column"
     ].join(";");
 
+    card.onclick = () => window.open(`product.html#id=${product.id}`, '_blank');
+
     card.innerHTML = `
       <div style="position:relative;overflow:hidden;height:260px;background:#f8f8f8;display:flex;align-items:center;justify-content:center;">
         ${discount > 0 ? `<span style="position:absolute;top:10px;left:10px;background:#e74c3c;color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;z-index:2;">${discount}% Off</span>` : ""}
@@ -371,8 +443,8 @@ function renderProducts(productList) {
           onerror="this.src='./assets/images/products/clothes-1.jpg'"
         >
         <div class="card-overlay" style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0);display:flex;align-items:center;justify-content:center;gap:8px;padding:10px;opacity:0;transition:all 0.28s;">
-          <button onclick="addToCart(${product.id})" style="background:#e74c3c;color:#fff;border:none;padding:8px 16px;border-radius:6px;font-size:12px;cursor:pointer;font-weight:700;letter-spacing:0.3px;">🛒 Add to Cart</button>
-          <button onclick="addToWishlist(${product.id})" style="background:#fff;color:#e74c3c;border:2px solid #e74c3c;padding:6px 14px;border-radius:6px;font-size:12px;cursor:pointer;font-weight:700;">♡ Wish</button>
+          <button onclick="event.stopPropagation(); addToCart(${product.id})" style="background:#e74c3c;color:#fff;border:none;padding:8px 16px;border-radius:6px;font-size:12px;cursor:pointer;font-weight:700;letter-spacing:0.3px;">🛒 Add to Cart</button>
+          <button onclick="event.stopPropagation(); addToWishlist(${product.id}, this)" style="background:#fff;color:#e74c3c;border:2px solid #e74c3c;padding:6px 14px;border-radius:6px;font-size:12px;cursor:pointer;font-weight:700;">♡ Wish</button>
         </div>
       </div>
       <div style="padding:14px;flex:1;display:flex;flex-direction:column;justify-content:space-between;">
@@ -413,21 +485,25 @@ function renderProducts(productList) {
 // Load products: API clothing items + curated list (no jewellery/electronics)
 // --------------------------------------------------------------------------
 async function loadProducts() {
-  const container = document.getElementById("product-container");
-  if (!container) return;
+  window.products = [...curatedClothes];
+  window.allProducts = window.products;
 
-  // Loading spinner
-  if (!document.getElementById("_spin_css")) {
-    const s = document.createElement("style");
-    s.id = "_spin_css";
-    s.textContent = `@keyframes _spin{to{transform:rotate(360deg)}}`;
-    document.head.appendChild(s);
+  const container = document.getElementById("product-container");
+
+  if (container) {
+    // Loading spinner
+    if (!document.getElementById("_spin_css")) {
+      const s = document.createElement("style");
+      s.id = "_spin_css";
+      s.textContent = `@keyframes _spin{to{transform:rotate(360deg)}}`;
+      document.head.appendChild(s);
+    }
+    container.innerHTML = `
+      <div style="grid-column:1/-1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 0;gap:18px;">
+        <div style="width:46px;height:46px;border:4px solid #f0f0f0;border-top-color:#e74c3c;border-radius:50%;animation:_spin 0.8s linear infinite;"></div>
+        <p style="color:#aaa;font-size:14px;font-weight:500;">Loading products…</p>
+      </div>`;
   }
-  container.innerHTML = `
-    <div style="grid-column:1/-1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 0;gap:18px;">
-      <div style="width:46px;height:46px;border:4px solid #f0f0f0;border-top-color:#e74c3c;border-radius:50%;animation:_spin 0.8s linear infinite;"></div>
-      <p style="color:#aaa;font-size:14px;font-weight:500;">Loading products…</p>
-    </div>`;
 
   let apiClothes = [];
   try {
@@ -446,6 +522,8 @@ async function loadProducts() {
   // Merge API items first, then curated (deduplicate by id — shouldn't overlap)
   const allProducts = [...apiClothes, ...curatedClothes];
   window.allProducts = allProducts;
+  window.products = allProducts; // Alias for backward compatibility
+  window.productsLoaded = true;
 
   renderProducts(allProducts);
 }

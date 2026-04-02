@@ -5,62 +5,497 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product - Anon eCommerce</title>
+  <title>Product - Crawlcore Solutions</title>
 
   <link rel="shortcut icon" href="./assets/images/logo/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="./assets/css/style-prefix.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
 
   <style>
-    .pd-breadcrumb { background: #f7f7f7; padding: 12px 0; border-bottom: 1px solid #eee; font-size: 13px; color: #888; }
-    .pd-breadcrumb a { color: #ff8f9c; text-decoration: none; }
-    .pd-breadcrumb a:hover { text-decoration: underline; }
-    .pd-section { padding: 40px 0 60px; }
-    .pd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-    .pd-image-wrap { border-radius: 16px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.12); background: #f9f9f9; }
-    .pd-image-wrap img { width: 100%; height: 500px; object-fit: cover; display: block; transition: transform 0.4s; }
-    .pd-image-wrap:hover img { transform: scale(1.03); }
-    .pd-category-tag { display: inline-block; background: #fff0f2; color: #ff8f9c; padding: 5px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px; }
-    .pd-title { font-size: 28px; font-weight: 800; color: #1a1a1a; margin: 0 0 16px; line-height: 1.3; }
-    .pd-rating { display: flex; align-items: center; gap: 6px; margin-bottom: 22px; }
-    .pd-rating ion-icon { color: #e8a838; font-size: 20px; }
-    .pd-price-box { background: linear-gradient(135deg, #fff8f9, #fff0f2); border: 1px solid #ffd6de; border-radius: 12px; padding: 20px 24px; margin-bottom: 24px; }
-    .pd-sale-price { font-size: 34px; font-weight: 800; color: #ff8f9c; }
-    .pd-orig-price { font-size: 18px; color: #bbb; margin-left: 12px; }
-    .pd-discount-badge { display: inline-block; background: #ff8f9c; color: white; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 700; margin-left: 12px; vertical-align: middle; }
-    .pd-free-ship { font-size: 12px; color: #888; margin-top: 8px; }
-    .pd-description { color: #555; line-height: 1.8; font-size: 15px; margin-bottom: 28px; }
-    .pd-qty-label { font-weight: 600; color: #333; font-size: 15px; margin-bottom: 10px; display: block; }
-    .pd-qty-control { display: flex; align-items: center; border: 2px solid #eee; border-radius: 10px; overflow: hidden; width: fit-content; margin-bottom: 24px; }
-    .pd-qty-control button { width: 44px; height: 44px; background: none; border: none; font-size: 22px; cursor: pointer; color: #ff8f9c; font-weight: 700; transition: background 0.2s; }
-    .pd-qty-control button:hover { background: #fff0f2; }
-    .pd-qty-control span { min-width: 48px; text-align: center; font-size: 16px; font-weight: 700; color: #1a1a1a; }
-    .pd-btn-cart { flex: 1; min-width: 160px; padding: 15px 24px; background: #ff8f9c; color: white; border: none; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer; transition: background 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
-    .pd-btn-cart:hover { background: #e07b88; }
-    .pd-btn-wish { flex: 1; min-width: 160px; padding: 15px 24px; background: white; color: #ff8f9c; border: 2px solid #ff8f9c; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
-    .pd-btn-wish:hover, .pd-btn-wish.active { background: #fff0f2; }
-    .pd-action-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; }
-    .pd-meta { border-top: 1px solid #f0f0f0; padding-top: 18px; font-size: 14px; color: #777; }
-    .pd-meta p { margin: 6px 0; }
-    .pd-meta strong { color: #ff8f9c; }
-    .pd-trust { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 20px; padding-top: 18px; border-top: 1px solid #f0f0f0; }
-    .pd-trust-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #555; }
-    .pd-trust-item ion-icon { font-size: 20px; color: #ff8f9c; }
-    .related-section { background: #f8f8f8; padding: 60px 0; }
-    .related-title { font-size: 24px; font-weight: 800; color: #1a1a1a; text-align: center; margin: 0 0 36px; }
-    .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
-    .related-card { background: white; border-radius: 12px; overflow: hidden; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.07); transition: transform 0.2s, box-shadow 0.2s; }
-    .related-card:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0,0,0,0.14); }
-    .related-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
-    .related-card-body { padding: 14px; }
+    :root {
+      --primary-color: #ff8f9c;
+      --text-dark: #333;
+      --text-gray: #666;
+      --text-light: #999;
+      --border-color: #eee;
+    }
 
-    @media (max-width: 768px) {
-      .pd-grid { grid-template-columns: 1fr; gap: 28px; }
-      .pd-image-wrap img { height: 320px; }
-      .pd-title { font-size: 22px; }
-      .pd-sale-price { font-size: 26px; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff;
+      color: var(--text-dark);
+    }
+
+    .pd-breadcrumb {
+      padding: 15px 0;
+      font-size: 13px;
+      color: #888;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .pd-breadcrumb a {
+      color: var(--text-gray);
+      text-decoration: none;
+    }
+
+    .pd-breadcrumb a:hover {
+      color: var(--primary-color);
+    }
+
+    .pd-section {
+      padding: 40px 0;
+    }
+
+    .pd-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    /* Left Column: Images */
+    .pd-image-area {
+      display: flex;
+      gap: 15px;
+    }
+
+    .pd-thumbnails {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 80px;
+    }
+
+    .pd-thumb {
+      width: 80px;
+      height: 80px;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .pd-thumb.active {
+      border-color: var(--primary-color);
+    }
+
+    .pd-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .pd-main-image {
+      flex: 1;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .pd-main-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Right Column: Info */
+    .pd-title {
+      font-size: 26px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      line-height: 1.4;
+      color: #222;
+    }
+
+    .pd-price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .pd-price-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pd-price {
+      font-size: 24px;
+      font-weight: 700;
+      color: #222;
+    }
+
+    .pd-gst {
+      font-size: 11px;
+      color: var(--primary-color);
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    /* Update rating to align properly on the right */
+    .pd-rating-col {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 5px;
+    }
+
+    .pd-stars {
+      color: #ccc;
+      font-size: 14px;
+    }
+
+    .pd-reviews-count {
+      font-size: 12px;
+      color: var(--text-gray);
+    }
+
+    .pd-viewing {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-gray);
+      margin-bottom: 25px;
+    }
+
+    .pd-viewing ion-icon {
+      font-size: 16px;
+    }
+
+    .pd-qty-section {
+      margin-bottom: 25px;
+    }
+
+    .pd-qty-label {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .pd-qty-control {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--border-color);
+      width: fit-content;
+      border-radius: 4px;
+      background: #f9f9f9;
+    }
+
+    .pd-qty-btn {
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      color: var(--text-gray);
+    }
+
+    .pd-qty-val {
+      width: 40px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .pd-actions {
+      display: flex;
+      flex-direction: column;
+      /* This stacks the buttons */
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    /* Make buttons slightly taller to match the premium feel */
+    .btn-add-cart {
+      padding: 14px;
+      border: 1px solid #1a1a1a;
+      background: #fff;
+      color: #1a1a1a;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    .btn-add-cart:hover {
+      background: #f5f5f5;
+    }
+
+    .btn-buy-now {
+      padding: 14px;
+      border: none;
+      background: #000;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    .btn-buy-now:hover {
+      background: #222;
+    }
+
+    .pd-links {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 30px;
+      font-size: 13px;
+      color: var(--text-gray);
+    }
+
+    .pd-link {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .pd-link:hover {
+      color: var(--primary-color);
+    }
+
+    .pd-delivery {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 15px 0;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .pd-delivery-icon {
+      font-size: 20px;
+      margin-top: 2px;
+    }
+
+    .pd-delivery-text {
+      font-size: 13px;
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+
+    .pd-delivery-date {
+      font-weight: 700;
+    }
+
+    /* Tabs */
+    .pd-tabs-header {
+      display: flex;
+      gap: 40px;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 30px;
+    }
+
+    .pd-tab-btn {
+      padding: 12px 0;
+      background: none;
+      border: none;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-light);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .pd-tab-btn.active {
+      color: #000;
+    }
+
+    .pd-tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #000;
+    }
+
+    .pd-tab-content {
+      display: none;
+      min-height: 200px;
+      padding-bottom: 60px;
+    }
+
+    .pd-tab-content.active {
+      display: block;
+    }
+
+    /* Specs List */
+    .pd-specs {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .pd-spec-item {
+      display: block;
+      font-size: 13px;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 991px) {
+      .pd-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .pd-image-area {
+        flex-direction: column-reverse;
+      }
+
+      .pd-thumbnails {
+        flex-direction: row;
+        width: 100%;
+        order: 1;
+      }
+
+      .pd-actions {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Reviews & Questions Enhancements */
+    .rev-q-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .rev-q-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin: 0;
+    }
+
+    .btn-outline {
+      padding: 10px 24px;
+      border: 1px solid #1a1a1a;
+      background: #fff;
+      color: #1a1a1a;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+
+    .btn-outline:hover {
+      background: #f5f5f5;
+    }
+
+    .rev-rating-summary {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .rev-stars {
+      color: #ccc;
+      font-size: 16px;
+    }
+
+    .rev-count-text {
+      font-size: 14px;
+      color: #666;
+    }
+
+    .rev-empty-msg {
+      font-size: 14px;
+      color: #777;
+      margin-top: 20px;
+      border-top: 1px solid #eee;
+      padding-top: 25px;
+    }
+
+    /* Modal Styles */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-box {
+      background: #fff;
+      width: 450px;
+      max-width: 90%;
+      border-radius: 8px;
+      padding: 30px;
+      position: relative;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+      color: #999;
+    }
+
+    .modal-title {
+      font-size: 24px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .modal-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .modal-input {
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 14px;
+    }
+
+    .modal-textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .btn-submit {
+      padding: 12px;
+      background: #000;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.2s;
+    }
+
+    .btn-submit:hover {
+      background: #222;
     }
   </style>
 </head>
@@ -69,46 +504,10 @@
 
   <div class="overlay" data-overlay></div>
 
-  <!-- MODAL -->
-  <div class="modal" data-modal>
-    <div class="modal-close-overlay" data-modal-overlay></div>
-    <div class="modal-content">
-      <button class="modal-close-btn" data-modal-close>
-        <ion-icon name="close-outline"></ion-icon>
-      </button>
-      <div class="newsletter-img">
-        <img src="./assets/images/newsletter.png" alt="subscribe newsletter" width="400" height="400">
-      </div>
-      <div class="newsletter">
-        <form action="#">
-          <div class="newsletter-header">
-            <h3 class="newsletter-title">Subscribe Newsletter.</h3>
-            <p class="newsletter-desc">Subscribe the <b>Anon</b> to get latest products and discount update.</p>
-          </div>
-          <input type="email" name="email" class="email-field" placeholder="Email Address" required>
-          <button type="submit" class="btn-newsletter">Subscribe</button>
-        </form>
-      </div>
-    </div>
-  </div>
 
-  <!-- NOTIFICATION TOAST -->
-  <div class="notification-toast" data-toast>
-    <button class="toast-close-btn" data-toast-close>
-      <ion-icon name="close-outline"></ion-icon>
-    </button>
-    <div class="toast-banner">
-      <img src="./assets/images/products/clothes-1.jpg" alt="" width="80" height="70">
-    </div>
-    <div class="toast-detail">
-      <p class="toast-message">Added to cart!</p>
-      <p class="toast-title">Product</p>
-      <p class="toast-meta"><time datetime="PT0M">Just now</time></p>
-    </div>
-  </div>
 
-  <!-- HEADER -->
   <header>
+
     <div class="header-top">
       <div class="container">
         <ul class="header-social-container">
@@ -118,7 +517,7 @@
           <li><a href="#" class="social-link"><ion-icon name="logo-linkedin"></ion-icon></a></li>
         </ul>
         <div class="header-alert-news">
-          <p><b>Free Shipping</b> This Week Order Over - ₹500</p>
+          <p><b>Free Shipping</b> This Week Order Over - ₹55</p>
         </div>
         <div class="header-top-actions"></div>
       </div>
@@ -127,14 +526,17 @@
     <div class="header-main">
       <div class="container">
         <a href="index.html" class="header-logo">
-          <img src="./assets/images/logo/logo.svg" alt="Anon's logo" width="120" height="36">
+          <img src="./assets/images/logo/logo.png" alt="Crawlcore's logo" width="180" height="100">
         </a>
         <div class="header-search-container">
-          <input type="search" name="search" class="search-field" placeholder="Enter your product name...">
-          <button class="search-btn"><ion-icon name="search-outline"></ion-icon></button>
+          <input type="search" name="search" class="search-field" placeholder="Enter your product name..."
+            id="search-input">
+          <button class="search-btn" onclick="handleGlobalSearch()">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
         </div>
         <div class="header-user-actions">
-          <button class="action-btn"><ion-icon name="person-outline"></ion-icon></button>
+
           <a href="wishlist.html" class="action-btn">
             <ion-icon name="heart-outline"></ion-icon>
             <span class="count">0</span>
@@ -150,51 +552,59 @@
     <nav class="desktop-navigation-menu">
       <div class="container">
         <ul class="desktop-menu-category-list">
-          <li class="menu-category"><a href="index.html" class="menu-title">Home</a></li>
           <li class="menu-category">
-            <a href="category.html?cat=Mens" class="menu-title">Men's</a>
+            <a href="index.html" class="menu-title">Home</a>
+          </li>
+          <li class="menu-category">
+            <a href="category" class="menu-title">All Categories</a>
+          </li>
+          <li class="menu-category">
+            <a href="category?cat=Mens" class="menu-title">Men's</a>
             <ul class="dropdown-list">
-              <li class="dropdown-item"><a href="#">Shirt</a></li>
-              <li class="dropdown-item"><a href="#">Shorts & Jeans</a></li>
-              <li class="dropdown-item"><a href="#">Safety Shoes</a></li>
-              <li class="dropdown-item"><a href="#">Wallet</a></li>
+              <li class="dropdown-item"><a href="category?cat=Mens&tag=shirt">Shirts</a></li>
+              <li class="dropdown-item"><a href="category?cat=Mens&tag=jeans">Jeans</a></li>
+              <li class="dropdown-item"><a href="category?cat=Mens&tag=jacket">Jackets</a></li>
+              <li class="dropdown-item"><a href="category?cat=Mens&tag=t-shirt">T-shirts</a></li>
+              <li class="dropdown-item"><a href="category?cat=Mens&tag=kurta">Kurtas</a></li>
             </ul>
           </li>
           <li class="menu-category">
-            <a href="category.html?cat=Womens" class="menu-title">Women's</a>
+            <a href="category?cat=Womens" class="menu-title">Women's</a>
             <ul class="dropdown-list">
-              <li class="dropdown-item"><a href="#">Dress & Frock</a></li>
-              <li class="dropdown-item"><a href="#">Earrings</a></li>
-              <li class="dropdown-item"><a href="#">Necklace</a></li>
-              <li class="dropdown-item"><a href="#">Makeup Kit</a></li>
+              <li class="dropdown-item"><a href="category?cat=Womens&tag=dress">Dresses</a></li>
+              <li class="dropdown-item"><a href="category?cat=Womens&tag=top">Tops</a></li>
+              <li class="dropdown-item"><a href="category?cat=Womens&tag=kurti">Kurtis</a></li>
+              <li class="dropdown-item"><a href="category?cat=Womens&tag=jeans">Jeans</a></li>
             </ul>
           </li>
-
           <li class="menu-category">
-            <a href="#" class="menu-title">Sports</a>
-            <ul class="dropdown-list">
-              <li class="dropdown-item"><a href="#">Running Shoes</a></li>
-              <li class="dropdown-item"><a href="#">Cricket</a></li>
-              <li class="dropdown-item"><a href="#">Gym Wear</a></li>
-            </ul>
+            <a href="category?cat=Home%20decor" class="menu-title">Home Decor</a>
           </li>
-          <li class="menu-category"><a href="category.html?cat=offers" class="menu-title">Hot Offers</a></li>
+          <li class="menu-category">
+            <a href="category?cat=offers" class="menu-title">Hot Offers</a>
+          </li>
         </ul>
       </div>
     </nav>
 
     <div class="mobile-bottom-navigation">
-      <button class="action-btn" data-mobile-menu-open-btn><ion-icon name="menu-outline"></ion-icon></button>
+      <button class="action-btn" data-mobile-menu-open-btn>
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
       <a href="cart.html" class="action-btn">
         <ion-icon name="bag-handle-outline"></ion-icon>
         <span class="count">0</span>
       </a>
-      <a href="index.html" class="action-btn"><ion-icon name="home-outline"></ion-icon></a>
+      <a href="index.html" class="action-btn">
+        <ion-icon name="home-outline"></ion-icon>
+      </a>
       <a href="wishlist.html" class="action-btn">
         <ion-icon name="heart-outline"></ion-icon>
         <span class="count">0</span>
       </a>
-      <button class="action-btn" data-mobile-menu-open-btn><ion-icon name="grid-outline"></ion-icon></button>
+      <button class="action-btn" data-mobile-menu-open-btn>
+        <ion-icon name="grid-outline"></ion-icon>
+      </button>
     </div>
 
     <nav class="mobile-navigation-menu has-scrollbar" data-mobile-menu>
@@ -205,153 +615,350 @@
         </button>
       </div>
       <ul class="mobile-menu-category-list">
-        <li class="menu-category"><a href="index.html" class="menu-title">Home</a></li>
-        <li class="menu-category"><a href="category.html?cat=Mens" class="menu-title">Men's</a></li>
-        <li class="menu-category"><a href="category.html?cat=Womens" class="menu-title">Women's</a></li>
-
-        <li class="menu-category"><a href="#" class="menu-title">Sports</a></li>
-        <li class="menu-category"><a href="category.html?cat=offers" class="menu-title">Hot Offers</a></li>
+        <li class="menu-category">
+          <a href="index.html" class="menu-title">Home</a>
+        </li>
+        <li class="menu-category">
+          <button class="accordion-menu" data-accordion-btn>
+            <p class="menu-title">Men's</p>
+            <div>
+              <ion-icon name="add-outline" class="add-icon"></ion-icon>
+              <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+            </div>
+          </button>
+          <ul class="submenu-category-list" data-accordion>
+            <li class="submenu-category"><a href="category?cat=Mens&tag=shirt" class="submenu-title">Shirts</a></li>
+            <li class="submenu-category"><a href="category?cat=Mens&tag=jeans" class="submenu-title">Jeans</a></li>
+            <li class="submenu-category"><a href="category?cat=Mens&tag=jacket" class="submenu-title">Jackets</a></li>
+            <li class="submenu-category"><a href="category?cat=Mens&tag=t-shirt" class="submenu-title">T-shirts</a></li>
+            <li class="submenu-category"><a href="category?cat=Mens&tag=kurta" class="submenu-title">Kurtas</a></li>
+          </ul>
+        </li>
+        <li class="menu-category">
+          <button class="accordion-menu" data-accordion-btn>
+            <p class="menu-title">Women's</p>
+            <div>
+              <ion-icon name="add-outline" class="add-icon"></ion-icon>
+              <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+            </div>
+          </button>
+          <ul class="submenu-category-list" data-accordion>
+            <li class="submenu-category"><a href="category?cat=Womens&tag=dress" class="submenu-title">Dresses</a></li>
+            <li class="submenu-category"><a href="category?cat=Womens&tag=top" class="submenu-title">Tops</a></li>
+            <li class="submenu-category"><a href="category?cat=Womens&tag=kurti" class="submenu-title">Kurtis</a></li>
+            <li class="submenu-category"><a href="category?cat=Womens&tag=jeans" class="submenu-title">Jeans</a></li>
+          </ul>
+        </li>
+        <li class="menu-category">
+          <a href="category?cat=Home%20decor" class="menu-title">Home Decor</a>
+        </li>
+        <li class="menu-category">
+          <a href="category?cat=offers" class="menu-title">Hot Offers</a>
+        </li>
       </ul>
     </nav>
+
   </header>
 
-  <!-- MAIN -->
   <main>
-
-    <!-- BREADCRUMB -->
     <div class="pd-breadcrumb">
       <div class="container">
-        <a href="index.html">Home</a>
-        <span style="margin:0 8px;color:#bbb;">›</span>
-        <span id="breadcrumb-category" style="color:#ff8f9c;cursor:pointer;"></span>
-        <span style="margin:0 8px;color:#bbb;">›</span>
-        <span id="breadcrumb-name" style="color:#555;"></span>
+        <a href="index.html">Home</a> / <span id="breadcrumb-category"></span> / <span id="breadcrumb-name"
+          style="color:#000;"></span>
       </div>
     </div>
 
-    <!-- PRODUCT DETAIL -->
     <section class="pd-section">
-      <div class="container">
-        <div class="pd-grid">
+      <div class="product-container">
+        <div class="container">
 
-          <!-- LEFT: IMAGE -->
-          <div class="pd-image-wrap">
-            <img id="product-img" src="" alt="Product Image">
+          <!--
+            - SIDEBAR
+          -->
+
+          <div class="sidebar  has-scrollbar" data-mobile-menu>
+
+            <div class="sidebar-category">
+
+              <div class="sidebar-top">
+                <h2 class="sidebar-title">Category</h2>
+
+                <button class="sidebar-close-btn" data-mobile-menu-close-btn>
+                  <ion-icon name="close-outline"></ion-icon>
+                </button>
+              </div>
+
+              <ul class="sidebar-menu-category-list">
+
+                <li class="sidebar-menu-category">
+
+                  <button class="sidebar-accordion-menu" data-accordion-btn>
+
+                    <div class="menu-title-flex">
+                      <img src="./assets/images/icons/dress.svg" alt="mens" width="20" height="20"
+                        class="menu-title-img">
+
+                      <p class="menu-title">Mens Clothing</p>
+                    </div>
+
+                    <div>
+                      <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                      <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+                    </div>
+
+                  </button>
+
+                  <ul class="sidebar-submenu-category-list" data-accordion>
+
+                    <li class="sidebar-submenu-category">
+                      <a href="category?cat=Mens&sub=Shirt" class="sidebar-submenu-title">
+                        <p class="product-name">Shirts</p>
+                      </a>
+                    </li>
+
+                    <li class="sidebar-submenu-category">
+                      <a href="category?cat=Mens&sub=Jeans" class="sidebar-submenu-title">
+                        <p class="product-name">Jeans</p>
+                      </a>
+                    </li>
+
+                    <li class="sidebar-submenu-category">
+                      <a href="category?cat=Mens&sub=Jacket" class="sidebar-submenu-title">
+                        <p class="product-name">Jackets</p>
+                      </a>
+                    </li>
+
+                    <li class="sidebar-submenu-category">
+                      <a href="category?cat=Mens&sub=T-shirt" class="sidebar-submenu-title">
+                        <p class="product-name">T-shirts</p>
+                      </a>
+                    </li>
+
+                    <li class="sidebar-submenu-category">
+                      <a href="category?cat=Mens&sub=Kurta" class="sidebar-submenu-title">
+                        <p class="product-name">Kurtas</p>
+                      </a>
+                    </li>
+
+                  </ul>
+
+                </li>
+
+                <li class="sidebar-menu-category">
+
+                  <button class="sidebar-accordion-menu" data-accordion-btn>
+
+                    <div class="menu-title-flex">
+                      <img src="./assets/images/icons/dress.svg" alt="womens" class="menu-title-img" width="20"
+                        height="20">
+
+                      <p class="menu-title">Womens Clothing</p>
+                    </div>
+
+                    <div>
+                      <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                      <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+                    </div>
+
+                  </button>
+
+                  <ul class="sidebar-submenu-category-list" data-accordion>
+
+                    <li class="sidebar-submenu-category">
+                      <a href="category?cat=Womens&sub=Dress" class="sidebar-submenu-title">
+                        <p class="product-name">Dresses</p>
+                      </a>
+                    </li>
+
+                    <li class="sidebar-submenu-category">
+                      <a href="category?cat=Womens&sub=Top" class="sidebar-submenu-title">
+                        <p class="product-name">Tops</p>
+                      </a>
+                    </li>
+
+                    <li class="sidebar-submenu-category">
+                      <a href="category?cat=Womens&sub=Kurti" class="sidebar-submenu-title">
+                        <p class="product-name">Kurtis</p>
+                      </a>
+                    </li>
+
+                    <li class="sidebar-submenu-category">
+                      <a href="category?cat=Womens&sub=Jeans" class="sidebar-submenu-title">
+                        <p class="product-name">Jeans</p>
+                      </a>
+                    </li>
+
+                  </ul>
+
+                </li>
+
+                <li class="sidebar-menu-category">
+                  <a href="category?cat=Home%20decor" class="sidebar-accordion-menu"
+                    style="display:flex; justify-content:space-between; align-items:center; width:100%; padding: 10px 0;">
+                    <div class="menu-title-flex">
+                      <img src="./assets/images/icons/dress.svg" alt="home decor" class="menu-title-img" width="20"
+                        height="20">
+                      <p class="menu-title">Home Decor</p>
+                    </div>
+                  </a>
+                </li>
+
+              </ul>
+
+            </div>
+
           </div>
 
-          <!-- RIGHT: INFO -->
-          <div>
-            <span class="pd-category-tag" id="product-category"></span>
-            <h1 class="pd-title" id="product-name"></h1>
-
-            <div class="pd-rating" id="product-rating"></div>
-
-            <div class="pd-price-box">
-              <div style="display:flex;align-items:center;flex-wrap:wrap;">
-                <span class="pd-sale-price" id="product-price"></span>
-                <del class="pd-orig-price" id="product-original-price"></del>
-                <span class="pd-discount-badge" id="product-discount"></span>
+          <div class="product-box">
+            <div class="pd-grid">
+              <!-- Left: Images -->
+              <div class="pd-image-area">
+                <div class="pd-thumbnails" id="pd-thumbnails">
+                  <!-- Thumbnails will be injected here -->
+                </div>
+                <div class="pd-main-image">
+                  <img id="main-product-image" src="" alt="">
+                </div>
               </div>
-              <p class="pd-free-ship">&#10003; Inclusive of all taxes &nbsp;|&nbsp; &#10003; Free shipping on orders over ₹500</p>
+
+              <!-- Right: Info -->
+              <div class="pd-info">
+                <h1 class="pd-title" id="pd-name"></h1>
+
+                <div class="pd-price-row">
+                  <div class="pd-price-col">
+                    <span class="pd-price" id="pd-price"></span>
+                    <span class="pd-gst">Inclusive of GST</span>
+                  </div>
+                  <div class="pd-rating-col">
+                    <div class="pd-stars" id="pd-stars"></div>
+                    <span class="pd-reviews-count" id="pd-reviews-text">(0 reviews)</span>
+                  </div>
+                </div>
+
+                <div class="pd-viewing">
+                  <ion-icon name="eye-outline"></ion-icon>
+                  <span><strong id="views-count">25</strong> people are viewing this right now</span>
+                </div>
+
+                <div class="pd-qty-section">
+                  <span class="pd-qty-label">Quantity</span>
+                  <div class="pd-qty-control">
+                    <button class="pd-qty-btn" onclick="updateQty(-1)">−</button>
+                    <span class="pd-qty-val" id="qty-display">1</span>
+                    <button class="pd-qty-btn" onclick="updateQty(1)">+</button>
+                  </div>
+                </div>
+
+                <div class="pd-actions">
+                  <button class="btn-add-cart" onclick="handleAddToCart()">Add to cart</button>
+                  <button class="btn-buy-now" onclick="handleBuyNow()">Buy Now</button>
+                </div>
+
+                <div class="pd-links">
+                  <div class="pd-link">
+                    <ion-icon name="help-circle-outline"></ion-icon>
+                    <span>Ask a Question</span>
+                  </div>
+                  <div class="pd-link">
+                    <ion-icon name="share-social-outline"></ion-icon>
+                    <span>Share</span>
+                  </div>
+                </div>
+
+                <div class="pd-delivery">
+                  <ion-icon name="bus-outline" class="pd-delivery-icon"></ion-icon>
+                  <div class="pd-delivery-text">
+                    Estimated Delivery: <span class="pd-delivery-date" id="delivery-range"></span>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <p class="pd-description" id="product-description"></p>
+            <!-- Tabs Section -->
+            <div class="pd-tabs">
+              <div class="pd-tabs-header">
+                <button class="pd-tab-btn active" onclick="showTab('description', this)">Description</button>
+                <button class="pd-tab-btn" onclick="showTab('reviews', this)">Reviews (0)</button>
+                <button class="pd-tab-btn" onclick="showTab('questions', this)">Questions</button>
+              </div>
 
-            <span class="pd-qty-label">Quantity</span>
-            <div class="pd-qty-control">
-              <button onclick="decrementQty()">−</button>
-              <span id="qty-display">1</span>
-              <button onclick="incrementQty()">+</button>
+              <div id="description" class="pd-tab-content active">
+                <ul class="pd-specs" id="pd-specs-list">
+                  <!-- Specs injected here -->
+                </ul>
+              </div>
+
+              <div id="reviews" class="pd-tab-content">
+                <div class="rev-q-header">
+                  <h3 class="rev-q-title">Rating & Review</h3>
+                  <button class="btn-outline">Write a review</button>
+                </div>
+                <div class="rev-rating-summary">
+                  <div class="rev-stars">
+                    <ion-icon name="star-outline"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
+                  </div>
+                  <span class="rev-count-text">Based on 0 Reviews</span>
+                </div>
+                <p class="rev-empty-msg">There are no reviews yet.</p>
+              </div>
+
+              <div id="questions" class="pd-tab-content">
+                <div class="rev-q-header">
+                  <h3 class="rev-q-title">Question & Answer</h3>
+                  <button class="btn-outline" onclick="openQuestionModal()">Ask a Question</button>
+                </div>
+                <div class="rev-rating-summary">
+                  <span class="rev-count-text">0 Questions</span>
+                </div>
+                <p class="rev-empty-msg">There are no question found.</p>
+              </div>
             </div>
 
-            <div class="pd-action-row">
-              <button class="pd-btn-cart" onclick="addToCartFromDetail()">
-                <ion-icon name="bag-handle-outline"></ion-icon> Add to Cart
-              </button>
-              <button class="pd-btn-wish" id="wishlist-btn" onclick="toggleWishlistFromDetail()">
-                <ion-icon name="heart-outline" id="wish-icon"></ion-icon> Add to Wishlist
-              </button>
-            </div>
-
-            <div class="pd-trust">
-              <div class="pd-trust-item">
-                <ion-icon name="shield-checkmark-outline"></ion-icon>
-                <span>100% Authentic</span>
-              </div>
-              <div class="pd-trust-item">
-                <ion-icon name="refresh-outline"></ion-icon>
-                <span>15-Day Returns</span>
-              </div>
-              <div class="pd-trust-item">
-                <ion-icon name="rocket-outline"></ion-icon>
-                <span>Fast Delivery</span>
-              </div>
-              <div class="pd-trust-item">
-                <ion-icon name="lock-closed-outline"></ion-icon>
-                <span>Secure Payment</span>
-              </div>
-            </div>
-
-            <div class="pd-meta">
-              <p>Category: <strong id="product-meta-category"></strong></p>
-              <p style="margin-top:6px;">Availability: <strong style="color:#4caf50;">In Stock</strong> &nbsp;·&nbsp; Ships in 1–2 business days</p>
+            <!-- RELATED PRODUCTS -->
+            <h2 style="font-size:20px; font-weight:700; margin-bottom:25px;">Related Products</h2>
+            <div id="related-products-grid"
+              style="display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:20px;">
+              <!-- Related products injected here -->
             </div>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- RELATED PRODUCTS -->
-    <section class="related-section">
-      <div class="container">
-        <h2 class="related-title">You May Also Like</h2>
-        <div class="related-grid" id="related-container"></div>
-      </div>
-    </section>
-
   </main>
 
-  <!-- FOOTER -->
-    <!-- FOOTER -->
   <footer style="background:#fff; border-top:1px solid #e8e8e8; font-family:'Poppins',sans-serif;">
-    <div style="max-width:1200px; margin:0 auto; padding:52px 24px 36px; display:grid; grid-template-columns:1fr 1.2fr 1fr 1fr; gap:48px;">
+    <div
+      style="max-width:1200px; margin:0 auto; padding:52px 24px 36px; display:grid; grid-template-columns:1fr 1.2fr 1fr 1fr; gap:48px;">
       <div>
-        <a href="index.html" style="display:inline-block; margin-bottom:14px;"><img src="./assets/images/logo/logo.svg" alt="Crawlcore Solutions" style="height:48px; width:auto;"></a>
-        <p style="font-size:13px; font-weight:700; color:#222; line-height:1.55; margin:0; text-transform:uppercase; letter-spacing:0.3px;">Crawlcore Solutions<br>Private Limited</p>
+        <a href="index.html" style="display:inline-block; margin-bottom:14px;"><img src="./assets/images/logo/logo.png"
+            alt="Crawlcore Solutions" style="height:48px; width:auto;"></a>
+        <p
+          style="font-size:13px; font-weight:700; color:#222; line-height:1.55; margin:0; text-transform:uppercase; letter-spacing:0.3px;">
+          Crawlcore Solutions<br>Private Limited</p>
       </div>
       <div>
         <h3 style="font-size:15px; font-weight:700; color:#111; margin:0 0 20px; letter-spacing:0.2px;">Company</h3>
         <div style="display:flex; gap:10px; margin-bottom:16px; align-items:flex-start;">
-          <span style="margin-top:2px; flex-shrink:0; color:#555;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-          <p style="font-size:13px; color:#555; line-height:1.7; margin:0;">UG 27, Shakuntala Complex,<br>Aurangabad, Mathura,<br>Uttar Pradesh – 281006</p>
-        </div>
-        <div style="display:flex; gap:10px; margin-bottom:14px; align-items:center;">
-          <span style="color:#555; flex-shrink:0;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.1 11.6a19.53 19.53 0 0 1-3.07-8.67A2 2 0 0 1 3 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg></span>
-          <a href="tel:+919983685627" style="font-size:13px; color:#555; text-decoration:none;">+91 9983685627</a>
-        </div>
-        <div style="display:flex; gap:10px; align-items:center;">
-          <span style="color:#555; flex-shrink:0;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
-          <a href="mailto:support@crawlcoresolutions.com" style="font-size:13px; color:#555; text-decoration:none;">support@crawlcoresolutions.com</a>
+          <span style="flex-shrink:0; color:#555;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg></span>
+          <p style="font-size:13px; color:#555; line-height:1.7; margin:0;">UG 27, Shakuntala Complex,<br>Aurangabad,
+            Mathura,<br>Uttar Pradesh – 281006</p>
         </div>
       </div>
       <div>
         <h3 style="font-size:15px; font-weight:700; color:#111; margin:0 0 20px; letter-spacing:0.2px;">Information</h3>
         <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px;">
-          <li><a href="index.html" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Home</a></li>
-          <li><a href="category.html" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Shop</a></li>
-          <li><a href="services.html" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Services</a></li>
-          <li><a href="#" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">About</a></li>
-          <li><a href="#" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 style="font-size:15px; font-weight:700; color:#111; margin:0 0 20px; letter-spacing:0.2px;">Contact</h3>
-        <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px;">
-          <li><a href="terms-conditions.html" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Terms &amp; Conditions</a></li>
-          <li><a href="privacy-policy.html" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Privacy Policy</a></li>
-          <li><a href="refund-returns.html" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s; line-height:1.5;">Refund &amp; Returns</a></li>
-          <li><a href="cancellation-policy.html" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Cancellation Policy</a></li>
-          <li><a href="shipping-policy.html" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Shipping Policy</a></li>
+          <li><a href="index.html" style="font-size:13px; color:#555; text-decoration:none;">Home</a></li>
+          <li><a href="about.html" style="font-size:13px; color:#555; text-decoration:none;">About</a></li>
+          <li><a href="contact.html" style="font-size:13px; color:#555; text-decoration:none;">Contact</a></li>
         </ul>
       </div>
     </div>
@@ -367,151 +974,229 @@
   <script src="./assets/js/cart_wishlist.js"></script>
 
   <script>
-    let currentProductId = null;
-    let qty = 1;
-
-    document.addEventListener('DOMContentLoaded', function () {
-      const params = new URLSearchParams(window.location.search);
-      currentProductId = parseInt(params.get('id'));
-
-      if (!currentProductId) { window.location = 'index.html'; return; }
-
-      const product = products.find(p => p.id === currentProductId);
-      if (!product) { window.location = 'index.html'; return; }
-
-      // Page title
-      document.title = product.name + ' - Anon eCommerce';
-
-      // Breadcrumb
-      document.getElementById('breadcrumb-category').textContent = product.category;
-      document.getElementById('breadcrumb-category').onclick = () => window.location = 'index.html';
-      document.getElementById('breadcrumb-name').textContent = product.name;
-
-      // Image
-      document.getElementById('product-img').src = product.image;
-      document.getElementById('product-img').alt = product.name;
-
-      // Category
-      document.getElementById('product-category').textContent = product.category;
-      document.getElementById('product-meta-category').textContent = product.category;
-
-      // Name
-      document.getElementById('product-name').textContent = product.name;
-
-      // Rating
-      const ratingDiv = document.getElementById('product-rating');
-      let starsHtml = '';
-      for (let i = 1; i <= 5; i++) {
-        starsHtml += i <= product.rating
-          ? '<ion-icon name="star"></ion-icon>'
-          : '<ion-icon name="star-outline"></ion-icon>';
+    function handleGlobalSearch() {
+      const input = document.getElementById('search-input');
+      if (input && input.value.trim()) {
+        window.location.href = 'category?q=' + encodeURIComponent(input.value.trim());
       }
-      ratingDiv.innerHTML = starsHtml + `<span style="color:#666;font-size:14px;margin-left:8px;">${product.rating}.0 out of 5</span>`;
-
-      // Price
-      const discount = Math.round((1 - product.price / product.originalPrice) * 100);
-      document.getElementById('product-price').textContent = '₹' + product.price;
-      document.getElementById('product-original-price').textContent = '₹' + product.originalPrice;
-      document.getElementById('product-discount').textContent = discount + '% OFF';
-
-      // Description
-      document.getElementById('product-description').textContent = product.description || 'A premium quality product from Anon eCommerce.';
-
-      // Wishlist button state
-      refreshWishlistBtn();
-
-      // Related products
-      renderRelated(product);
-
-      // Update badge counts
-      updateBadges();
+    }
+    document.getElementById('search-input').addEventListener('keyup', (e) => {
+      if (e.key === 'Enter') handleGlobalSearch();
     });
 
-    function incrementQty() {
-      qty++;
-      document.getElementById('qty-display').textContent = qty;
-    }
+    let currentQty = 1;
+    let currentProduct = null;
 
-    function decrementQty() {
-      if (qty > 1) {
-        qty--;
-        document.getElementById('qty-display').textContent = qty;
-      }
-    }
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Robust ID Detection (Hash > Search > Regex)
+      const urlParams = new URLSearchParams(window.location.search);
+      const hashParams = new URLSearchParams(window.location.hash.substring(1));
+      let rawId = hashParams.get('id') || urlParams.get('id');
 
-    function addToCartFromDetail() {
-      const product = products.find(p => p.id === currentProductId);
-      if (!product) return;
-      const cart = getCart();
-      const existing = cart.find(item => item.id === currentProductId);
-      if (existing) {
-        existing.quantity += qty;
-      } else {
-        cart.push({ ...product, quantity: qty });
-      }
-      saveCart(cart);
-      showToast(product.name);
-    }
-
-    function toggleWishlistFromDetail() {
-      toggleWishlist(currentProductId);
-      refreshWishlistBtn();
-    }
-
-    function refreshWishlistBtn() {
-      const btn = document.getElementById('wishlist-btn');
-      const icon = document.getElementById('wish-icon');
-      const isLiked = getWishlist().some(item => item.id === currentProductId);
-      if (isLiked) {
-        btn.innerHTML = '<ion-icon name="heart" id="wish-icon"></ion-icon> In Wishlist';
-        btn.style.background = '#fff0f2';
-        btn.classList.add('active');
-      } else {
-        btn.innerHTML = '<ion-icon name="heart-outline" id="wish-icon"></ion-icon> Add to Wishlist';
-        btn.style.background = 'white';
-        btn.classList.remove('active');
-      }
-    }
-
-    function renderRelated(currentProduct) {
-      const container = document.getElementById('related-container');
-      if (!container) return;
-
-      let related = products.filter(p => p.category === currentProduct.category && p.id !== currentProduct.id);
-      if (related.length < 4) {
-        const others = products.filter(p => p.id !== currentProduct.id && !related.some(r => r.id === p.id));
-        related = [...related, ...others].slice(0, 4);
-      } else {
-        related = related.slice(0, 4);
+      if (!rawId) {
+        const match = window.location.href.match(/id=(\d+)/);
+        if (match) rawId = match[1];
       }
 
-      container.innerHTML = related.map(p => {
-        const disc = Math.round((1 - p.price / p.originalPrice) * 100);
-        let stars = '';
-        for (let i = 1; i <= 5; i++) {
-          stars += i <= p.rating
-            ? '<ion-icon name="star" style="color:#e8a838;font-size:13px;"></ion-icon>'
-            : '<ion-icon name="star-outline" style="color:#e8a838;font-size:13px;"></ion-icon>';
+      const id = parseInt(rawId);
+      console.log("Product Page Init - Detected ID:", id);
+
+      // 2. Product Loading Watcher
+      const checkProducts = setInterval(() => {
+        if (window.productsLoaded) {
+          clearInterval(checkProducts);
+          currentProduct = window.products.find(p => String(p.id) === String(id));
+
+          if (currentProduct) {
+            renderProductDetails();
+          } else {
+            showErrorUI(`Product ID ${id || 'unknown'} not found in database.`, true);
+          }
         }
-        return `
-          <div class="related-card" onclick="window.location='product.html?id=${p.id}'">
-            <div style="position:relative;">
-              <img src="${p.image}" alt="${p.name}">
-              <span style="position:absolute;top:10px;left:10px;background:#ff8f9c;color:white;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:700;">${disc}% OFF</span>
+      }, 100);
+
+      if (isNaN(id) && !rawId) {
+        clearInterval(checkProducts);
+        showErrorUI("No product ID was detected in the URL. Please go back to the shop.", false);
+      }
+
+      // 3. Set delivery date range
+      const today = new Date();
+      const start = new Date();
+      start.setDate(today.getDate() + 3);
+      const end = new Date();
+      end.setDate(today.getDate() + 7);
+      const options = { day: '2-digit', month: 'short' };
+      const deliveryEl = document.getElementById('delivery-range');
+      if (deliveryEl) {
+        deliveryEl.textContent = `${start.toLocaleDateString('en-GB', options)} - ${end.toLocaleDateString('en-GB', options)}, ${end.getFullYear()}`;
+      }
+    });
+
+    function showErrorUI(message, showDebug = false) {
+      const container = document.querySelector('.pd-section .container');
+      if (container) {
+        container.innerHTML = `
+          <div style="text-align:center; padding:100px 0; border:1px dashed #eee; border-radius:20px; background:#fafafa;">
+            <ion-icon name="alert-circle-outline" style="font-size:64px; color:#ff8f9c; margin-bottom:20px;"></ion-icon>
+            <h2 style="font-size:24px; font-weight:700; margin-bottom:15px; color:#333;">Product Not Found</h2>
+            <div style="color:#666; max-width:600px; margin:0 auto 30px; line-height:1.6; font-size:14px; padding:0 20px;">
+              <p>${message}</p>
+              ${showDebug ? `<div style="margin-top:20px; font-family:monospace; background:#eee; padding:15px; border-radius:8px; text-align:left; font-size:11px; overflow-x:auto;">
+                <strong>Debug Info:</strong><br>
+                1. Hash: ${window.location.hash} <br>
+                2. Search: ${window.location.search} <br>
+                3. Full URL: ${window.location.href}
+              </div>` : ''}
             </div>
-            <div class="related-card-body">
-              <p style="font-size:11px;color:#ff8f9c;text-transform:uppercase;font-weight:600;letter-spacing:0.6px;margin:0 0 4px;">${p.category}</p>
-              <h4 style="font-size:14px;font-weight:600;color:#1a1a1a;margin:0 0 8px;line-height:1.3;">${p.name}</h4>
-              <div style="display:flex;gap:1px;margin-bottom:8px;">${stars}</div>
-              <div style="display:flex;align-items:center;gap:8px;">
-                <span style="font-size:16px;font-weight:700;color:#ff8f9c;">₹${p.price}</span>
-                <del style="font-size:12px;color:#bbb;">₹${p.originalPrice}</del>
-              </div>
-            </div>
-          </div>`;
-      }).join('');
+            <a href="category" style="display:inline-block; background:#000; color:#fff; padding:14px 34px; border-radius:8px; text-decoration:none; font-weight:600; transition:all 0.2s;">Back to Shop</a>
+          </div>
+        `;
+      }
+    }
+
+    function renderProductDetails() {
+      document.title = `${currentProduct.name} - Crawlcore Solutions`;
+      document.getElementById('breadcrumb-category').textContent = currentProduct.category;
+      document.getElementById('breadcrumb-name').textContent = currentProduct.name;
+      document.getElementById('main-product-image').src = currentProduct.image;
+      document.getElementById('pd-name').textContent = currentProduct.name;
+      document.getElementById('pd-price').textContent = `₹${currentProduct.price.toLocaleString('en-IN')}.00`;
+      document.getElementById('views-count').textContent = Math.floor(Math.random() * 40) + 15;
+
+      // Rating stars
+      const starsContainer = document.getElementById('pd-stars');
+      let starsHtml = '';
+      for (let i = 1; i <= 5; i++) {
+        starsHtml += `<ion-icon name="${i <= currentProduct.rating ? 'star' : 'star-outline'}" style="color:${i <= currentProduct.rating ? '#e8a838' : '#ccc'}"></ion-icon>`;
+      }
+      starsContainer.innerHTML = starsHtml;
+
+      // Specifications
+      const specsList = document.getElementById('pd-specs-list');
+      const specs = generateSpecs(currentProduct);
+      specsList.innerHTML = Object.entries(specs).map(([label, value]) => `
+        <li class="pd-spec-item">${label} — ${value}</li>
+      `).join('');
+
+      // Thumbnails
+      const thumbContainer = document.getElementById('pd-thumbnails');
+      thumbContainer.innerHTML = `
+        <div class="pd-thumb active"><img src="${currentProduct.image}" onclick="changeMainImage(this)"></div>
+        <div class="pd-thumb"><img src="${currentProduct.image}" style="filter: hue-rotate(45deg);" onclick="changeMainImage(this)"></div>
+        <div class="pd-thumb"><img src="${currentProduct.image}" style="filter: saturate(0.5) brightness(1.2);" onclick="changeMainImage(this)"></div>
+      `;
+
+      // Related products (Filter by category, exclude current)
+      const relatedGrid = document.getElementById('related-products-grid');
+      const related = window.products.filter(p => p.category === currentProduct.category && p.id !== currentProduct.id).slice(0, 4);
+      relatedGrid.innerHTML = related.map(p => `
+        <div class="product-card" onclick="window.open('product.html#id=${p.id}', '_blank')" style="cursor:pointer; border:1px solid #eee; border-radius:8px; padding:10px;">
+          <img src="${p.image}" style="width:100%; height:180px; object-fit:contain; margin-bottom:10px;">
+          <h4 style="font-size:14px; margin-bottom:5px;">${p.name}</h4>
+          <span style="font-weight:700;">₹${p.price}</span>
+        </div>
+      `).join('');
+
+      updateBadges();
+    }
+
+    function generateSpecs(product) {
+      const base = {
+        "Brand": "Crawlcore Exclusive",
+        "Material": product.category === "Mens" ? "Premium Cotton Blend" : "Fine Rayon/Silk",
+        "Color": "Multicolor",
+        "Pattern": "Solid/Printed",
+        "Fit": "Regular Fit",
+        "Occasion": "Work/Casual/Evening Wear",
+        "Care": "Hand Wash Recommended"
+      };
+      if (product.name.toLowerCase().includes('shirt')) base["Sleeve"] = "Full Sleeve";
+      if (product.name.toLowerCase().includes('jacket')) base["Closure"] = "Button/Zipper";
+      return base;
+    }
+
+    function updateQty(val) {
+      currentQty = Math.max(1, currentQty + val);
+      document.getElementById('qty-display').textContent = currentQty;
+    }
+
+    function showTab(tabId, btn) {
+      document.querySelectorAll('.pd-tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.pd-tab-content').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+
+    function changeMainImage(img) {
+      document.getElementById('main-product-image').src = img.src;
+      document.querySelectorAll('.pd-thumb').forEach(t => t.classList.remove('active'));
+      img.parentElement.classList.add('active');
+    }
+
+    function handleAddToCart() {
+      const cart = typeof getCart === 'function' ? getCart() : [];
+      const existing = cart.find(item => item.id === currentProduct.id);
+      if (existing) existing.quantity += currentQty;
+      else cart.push({ ...currentProduct, quantity: currentQty });
+      if (typeof saveCart === 'function') saveCart(cart);
+
+      // Call unified global toast
+      if (typeof showToast === 'function') {
+        showToast(currentProduct.name, currentProduct.image);
+      }
+      updateBadges();
+    }
+
+    function handleBuyNow() {
+      handleAddToCart();
+      window.location.href = 'cart.html';
+    }
+
+    function handleGlobalSearch() {
+      const q = document.getElementById('search-input').value;
+      if (q) window.location.href = `category?q=${encodeURIComponent(q)}`;
+    }
+
+    function openQuestionModal() {
+      document.getElementById('questionModal').style.display = 'flex';
+    }
+
+    function closeQuestionModal() {
+      document.getElementById('questionModal').style.display = 'none';
+    }
+
+    function handleQuestionSubmit(e) {
+      e.preventDefault();
+      if (typeof showToast === 'function') {
+        showToast("Question Submitted!", "./assets/images/logo/logo.png");
+      }
+      closeQuestionModal();
+      e.target.reset();
+    }
+
+    // Close modal on outside click
+    window.onclick = function (event) {
+      const modal = document.getElementById('questionModal');
+      if (event.target == modal) {
+        closeQuestionModal();
+      }
     }
   </script>
 
+  <!-- Question Modal -->
+  <div class="modal-overlay" id="questionModal">
+    <div class="modal-box">
+      <span class="modal-close" onclick="closeQuestionModal()">&times;</span>
+      <h3 class="modal-title">Ask a Question</h3>
+      <form class="modal-form" onsubmit="handleQuestionSubmit(event)">
+        <input type="text" class="modal-input" placeholder="Your Name" required>
+        <input type="email" class="modal-input" placeholder="Your Email" required>
+        <textarea class="modal-input modal-textarea" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn-submit">Submit Now</button>
+      </form>
+    </div>
+  </div>
 </body>
+
 </html>

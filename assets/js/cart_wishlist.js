@@ -38,48 +38,119 @@ function addToCart(productId) {
       cart.push({ ...product, quantity: 1 });
     }
     saveCart(cart);
-    showToast(product.name);
+    showToast(product.name, product.image);
   }
 }
 
-function showToast(productName) {
+function showToast(productName, productImage) {
   // Remove any existing toast
   const existing = document.getElementById('cart-toast-msg');
   if (existing) existing.remove();
 
   const div = document.createElement('div');
   div.id = 'cart-toast-msg';
+  div.className = 'cart-notification-toast'; // Unique class name to avoid conflict
   div.style.cssText = [
-    'position:fixed', 'bottom:24px', 'right:24px', 'z-index:9999',
-    'background:#1a1a1a', 'color:#fff', 'padding:14px 20px',
-    'border-radius:10px', 'box-shadow:0 4px 20px rgba(0,0,0,0.25)',
-    'display:flex', 'align-items:center', 'gap:12px',
-    'font-size:14px', 'font-family:inherit', 'font-weight:500',
-    'max-width:320px', 'opacity:0', 'transform:translateY(16px)',
-    'transition:opacity 0.3s,transform 0.3s'
+    'position:fixed', 'bottom:100px', 'right:30px', 'z-index:99999',
+    'background:#fff', 'color:#333', 'padding:18px 24px',
+    'border-radius:16px', 'box-shadow:0 12px 40px rgba(0,0,0,0.18)',
+    'display:flex', 'align-items:center', 'gap:18px',
+    'font-size:14px', 'font-family:"Poppins", sans-serif', 'border-left:5px solid #ff8f9c',
+    'min-width:320px', 'opacity:0', 'transform:translateX(50px)',
+    'transition:all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+    'pointer-events:auto', 'animation:none' // Ensure no inherited animation
   ].join(';');
+
   div.innerHTML = `
-    <span style="background:#ff8f9c;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-    </span>
-    <span><strong style="display:block;color:#ff8f9c;font-size:13px;">Added to cart!</strong>${productName}</span>`;
+    <div style="width:64px;height:64px;border-radius:10px;overflow:hidden;background:#fef1f2;flex-shrink:0;display:flex;align-items:center;justify-content:center;border:1px solid #ffe4e6;">
+      <img src="${productImage}" alt="${productName}" style="max-width:90%;max-height:90%;object-fit:contain;">
+    </div>
+    <div style="flex-grow:1;">
+      <p style="color:#ff8f9c;font-weight:800;font-size:10px;text-transform:uppercase;margin:0 0 4px;letter-spacing:1px;display:flex;align-items:center;gap:5px;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+        Added to Cart
+      </p>
+      <h4 style="font-size:14px;font-weight:600;margin:0 0 4px;color:#111;line-height:1.3;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;">${productName}</h4>
+      <p style="color:#999;font-size:11px;margin:0;">Great pick! Check your cart now.</p>
+    </div>
+    <button onclick="this.parentElement.style.opacity='0';this.parentElement.style.transform='translateX(50px)';setTimeout(()=>this.parentElement.remove(),500)" style="background:none;border:none;color:#ddd;cursor:pointer;padding:8px;display:flex;transition:color 0.2s;" onmouseover="this.style.color='#ff8f9c'"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>`;
+  
   document.body.appendChild(div);
 
-  // Animate in
+  // Trigger animation
   requestAnimationFrame(() => {
-    div.style.opacity = '1';
-    div.style.transform = 'translateY(0)';
+    setTimeout(() => {
+      div.style.opacity = '1';
+      div.style.transform = 'translateX(0)';
+    }, 10);
   });
 
-  // Animate out & remove
-  setTimeout(() => {
-    div.style.opacity = '0';
-    div.style.transform = 'translateY(16px)';
-    setTimeout(() => div.remove(), 300);
-  }, 2500);
+  // Auto remove
+  const autoRemove = setTimeout(() => {
+    if (div.parentElement) {
+      div.style.opacity = '0';
+      div.style.transform = 'translateX(50px)';
+      setTimeout(() => div.remove(), 500);
+    }
+  }, 4000);
+
+  div.onmouseover = () => clearTimeout(autoRemove);
 }
 
-function toggleWishlist(productId) {
+function showWishlistToast(productName, productImage) {
+  // Remove any existing toast
+  const existing = document.getElementById('wishlist-toast-msg');
+  if (existing) existing.remove();
+
+  const div = document.createElement('div');
+  div.id = 'wishlist-toast-msg';
+  div.className = 'wishlist-notification-toast'; // Unique class
+  div.style.cssText = [
+    'position:fixed', 'bottom:100px', 'right:30px', 'z-index:99999',
+    'background:#fff', 'color:#333', 'padding:18px 24px',
+    'border-radius:16px', 'box-shadow:0 12px 40px rgba(0,0,0,0.18)',
+    'display:flex', 'align-items:center', 'gap:18px',
+    'font-size:14px', 'font-family:"Poppins", sans-serif', 'border-left:5px solid #e74c3c',
+    'min-width:320px', 'opacity:0', 'transform:translateX(50px)',
+    'transition:all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+    'pointer-events:auto', 'animation:none' // Ensure no inherited animation
+  ].join(';');
+
+  div.innerHTML = `
+    <div style="width:64px;height:64px;border-radius:10px;overflow:hidden;background:#fff5f6;flex-shrink:0;display:flex;align-items:center;justify-content:center;border:1px solid #fee2e2;">
+       <img src="${productImage}" alt="${productName}" style="max-width:90%;max-height:90%;object-fit:contain;">
+    </div>
+    <div style="flex-grow:1;">
+      <p style="color:#e74c3c;font-weight:800;font-size:10px;text-transform:uppercase;margin:0 0 4px;letter-spacing:1px;display:flex;align-items:center;gap:5px;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        Saved to Wishlist
+      </p>
+      <h4 style="font-size:14px;font-weight:600;margin:0 0 4px;color:#111;line-height:1.3;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;">${productName}</h4>
+      <p style="color:#999;font-size:11px;margin:0;">Added to your favorites list.</p>
+    </div>
+    <button onclick="this.parentElement.style.opacity='0';this.parentElement.style.transform='translateX(50px)';setTimeout(()=>this.parentElement.remove(),500)" style="background:none;border:none;color:#ddd;cursor:pointer;padding:8px;display:flex;transition:color 0.2s;" onmouseover="this.style.color='#e74c3c'"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>`;
+  
+  document.body.appendChild(div);
+
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      div.style.opacity = '1';
+      div.style.transform = 'translateX(0)';
+    }, 10);
+  });
+
+  const autoRemove = setTimeout(() => {
+    if (div.parentElement) {
+      div.style.opacity = '0';
+      div.style.transform = 'translateX(50px)';
+      setTimeout(() => div.remove(), 500);
+    }
+  }, 4000);
+
+  div.onmouseover = () => clearTimeout(autoRemove);
+}
+
+function toggleWishlist(productId, btn) {
   const wishlist = getWishlist();
   const productList = window.allProducts || [];
   const product = productList.find(p => p.id == productId);
@@ -89,13 +160,34 @@ function toggleWishlist(productId) {
       wishlist.splice(existingIndex, 1);
     } else {
       wishlist.push(product);
+      showWishlistToast(product.name, product.image);
+      
+      // Visual feedback on button
+      if (btn) {
+        const oldBg = btn.style.background;
+        const oldColor = btn.style.color;
+        const oldBorder = btn.style.borderColor;
+        
+        btn.style.background = '#e74c3c';
+        btn.style.color = '#fff';
+        btn.style.borderColor = '#e74c3c';
+        btn.style.transform = 'scale(1.1)';
+        btn.style.transition = 'all 0.3s ease';
+        
+        setTimeout(() => {
+          btn.style.background = oldBg;
+          btn.style.color = oldColor;
+          btn.style.borderColor = oldBorder;
+          btn.style.transform = 'scale(1)';
+        }, 1500);
+      }
     }
     saveWishlist(wishlist);
   }
 }
 
-function addToWishlist(productId) {
-  toggleWishlist(productId);
+function addToWishlist(productId, btn) {
+  toggleWishlist(productId, btn);
 }
 
 function updateBadges() {
@@ -154,11 +246,11 @@ function renderCart() {
     total += item.price * item.quantity;
     container.innerHTML += `
       <div style="display:flex;gap:20px;background:white;border-radius:12px;padding:20px;box-shadow:0 2px 10px rgba(0,0,0,0.06);width:100%;box-sizing:border-box;">
-        <a href="product.html?id=${item.id}" style="flex-shrink:0;">
+        <a href="product.html#id=${item.id}" style="flex-shrink:0;">
           <img src="${item.image}" alt="${item.name}" style="width:100px;height:100px;object-fit:cover;border-radius:8px;">
         </a>
         <div style="flex-grow:1;">
-          <a href="product.html?id=${item.id}" style="text-decoration:none;">
+          <a href="product.html#id=${item.id}" style="text-decoration:none;">
             <h3 style="font-size:16px;color:#1a1a1a;font-weight:600;margin:0 0 6px;">${item.name}</h3>
           </a>
           <p style="color:#ff8f9c;font-size:12px;text-transform:uppercase;font-weight:600;margin:0 0 8px;">${item.category}</p>
@@ -205,15 +297,15 @@ function renderWishlist() {
     const discount = Math.round((1 - product.price / product.originalPrice) * 100);
 
     container.innerHTML += `
-      <div class="showcase" onclick="window.location='product.html?id=${product.id}'" style="cursor:pointer;">
+      <div class="showcase" onclick="window.location='product.html#id=${product.id}'" style="cursor:pointer;">
         <div class="showcase-banner">
           <img src="${product.image}" alt="${product.name}" class="product-img default" style="height:260px;">
           <p class="showcase-badge pink">${discount}% Off</p>
           <div class="showcase-actions">
-            <button class="btn-action" onclick="event.stopPropagation(); toggleWishlist(${product.id}); renderWishlist();" title="Remove from Wishlist">
+            <button class="btn-action" onclick="event.stopPropagation(); toggleWishlist(${product.id}, this); renderWishlist();" title="Remove from Wishlist">
               <ion-icon name="${heartIcon}"></ion-icon>
             </button>
-            <button class="btn-action" onclick="event.stopPropagation(); window.location='product.html?id=${product.id}'" title="View Product">
+            <button class="btn-action" onclick="event.stopPropagation(); window.location='product.html#id=${product.id}'" title="View Product">
               <ion-icon name="eye-outline"></ion-icon>
             </button>
             <button class="btn-action" onclick="event.stopPropagation(); addToCart(${product.id})" title="Add to Cart">
@@ -222,8 +314,8 @@ function renderWishlist() {
           </div>
         </div>
         <div class="showcase-content">
-          <a href="product.html?id=${product.id}" class="showcase-category" onclick="event.stopPropagation();">${product.category}</a>
-          <a href="product.html?id=${product.id}" style="text-decoration:none;" onclick="event.stopPropagation();">
+          <a href="product.html#id=${product.id}" class="showcase-category" onclick="event.stopPropagation();">${product.category}</a>
+          <a href="product.html#id=${product.id}" style="text-decoration:none;" onclick="event.stopPropagation();">
             <h3 class="showcase-title">${product.name}</h3>
           </a>
           <div class="showcase-rating">

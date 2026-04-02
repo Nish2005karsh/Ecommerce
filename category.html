@@ -5,13 +5,14 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shop by Category - Anon</title>
+  <title>Shop by Category - Crawlcore Solutions</title>
 
   <link rel="shortcut icon" href="./assets/images/logo/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="./assets/css/style-prefix.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
 
   <style>
     .category-hero {
@@ -19,6 +20,7 @@
       padding: 48px 0 36px;
       text-align: center;
     }
+
     .category-hero .hero-title {
       font-size: 32px;
       font-weight: 700;
@@ -26,10 +28,12 @@
       margin-bottom: 8px;
       letter-spacing: -0.5px;
     }
+
     .category-hero .hero-subtitle {
-      color: rgba(255,255,255,0.65);
+      color: rgba(255, 255, 255, 0.65);
       font-size: 15px;
     }
+
     .category-hero .breadcrumb {
       display: flex;
       justify-content: center;
@@ -38,10 +42,24 @@
       margin-bottom: 16px;
       font-size: 13px;
     }
-    .category-hero .breadcrumb a { color: rgba(255,255,255,0.6); text-decoration: none; }
-    .category-hero .breadcrumb a:hover { color: #ff8f9c; }
-    .category-hero .breadcrumb span { color: rgba(255,255,255,0.4); }
-    .category-hero .breadcrumb .current { color: #ff8f9c; font-weight: 600; }
+
+    .category-hero .breadcrumb a {
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+    }
+
+    .category-hero .breadcrumb a:hover {
+      color: #ff8f9c;
+    }
+
+    .category-hero .breadcrumb span {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .category-hero .breadcrumb .current {
+      color: #ff8f9c;
+      font-weight: 600;
+    }
 
     .category-filter-bar {
       background: #fff;
@@ -50,8 +68,9 @@
       position: sticky;
       top: 0;
       z-index: 10;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
+
     .category-filter-bar .container {
       display: flex;
       align-items: center;
@@ -59,11 +78,13 @@
       gap: 16px;
       flex-wrap: wrap;
     }
+
     .filter-pills {
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
     }
+
     .filter-pill {
       padding: 6px 16px;
       border-radius: 20px;
@@ -77,11 +98,14 @@
       font-family: inherit;
       text-decoration: none;
     }
-    .filter-pill:hover, .filter-pill.active {
+
+    .filter-pill:hover,
+    .filter-pill.active {
       background: #ff8f9c;
       border-color: #ff8f9c;
       color: #fff;
     }
+
     .sort-select {
       padding: 8px 14px;
       border: 1.5px solid #e0e0e0;
@@ -93,24 +117,32 @@
       cursor: pointer;
       outline: none;
     }
-    .sort-select:focus { border-color: #ff8f9c; }
+
+    .sort-select:focus {
+      border-color: #ff8f9c;
+    }
 
     .category-main {
       padding: 40px 0 60px;
       background: #f8f9fa;
       min-height: 60vh;
     }
+
     .results-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 24px;
     }
+
     .results-count {
       font-size: 14px;
       color: #888;
     }
-    .results-count strong { color: #1a1a1a; }
+
+    .results-count strong {
+      color: #1a1a1a;
+    }
 
     #product-container.product-grid {
       background: transparent;
@@ -121,13 +153,18 @@
       padding: 80px 20px;
       grid-column: 1 / -1;
     }
+
     .no-results ion-icon {
       font-size: 64px;
       color: #ddd;
       display: block;
       margin: 0 auto 20px;
     }
-    .no-results p { font-size: 18px; color: #999; }
+
+    .no-results p {
+      font-size: 18px;
+      color: #999;
+    }
   </style>
 </head>
 
@@ -159,16 +196,17 @@
     <div class="header-main">
       <div class="container">
         <a href="index.html" class="header-logo">
-          <img src="./assets/images/logo/logo.svg" alt="Anon's logo" width="120" height="36">
+          <img src="./assets/images/logo/logo.png" alt="Crawlcore's logo" width="180" height="100">
         </a>
         <div class="header-search-container">
-          <input type="search" name="search" class="search-field" placeholder="Enter your product name..." id="search-input">
+          <input type="search" name="search" class="search-field" placeholder="Enter your product name..."
+            id="search-input">
           <button class="search-btn" onclick="handleSearch()">
             <ion-icon name="search-outline"></ion-icon>
           </button>
         </div>
         <div class="header-user-actions">
-          <button class="action-btn"><ion-icon name="person-outline"></ion-icon></button>
+
           <a href="wishlist.html" class="action-btn">
             <ion-icon name="heart-outline"></ion-icon>
             <span class="count">0</span>
@@ -188,79 +226,32 @@
             <a href="index.html" class="menu-title">Home</a>
           </li>
           <li class="menu-category">
-            <a href="category.html" class="menu-title">Categories</a>
-            <div class="dropdown-panel">
-              <ul class="dropdown-panel-list">
-                <li class="menu-title"><a href="#">Electronics</a></li>
-                <li class="panel-list-item"><a href="#">Desktop</a></li>
-                <li class="panel-list-item"><a href="#">Laptop</a></li>
-                <li class="panel-list-item"><a href="#">Camera</a></li>
-                <li class="panel-list-item"><a href="#">Tablet</a></li>
-                <li class="panel-list-item"><a href="#">Headphone</a></li>
-                <li class="panel-list-item"><a href="#"><img src="./assets/images/electronics-banner-1.jpg" alt="headphone collection" width="250" height="119"></a></li>
-              </ul>
-              <ul class="dropdown-panel-list">
-                <li class="menu-title"><a href="#">Men's</a></li>
-                <li class="panel-list-item"><a href="#">Formal</a></li>
-                <li class="panel-list-item"><a href="#">Casual</a></li>
-                <li class="panel-list-item"><a href="#">Sports</a></li>
-                <li class="panel-list-item"><a href="#">Jacket</a></li>
-                <li class="panel-list-item"><a href="#">Sunglasses</a></li>
-                <li class="panel-list-item"><a href="#"><img src="./assets/images/mens-banner.jpg" alt="men's fashion" width="250" height="119"></a></li>
-              </ul>
-              <ul class="dropdown-panel-list">
-                <li class="menu-title"><a href="#">Women's</a></li>
-                <li class="panel-list-item"><a href="#">Formal</a></li>
-                <li class="panel-list-item"><a href="#">Casual</a></li>
-                <li class="panel-list-item"><a href="#">Perfume</a></li>
-                <li class="panel-list-item"><a href="#">Cosmetics</a></li>
-                <li class="panel-list-item"><a href="#">Bags</a></li>
-                <li class="panel-list-item"><a href="#"><img src="./assets/images/womens-banner.jpg" alt="women's fashion" width="250" height="119"></a></li>
-              </ul>
-              <ul class="dropdown-panel-list">
-                <li class="menu-title"><a href="#">Electronics</a></li>
-                <li class="panel-list-item"><a href="#">Smart Watch</a></li>
-                <li class="panel-list-item"><a href="#">Smart TV</a></li>
-                <li class="panel-list-item"><a href="#">Keyboard</a></li>
-                <li class="panel-list-item"><a href="#">Mouse</a></li>
-                <li class="panel-list-item"><a href="#">Microphone</a></li>
-                <li class="panel-list-item"><a href="#"><img src="./assets/images/electronics-banner-2.jpg" alt="mouse collection" width="250" height="119"></a></li>
-              </ul>
-            </div>
+            <a href="category" class="menu-title">All Categories</a>
           </li>
           <li class="menu-category">
-            <a href="category.html?cat=Mens" class="menu-title">Men's</a>
+            <a href="category?cat=Mens" class="menu-title">Men's</a>
             <ul class="dropdown-list">
-              <li class="dropdown-item"><a href="#">Shirt</a></li>
-              <li class="dropdown-item"><a href="#">Shorts &amp; Jeans</a></li>
-              <li class="dropdown-item"><a href="#">Safety Shoes</a></li>
-              <li class="dropdown-item"><a href="#">Wallet</a></li>
+              <li class="dropdown-item"><a href="category?cat=Mens&tag=shirt">Shirts</a></li>
+              <li class="dropdown-item"><a href="category?cat=Mens&tag=jeans">Jeans</a></li>
+              <li class="dropdown-item"><a href="category?cat=Mens&tag=jacket">Jackets</a></li>
+              <li class="dropdown-item"><a href="category?cat=Mens&tag=t-shirt">T-shirts</a></li>
+              <li class="dropdown-item"><a href="category?cat=Mens&tag=kurta">Kurtas</a></li>
             </ul>
           </li>
           <li class="menu-category">
-            <a href="category.html?cat=Womens" class="menu-title">Women's</a>
+            <a href="category?cat=Womens" class="menu-title">Women's</a>
             <ul class="dropdown-list">
-              <li class="dropdown-item"><a href="#">Dress &amp; Frock</a></li>
-              <li class="dropdown-item"><a href="#">Earrings</a></li>
-              <li class="dropdown-item"><a href="#">Necklace</a></li>
-              <li class="dropdown-item"><a href="#">Makeup Kit</a></li>
-            </ul>
-          </li>
-
-          <li class="menu-category">
-            <a href="category.html?cat=Perfume" class="menu-title">Perfume</a>
-            <ul class="dropdown-list">
-              <li class="dropdown-item"><a href="#">Clothes Perfume</a></li>
-              <li class="dropdown-item"><a href="#">Deodorant</a></li>
-              <li class="dropdown-item"><a href="#">Flower Fragrance</a></li>
-              <li class="dropdown-item"><a href="#">Air Freshener</a></li>
+              <li class="dropdown-item"><a href="category?cat=Womens&tag=dress">Dresses</a></li>
+              <li class="dropdown-item"><a href="category?cat=Womens&tag=top">Tops</a></li>
+              <li class="dropdown-item"><a href="category?cat=Womens&tag=kurti">Kurtis</a></li>
+              <li class="dropdown-item"><a href="category?cat=Womens&tag=jeans">Jeans</a></li>
             </ul>
           </li>
           <li class="menu-category">
-            <a href="#" class="menu-title">Blog</a>
+            <a href="category?cat=Home%20decor" class="menu-title">Home Decor</a>
           </li>
           <li class="menu-category">
-            <a href="category.html?cat=offers" class="menu-title">Hot Offers</a>
+            <a href="category?cat=offers" class="menu-title">Hot Offers</a>
           </li>
         </ul>
       </div>
@@ -306,10 +297,11 @@
             </div>
           </button>
           <ul class="submenu-category-list" data-accordion>
-            <li class="submenu-category"><a href="#" class="submenu-title">Shirt</a></li>
-            <li class="submenu-category"><a href="#" class="submenu-title">Shorts &amp; Jeans</a></li>
-            <li class="submenu-category"><a href="#" class="submenu-title">Safety Shoes</a></li>
-            <li class="submenu-category"><a href="#" class="submenu-title">Wallet</a></li>
+            <li class="submenu-category"><a href="category?cat=Mens&tag=shirt" class="submenu-title">Shirts</a></li>
+            <li class="submenu-category"><a href="category?cat=Mens&tag=jeans" class="submenu-title">Jeans</a></li>
+            <li class="submenu-category"><a href="category?cat=Mens&tag=jacket" class="submenu-title">Jackets</a></li>
+            <li class="submenu-category"><a href="category?cat=Mens&tag=t-shirt" class="submenu-title">T-shirts</a></li>
+            <li class="submenu-category"><a href="category?cat=Mens&tag=kurta" class="submenu-title">Kurtas</a></li>
           </ul>
         </li>
         <li class="menu-category">
@@ -321,30 +313,18 @@
             </div>
           </button>
           <ul class="submenu-category-list" data-accordion>
-            <li class="submenu-category"><a href="#" class="submenu-title">Dress &amp; Frock</a></li>
-            <li class="submenu-category"><a href="#" class="submenu-title">Earrings</a></li>
-            <li class="submenu-category"><a href="#" class="submenu-title">Necklace</a></li>
-            <li class="submenu-category"><a href="#" class="submenu-title">Makeup Kit</a></li>
+            <li class="submenu-category"><a href="category?cat=Womens&tag=dress" class="submenu-title">Dresses</a></li>
+            <li class="submenu-category"><a href="category?cat=Womens&tag=top" class="submenu-title">Tops</a></li>
+            <li class="submenu-category"><a href="category?cat=Womens&tag=kurti" class="submenu-title">Kurtis</a></li>
+            <li class="submenu-category"><a href="category?cat=Womens&tag=jeans" class="submenu-title">Jeans</a></li>
           </ul>
         </li>
-
         <li class="menu-category">
-          <button class="accordion-menu" data-accordion-btn>
-            <p class="menu-title">Perfume</p>
-            <div>
-              <ion-icon name="add-outline" class="add-icon"></ion-icon>
-              <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-            </div>
-          </button>
-          <ul class="submenu-category-list" data-accordion>
-            <li class="submenu-category"><a href="#" class="submenu-title">Clothes Perfume</a></li>
-            <li class="submenu-category"><a href="#" class="submenu-title">Deodorant</a></li>
-            <li class="submenu-category"><a href="#" class="submenu-title">Flower Fragrance</a></li>
-            <li class="submenu-category"><a href="#" class="submenu-title">Air Freshener</a></li>
-          </ul>
+          <a href="category?cat=Home%20decor" class="menu-title">Home Decor</a>
         </li>
-        <li class="menu-category"><a href="#" class="menu-title">Blog</a></li>
-        <li class="menu-category"><a href="category.html?cat=offers" class="menu-title">Hot Offers</a></li>
+        <li class="menu-category">
+          <a href="category?cat=offers" class="menu-title">Hot Offers</a>
+        </li>
       </ul>
     </nav>
 
@@ -375,14 +355,11 @@
   <div class="category-filter-bar">
     <div class="container">
       <div class="filter-pills" id="filter-pills">
-        <a href="category.html" class="filter-pill" data-cat="">All</a>
-        <a href="category.html?cat=Mens" class="filter-pill" data-cat="Mens">Men's</a>
-        <a href="category.html?cat=Womens" class="filter-pill" data-cat="Womens">Women's</a>
-
-        <a href="category.html?cat=Perfume" class="filter-pill" data-cat="Perfume">Perfume</a>
-        <a href="category.html?cat=Sports" class="filter-pill" data-cat="Sports">Sports</a>
-        <a href="category.html?cat=Accessories" class="filter-pill" data-cat="Accessories">Accessories</a>
-        <a href="category.html?cat=offers" class="filter-pill" data-cat="offers">Hot Offers</a>
+        <a href="category" class="filter-pill" data-cat="">All</a>
+        <a href="category?cat=Mens" class="filter-pill" data-cat="Mens">Men's</a>
+        <a href="category?cat=Womens" class="filter-pill" data-cat="Womens">Women's</a>
+        <a href="category?cat=Home decor" class="filter-pill" data-cat="Home decor">Home Decor</a>
+        <a href="category?cat=offers" class="filter-pill" data-cat="offers">Hot Offers</a>
       </div>
       <select class="sort-select" id="sort-select" onchange="applySortAndRender()">
         <option value="default">Sort: Default</option>
@@ -400,11 +377,153 @@
   -->
 
   <main class="category-main">
-    <div class="container">
-      <div class="results-header">
-        <p class="results-count" id="results-count"><strong>0</strong> products found</p>
-      </div>
-      <div id="product-container" class="product-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px;">
+    <div class="product-container">
+      <div class="container">
+
+        <!--
+          - SIDEBAR
+        -->
+
+        <div class="sidebar  has-scrollbar" data-mobile-menu>
+
+          <div class="sidebar-category">
+
+            <div class="sidebar-top">
+              <h2 class="sidebar-title">Category</h2>
+
+              <button class="sidebar-close-btn" data-mobile-menu-close-btn>
+                <ion-icon name="close-outline"></ion-icon>
+              </button>
+            </div>
+
+            <ul class="sidebar-menu-category-list">
+
+              <li class="sidebar-menu-category">
+
+                <button class="sidebar-accordion-menu" data-accordion-btn>
+
+                  <div class="menu-title-flex">
+                    <img src="./assets/images/icons/dress.svg" alt="mens" width="20" height="20" class="menu-title-img">
+
+                    <p class="menu-title">Mens Clothing</p>
+                  </div>
+
+                  <div>
+                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+                  </div>
+
+                </button>
+
+                <ul class="sidebar-submenu-category-list" data-accordion>
+
+                  <li class="sidebar-submenu-category">
+                    <a href="category?cat=Mens&sub=Shirt" class="sidebar-submenu-title">
+                      <p class="product-name">Shirts</p>
+                    </a>
+                  </li>
+
+                  <li class="sidebar-submenu-category">
+                    <a href="category?cat=Mens&sub=Jeans" class="sidebar-submenu-title">
+                      <p class="product-name">Jeans</p>
+                    </a>
+                  </li>
+
+                  <li class="sidebar-submenu-category">
+                    <a href="category?cat=Mens&sub=Jacket" class="sidebar-submenu-title">
+                      <p class="product-name">Jackets</p>
+                    </a>
+                  </li>
+
+                  <li class="sidebar-submenu-category">
+                    <a href="category?cat=Mens&sub=T-shirt" class="sidebar-submenu-title">
+                      <p class="product-name">T-shirts</p>
+                    </a>
+                  </li>
+
+                  <li class="sidebar-submenu-category">
+                    <a href="category?cat=Mens&sub=Kurta" class="sidebar-submenu-title">
+                      <p class="product-name">Kurtas</p>
+                    </a>
+                  </li>
+
+                </ul>
+
+              </li>
+
+              <li class="sidebar-menu-category">
+
+                <button class="sidebar-accordion-menu" data-accordion-btn>
+
+                  <div class="menu-title-flex">
+                    <img src="./assets/images/icons/dress.svg" alt="womens" class="menu-title-img" width="20"
+                      height="20">
+
+                    <p class="menu-title">Womens Clothing</p>
+                  </div>
+
+                  <div>
+                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+                  </div>
+
+                </button>
+
+                <ul class="sidebar-submenu-category-list" data-accordion>
+
+                  <li class="sidebar-submenu-category">
+                    <a href="category?cat=Womens&sub=Dress" class="sidebar-submenu-title">
+                      <p class="product-name">Dresses</p>
+                    </a>
+                  </li>
+
+                  <li class="sidebar-submenu-category">
+                    <a href="category?cat=Womens&sub=Top" class="sidebar-submenu-title">
+                      <p class="product-name">Tops</p>
+                    </a>
+                  </li>
+
+                  <li class="sidebar-submenu-category">
+                    <a href="category?cat=Womens&sub=Kurti" class="sidebar-submenu-title">
+                      <p class="product-name">Kurtis</p>
+                    </a>
+                  </li>
+
+                  <li class="sidebar-submenu-category">
+                    <a href="category?cat=Womens&sub=Jeans" class="sidebar-submenu-title">
+                      <p class="product-name">Jeans</p>
+                    </a>
+                  </li>
+
+                </ul>
+
+              </li>
+
+              <li class="sidebar-menu-category">
+                <a href="category?cat=Home%20decor" class="sidebar-accordion-menu"
+                  style="display:flex; justify-content:space-between; align-items:center; width:100%; padding: 10px 0;">
+                  <div class="menu-title-flex">
+                    <img src="./assets/images/icons/dress.svg" alt="home decor" class="menu-title-img" width="20"
+                      height="20">
+                    <p class="menu-title">Home Decor</p>
+                  </div>
+                </a>
+              </li>
+
+            </ul>
+
+          </div>
+        </div>
+
+        <div class="product-box">
+          <div class="results-header">
+            <p class="results-count" id="results-count"><strong>0</strong> products found</p>
+          </div>
+          <div id="product-container" class="product-grid"
+            style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px;">
+          </div>
+        </div>
+
       </div>
     </div>
   </main>
@@ -414,46 +533,77 @@
     - FOOTER
   -->
 
-    <!-- FOOTER -->
+  <!-- FOOTER -->
   <footer style="background:#fff; border-top:1px solid #e8e8e8; font-family:'Poppins',sans-serif;">
-    <div style="max-width:1200px; margin:0 auto; padding:52px 24px 36px; display:grid; grid-template-columns:1fr 1.2fr 1fr 1fr; gap:48px;">
+    <div
+      style="max-width:1200px; margin:0 auto; padding:52px 24px 36px; display:grid; grid-template-columns:1fr 1.2fr 1fr 1fr; gap:48px;">
       <div>
-        <a href="index.html" style="display:inline-block; margin-bottom:14px;"><img src="./assets/images/logo/logo.svg" alt="Crawlcore Solutions" style="height:48px; width:auto;"></a>
-        <p style="font-size:13px; font-weight:700; color:#222; line-height:1.55; margin:0; text-transform:uppercase; letter-spacing:0.3px;">Crawlcore Solutions<br>Private Limited</p>
+        <a href="index.html" style="display:inline-block; margin-bottom:14px;"><img src="./assets/images/logo/logo.png"
+            alt="Crawlcore Solutions" style="height:48px; width:auto;"></a>
+        <p
+          style="font-size:13px; font-weight:700; color:#222; line-height:1.55; margin:0; text-transform:uppercase; letter-spacing:0.3px;">
+          Crawlcore Solutions<br>Private Limited</p>
       </div>
       <div>
         <h3 style="font-size:15px; font-weight:700; color:#111; margin:0 0 20px; letter-spacing:0.2px;">Company</h3>
         <div style="display:flex; gap:10px; margin-bottom:16px; align-items:flex-start;">
-          <span style="margin-top:2px; flex-shrink:0; color:#555;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-          <p style="font-size:13px; color:#555; line-height:1.7; margin:0;">UG 27, Shakuntala Complex,<br>Aurangabad, Mathura,<br>Uttar Pradesh – 281006</p>
+          <span style="margin-top:2px; flex-shrink:0; color:#555;"><svg width="16" height="16" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg></span>
+          <p style="font-size:13px; color:#555; line-height:1.7; margin:0;">UG 27, Shakuntala Complex,<br>Aurangabad,
+            Mathura,<br>Uttar Pradesh – 281006</p>
         </div>
         <div style="display:flex; gap:10px; margin-bottom:14px; align-items:center;">
-          <span style="color:#555; flex-shrink:0;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.1 11.6a19.53 19.53 0 0 1-3.07-8.67A2 2 0 0 1 3 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg></span>
+          <span style="color:#555; flex-shrink:0;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.1 11.6a19.53 19.53 0 0 1-3.07-8.67A2 2 0 0 1 3 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z" />
+            </svg></span>
           <a href="tel:+919983685627" style="font-size:13px; color:#555; text-decoration:none;">+91 9983685627</a>
         </div>
         <div style="display:flex; gap:10px; align-items:center;">
-          <span style="color:#555; flex-shrink:0;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
-          <a href="mailto:support@crawlcoresolutions.com" style="font-size:13px; color:#555; text-decoration:none;">support@crawlcoresolutions.com</a>
+          <span style="color:#555; flex-shrink:0;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg></span>
+          <a href="mailto:Crawlcoresolution@gmail.com"
+            style="font-size:13px; color:#555; text-decoration:none;">Crawlcoresolution@gmail.com</a>
         </div>
       </div>
       <div>
         <h3 style="font-size:15px; font-weight:700; color:#111; margin:0 0 20px; letter-spacing:0.2px;">Information</h3>
         <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px;">
-          <li><a href="index.html" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Home</a></li>
-          <li><a href="category.html" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Shop</a></li>
-          <li><a href="services.html" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Services</a></li>
-          <li><a href="#" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">About</a></li>
-          <li><a href="#" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Contact</a></li>
+          <li><a href="index.html"
+              style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Home</a></li>
+          <li><a href="category"
+              style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Shop</a></li>
+          <li><a href="services.html"
+              style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Services</a></li>
+          <li><a href="about.html"
+              style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">About</a></li>
+          <li><a href="contact.html"
+              style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Contact</a></li>
         </ul>
       </div>
       <div>
         <h3 style="font-size:15px; font-weight:700; color:#111; margin:0 0 20px; letter-spacing:0.2px;">Contact</h3>
         <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px;">
-          <li><a href="terms-conditions.html" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Terms &amp; Conditions</a></li>
-          <li><a href="privacy-policy.html" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Privacy Policy</a></li>
-          <li><a href="refund-returns.html" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s; line-height:1.5;">Refund &amp; Returns</a></li>
-          <li><a href="cancellation-policy.html" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Cancellation Policy</a></li>
-          <li><a href="shipping-policy.html" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Shipping Policy</a></li>
+          <li><a href="terms-conditions.html"
+              style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Terms &amp;
+              Conditions</a></li>
+          <li><a href="privacy-policy.html"
+              style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Privacy Policy</a></li>
+          <li><a href="refund-returns.html"
+              style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s; line-height:1.5;">Refund
+              &amp; Returns</a></li>
+          <li><a href="cancellation-policy.html"
+              style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Cancellation Policy</a>
+          </li>
+          <li><a href="shipping-policy.html"
+              style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Shipping Policy</a></li>
         </ul>
       </div>
     </div>
@@ -475,32 +625,65 @@
 
     const urlParams = new URLSearchParams(window.location.search);
     const catParam = urlParams.get('cat') || '';
+    const subParam = urlParams.get('sub') || '';
+    const tagParam = urlParams.get('tag') || '';
+    const qParam = urlParams.get('q') || '';
 
     // Category metadata
     const categoryMeta = {
-      'Mens':        { title: "Men's Collection", subtitle: "Premium menswear — shirts, jackets, casual & formal" },
-      'Womens':      { title: "Women's Collection", subtitle: "Elegant womenswear — dresses, tops, blouses & more" },
-
-      'Perfume':     { title: "Perfume & Fragrance", subtitle: "Long-lasting fragrances for every mood and occasion" },
-      'Sports':      { title: "Sports & Fitness", subtitle: "Gear up for your active lifestyle" },
-      'Accessories': { title: "Accessories", subtitle: "Belts, watches and everyday essentials" },
-      'offers':      { title: "Hot Offers", subtitle: "Biggest discounts — limited time deals" },
+      'Mens': { title: "Men's Collection", subtitle: "Premium menswear — shirts, jackets, casual & formal" },
+      'Womens': { title: "Women's Collection", subtitle: "Elegant womenswear — dresses, tops, blouses & more" },
+      'Home decor': { title: "Home Decor", subtitle: "Beautiful items to decorate your living space" },
+      'offers': { title: "Hot Offers", subtitle: "Biggest discounts — limited time deals" },
     };
 
-    function getCategoryLabel(cat) {
-      const labels = { Mens: "Men's", Womens: "Women's", Perfume: "Perfume",
-        Sports: "Sports", Accessories: "Accessories", offers: "Hot Offers" };
-      return labels[cat] || "All Products";
+    function getCategoryLabel(cat, sub, tag, q) {
+      if (q) return `Search: "${q}"`;
+      const labels = {
+        Mens: "Men's", Womens: "Women's", 'Home decor': "Home Decor", offers: "Hot Offers"
+      };
+      const catLabel = labels[cat] || "";
+      const tagLabel = tag ? tag.charAt(0).toUpperCase() + tag.slice(1) : "";
+
+      if (catLabel && tagLabel) return `${catLabel} ${tagLabel}s`;
+      if (tagLabel) return tagLabel + "s";
+      if (sub) return sub;
+      return catLabel || "All Products";
     }
 
-    function getFilteredProducts(cat, sortBy) {
-      let list;
-      if (!cat) {
-        list = [...products];
-      } else if (cat === 'offers') {
-        list = products.filter(p => Math.round((1 - p.price / p.originalPrice) * 100) >= 30);
-      } else {
-        list = products.filter(p => p.category === cat);
+    function getFilteredProducts(cat, sortBy, sub, tag, q) {
+      let list = [...(window.products || [])];
+
+      // Filter by Search Query
+      if (q) {
+        const query = q.toLowerCase();
+        list = list.filter(p =>
+          p.name.toLowerCase().includes(query) ||
+          p.category.toLowerCase().includes(query) ||
+          (p.tags && p.tags.some(t => t.toLowerCase().includes(query)))
+        );
+      }
+
+      // Filter by Category
+      if (cat) {
+        const c = cat.toLowerCase().replace(/['\s]/g, ""); // strip space and quotes
+        if (c === 'offers') {
+          list = list.filter(p => Math.round((1 - p.price / p.originalPrice) * 100) >= 30);
+        } else {
+          list = list.filter(p => p.category.toLowerCase().replace(/['\s]/g, "") === c);
+        }
+      }
+
+      // Filter by Tag (Priority Subcategory)
+      if (tag) {
+        const t = tag.toLowerCase();
+        list = list.filter(p => p.tags && p.tags.some(pt => pt.toLowerCase() === t));
+      }
+
+      // Filter by Subcategory (Legacy support)
+      if (sub && !tag) {
+        const s = sub.toLowerCase();
+        list = list.filter(p => p.name.toLowerCase().includes(s));
       }
 
       if (sortBy === 'price-asc') list.sort((a, b) => a.price - b.price);
@@ -530,7 +713,7 @@
         container.innerHTML = `<div class="no-results">
           <ion-icon name="bag-outline"></ion-icon>
           <p>No products found in this category.</p>
-          <a href="category.html" style="display:inline-block;margin-top:20px;padding:12px 28px;background:#ff8f9c;color:white;border-radius:8px;text-decoration:none;font-weight:600;">Browse All Products</a>
+          <a href="category" style="display:inline-block;margin-top:20px;padding:12px 28px;background:#ff8f9c;color:white;border-radius:8px;text-decoration:none;font-weight:600;">Browse All Products</a>
         </div>`;
         return;
       }
@@ -541,15 +724,15 @@
         const discount = Math.round((1 - product.price / product.originalPrice) * 100);
 
         container.innerHTML += `
-          <div class="showcase" onclick="window.location='product.html?id=${product.id}'" style="cursor:pointer;">
+          <div class="showcase" onclick="window.open('product.html#id=${product.id}', '_blank')" style="cursor:pointer;">
             <div class="showcase-banner">
               <img src="${product.image}" alt="${product.name}" class="product-img default" style="height:260px;">
               <p class="showcase-badge pink">${discount}% Off</p>
               <div class="showcase-actions">
-                <button class="btn-action" onclick="event.stopPropagation(); catToggleWishlist(${product.id})" title="${isLiked ? 'Remove from Wishlist' : 'Add to Wishlist'}">
+                <button class="btn-action" onclick="event.stopPropagation(); catToggleWishlist(${product.id}, this)" title="${isLiked ? 'Remove from Wishlist' : 'Add to Wishlist'}">
                   <ion-icon name="${heartIcon}"></ion-icon>
                 </button>
-                <button class="btn-action" onclick="event.stopPropagation(); window.location='product.html?id=${product.id}'" title="Quick View">
+                <button class="btn-action" onclick="event.stopPropagation(); window.open('product.html#id=${product.id}', '_blank')" title="Quick View">
                   <ion-icon name="eye-outline"></ion-icon>
                 </button>
                 <button class="btn-action" onclick="event.stopPropagation(); addToCart(${product.id})" title="Add to Cart">
@@ -558,8 +741,8 @@
               </div>
             </div>
             <div class="showcase-content">
-              <a href="product.html?id=${product.id}" class="showcase-category" onclick="event.stopPropagation();">${product.category}</a>
-              <a href="product.html?id=${product.id}" style="text-decoration:none;" onclick="event.stopPropagation();">
+              <a href="product.html#id=${product.id}" target="_blank" class="showcase-category" onclick="event.stopPropagation();">${product.category}</a>
+              <a href="product.html#id=${product.id}" target="_blank" style="text-decoration:none;" onclick="event.stopPropagation();">
                 <h3 class="showcase-title">${product.name}</h3>
               </a>
               <div class="showcase-rating">
@@ -578,14 +761,14 @@
         `<strong>${productList.length}</strong> product${productList.length !== 1 ? 's' : ''} found`;
     }
 
-    function catToggleWishlist(productId) {
-      toggleWishlist(productId);
+    function catToggleWishlist(productId, btn) {
+      toggleWishlist(productId, btn);
       applySortAndRender();
     }
 
     function applySortAndRender() {
       const sort = document.getElementById('sort-select').value;
-      const list = getFilteredProducts(catParam, sort);
+      const list = getFilteredProducts(catParam, sort, subParam, tagParam, qParam);
       renderCategoryProducts(list);
       updateBadges();
     }
@@ -593,29 +776,47 @@
     document.addEventListener('DOMContentLoaded', function () {
       // Set page header text
       const meta = catParam ? categoryMeta[catParam] : null;
-      const label = getCategoryLabel(catParam);
+      const label = getCategoryLabel(catParam, subParam, tagParam, qParam);
 
       document.getElementById('breadcrumb-cat').textContent = label;
-      document.getElementById('page-title').textContent = meta ? meta.title : 'All Products';
-      document.getElementById('page-subtitle').textContent = meta ? meta.subtitle : 'Browse our complete collection';
-      document.title = (meta ? meta.title : 'All Products') + ' - Anon';
+      document.getElementById('page-title').textContent = meta ? meta.title : label;
+      document.getElementById('page-subtitle').textContent = meta ? meta.subtitle : `Browsing products for ${label}`;
+      document.title = (meta ? meta.title : label) + ' - Crawlcore Solutions';
 
       // Mark active filter pill
       document.querySelectorAll('.filter-pill').forEach(pill => {
-        if (pill.dataset.cat === catParam) pill.classList.add('active');
+        const pillCat = pill.dataset.cat || '';
+        const normPill = pillCat.toLowerCase().replace(/['\s]/g, "");
+        const normParam = catParam.toLowerCase().replace(/['\s]/g, "");
+        if (normPill === normParam) pill.classList.add('active');
+        else pill.classList.remove('active');
       });
 
-      // Initial render
-      applySortAndRender();
+      // Initial render - monitor for products loaded
+      const checkLoaded = setInterval(() => {
+        if (window.productsLoaded) {
+          clearInterval(checkLoaded);
+          applySortAndRender();
+        }
+      }, 50);
+
+      // Timeout safety
+      setTimeout(applySortAndRender, 1000);
       updateBadges();
     });
 
     function handleSearch() {
-      const q = document.getElementById('search-input').value.trim().toLowerCase();
-      if (!q) { applySortAndRender(); return; }
+      const q = document.getElementById('search-input').value.trim();
+      const newUrl = new URL(window.location);
+      if (q) newUrl.searchParams.set('q', q);
+      else newUrl.searchParams.delete('q');
+      window.history.pushState({}, '', newUrl);
+
+      // Update local variable for applySortAndRender
+      const qVal = q;
+      // Re-initialize filtering with new query
       const sort = document.getElementById('sort-select').value;
-      let list = getFilteredProducts(catParam, sort);
-      list = list.filter(p => p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q));
+      const list = getFilteredProducts(catParam, sort, subParam, tagParam, q);
       renderCategoryProducts(list);
     }
     document.getElementById('search-input').addEventListener('keyup', e => {
@@ -624,4 +825,5 @@
   </script>
 
 </body>
+
 </html>

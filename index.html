@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anon - eCommerce Website</title>
+  <title>Crawlcore Solutions</title>
 
   <!--
     - favicon
@@ -59,7 +59,7 @@
             <h3 class="newsletter-title">Subscribe Newsletter.</h3>
 
             <p class="newsletter-desc">
-              Subscribe the <b>Anon</b> to get latest products and discount update.
+              Subscribe the <b>Crawlcore</b> to get latest products and discount update.
             </p>
 
           </div>
@@ -163,9 +163,9 @@
 
         <div class="header-top-actions">
 
-          
 
-          
+
+
 
         </div>
 
@@ -178,24 +178,21 @@
       <div class="container">
 
         <a href="index.html" class="header-logo">
-          <img src="./assets/images/logo/logo.svg" alt="Anon's logo" width="120" height="36">
+          <img src="./assets/images/logo/logo.png" alt="Crawlcore's logo" width="180" height="100">
         </a>
 
         <div class="header-search-container">
 
-          <input type="search" name="search" class="search-field" placeholder="Enter your product name...">
+          <input type="search" id="search-input" name="search" class="search-field"
+            placeholder="Enter your product name..." onkeyup="if(event.key === 'Enter') handleGlobalSearch()">
 
-          <button class="search-btn">
+          <button class="search-btn" onclick="handleGlobalSearch()">
             <ion-icon name="search-outline"></ion-icon>
           </button>
 
         </div>
 
         <div class="header-user-actions">
-
-          <button class="action-btn">
-            <ion-icon name="person-outline"></ion-icon>
-          </button>
 
           <a href="wishlist.html" class="action-btn">
             <ion-icon name="heart-outline"></ion-icon>
@@ -224,229 +221,67 @@
           </li>
 
           <li class="menu-category">
-            <a href="category.html" class="menu-title">Categories</a>
-
-            <div class="dropdown-panel">
-
-              <ul class="dropdown-panel-list">
-
-                <li class="menu-title">
-                  <a href="#">Electronics</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Desktop</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Laptop</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Camera</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Tablet</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Headphone</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">
-                    <img src="./assets/images/electronics-banner-1.jpg" alt="headphone collection" width="250"
-                      height="119">
-                  </a>
-                </li>
-
-              </ul>
-
-              <ul class="dropdown-panel-list">
-
-                <li class="menu-title">
-                  <a href="#">Men's</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Formal</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Casual</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Sports</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Jacket</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Sunglasses</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">
-                    <img src="./assets/images/mens-banner.jpg" alt="men's fashion" width="250" height="119">
-                  </a>
-                </li>
-
-              </ul>
-
-              <ul class="dropdown-panel-list">
-
-                <li class="menu-title">
-                  <a href="#">Women's</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Formal</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Casual</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Perfume</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Cosmetics</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Bags</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">
-                    <img src="./assets/images/womens-banner.jpg" alt="women's fashion" width="250" height="119">
-                  </a>
-                </li>
-
-              </ul>
-
-              <ul class="dropdown-panel-list">
-
-                <li class="menu-title">
-                  <a href="#">Electronics</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Smart Watch</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Smart TV</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Keyboard</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Mouse</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Microphone</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">
-                    <img src="./assets/images/electronics-banner-2.jpg" alt="mouse collection" width="250" height="119">
-                  </a>
-                </li>
-
-              </ul>
-
-            </div>
+            <a href="category" class="menu-title">All Categories</a>
           </li>
 
           <li class="menu-category">
-            <a href="category.html?cat=Mens" class="menu-title">Men's</a>
+            <a href="category?cat=Mens" class="menu-title">Men's</a>
 
             <ul class="dropdown-list">
 
               <li class="dropdown-item">
-                <a href="#">Shirt</a>
+                <a href="category?cat=Mens&tag=shirt">Shirts</a>
               </li>
 
               <li class="dropdown-item">
-                <a href="#">Shorts & Jeans</a>
+                <a href="category?cat=Mens&tag=jeans">Jeans</a>
               </li>
 
               <li class="dropdown-item">
-                <a href="#">Safety Shoes</a>
+                <a href="category?cat=Mens&tag=jacket">Jackets</a>
               </li>
 
               <li class="dropdown-item">
-                <a href="#">Wallet</a>
+                <a href="category?cat=Mens&tag=t-shirt">T-shirts</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="category?cat=Mens&tag=kurta">Kurtas</a>
               </li>
 
             </ul>
           </li>
 
           <li class="menu-category">
-            <a href="category.html?cat=Womens" class="menu-title">Women's</a>
+            <a href="category?cat=Womens" class="menu-title">Women's</a>
 
             <ul class="dropdown-list">
 
               <li class="dropdown-item">
-                <a href="#">Dress & Frock</a>
+                <a href="category?cat=Womens&tag=dress">Dresses</a>
               </li>
 
               <li class="dropdown-item">
-                <a href="#">Earrings</a>
+                <a href="category?cat=Womens&tag=top">Tops</a>
               </li>
 
               <li class="dropdown-item">
-                <a href="#">Necklace</a>
+                <a href="category?cat=Womens&tag=kurti">Kurtis</a>
               </li>
 
               <li class="dropdown-item">
-                <a href="#">Makeup Kit</a>
-              </li>
-
-            </ul>
-          </li>
-
-
-          <li class="menu-category">
-            <a href="category.html?cat=Perfume" class="menu-title">Perfume</a>
-
-            <ul class="dropdown-list">
-
-              <li class="dropdown-item">
-                <a href="#">Clothes Perfume</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="#">Deodorant</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="#">Flower Fragrance</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="#">Air Freshener</a>
+                <a href="category?cat=Womens&tag=jeans">Jeans</a>
               </li>
 
             </ul>
           </li>
 
           <li class="menu-category">
-            <a href="#" class="menu-title">Blog</a>
+            <a href="category?cat=Home%20decor" class="menu-title">Home Decor</a>
           </li>
 
           <li class="menu-category">
-            <a href="category.html?cat=offers" class="menu-title">Hot Offers</a>
+            <a href="category?cat=offers" class="menu-title">Hot Offers</a>
           </li>
 
         </ul>
@@ -498,111 +333,44 @@
         </li>
 
         <li class="menu-category">
-
           <button class="accordion-menu" data-accordion-btn>
             <p class="menu-title">Men's</p>
-
             <div>
               <ion-icon name="add-outline" class="add-icon"></ion-icon>
               <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
             </div>
           </button>
-
           <ul class="submenu-category-list" data-accordion>
-
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Shirt</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Shorts & Jeans</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Safety Shoes</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Wallet</a>
-            </li>
-
+            <li class="submenu-category"><a href="category?cat=Mens&tag=shirt" class="submenu-title">Shirts</a></li>
+            <li class="submenu-category"><a href="category?cat=Mens&tag=jeans" class="submenu-title">Jeans</a></li>
+            <li class="submenu-category"><a href="category?cat=Mens&tag=jacket" class="submenu-title">Jackets</a></li>
+            <li class="submenu-category"><a href="category?cat=Mens&tag=t-shirt" class="submenu-title">T-shirts</a></li>
+            <li class="submenu-category"><a href="category?cat=Mens&tag=kurta" class="submenu-title">Kurtas</a></li>
           </ul>
-
         </li>
 
         <li class="menu-category">
-
           <button class="accordion-menu" data-accordion-btn>
             <p class="menu-title">Women's</p>
-
             <div>
               <ion-icon name="add-outline" class="add-icon"></ion-icon>
               <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
             </div>
           </button>
-
           <ul class="submenu-category-list" data-accordion>
-
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Dress & Frock</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Earrings</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Necklace</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Makeup Kit</a>
-            </li>
-
+            <li class="submenu-category"><a href="category?cat=Womens&tag=dress" class="submenu-title">Dresses</a></li>
+            <li class="submenu-category"><a href="category?cat=Womens&tag=top" class="submenu-title">Tops</a></li>
+            <li class="submenu-category"><a href="category?cat=Womens&tag=kurti" class="submenu-title">Kurtis</a></li>
+            <li class="submenu-category"><a href="category?cat=Womens&tag=jeans" class="submenu-title">Jeans</a></li>
           </ul>
-
-        </li>
-
-
-        <li class="menu-category">
-
-          <button class="accordion-menu" data-accordion-btn>
-            <p class="menu-title">Perfume</p>
-
-            <div>
-              <ion-icon name="add-outline" class="add-icon"></ion-icon>
-              <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-            </div>
-          </button>
-
-          <ul class="submenu-category-list" data-accordion>
-
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Clothes Perfume</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Deodorant</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Flower Fragrance</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Air Freshener</a>
-            </li>
-
-          </ul>
-
         </li>
 
         <li class="menu-category">
-          <a href="#" class="menu-title">Blog</a>
+          <a href="category?cat=Home%20decor" class="menu-title">Home Decor</a>
         </li>
 
         <li class="menu-category">
-          <a href="category.html?cat=offers" class="menu-title">Hot Offers</a>
+          <a href="category?cat=offers" class="menu-title">Hot Offers</a>
         </li>
 
       </ul>
@@ -790,165 +558,62 @@
 
         <div class="category-item-container has-scrollbar">
 
-          <div class="category-item">
-
-            <div class="category-img-box">
-              <img src="./assets/images/icons/dress.svg" alt="dress & frock" width="30">
+          <!-- MENS CLOTHING -->
+          <a href="category?cat=Mens" class="category-item"
+            style="text-decoration:none; display:flex; align-items:center; gap:10px; padding:15px; border:1px solid #eee; border-radius:10px; transition:all 0.3s;"
+            onmouseover="this.style.boxShadow='0 4px 15px rgba(0,0,0,0.1)';this.style.transform='translateY(-2px)'"
+            onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+            <div class="category-img-box" style="background:#f8f9fa; padding:10px; border-radius:8px;">
+              <img src="./assets/images/icons/jacket.svg" alt="mens clothing" width="30">
             </div>
-
-            <div class="category-content-box">
-
-              <div class="category-content-flex">
-                <h3 class="category-item-title">Dress & frock</h3>
-
-                <p class="category-item-amount">(53)</p>
+            <div class="category-content-box" style="flex-grow:1;">
+              <div class="category-content-flex"
+                style="display:flex; justify-content:space-between; align-items:center;">
+                <h3 class="category-item-title"
+                  style="font-size:14px; font-weight:700; color:#333; margin:0; text-transform:uppercase;">Mens Clothing
+                </h3>
+                <p class="category-item-amount" style="font-size:12px; color:#888; font-weight:600; margin:0;">(25)</p>
               </div>
-
-              <a href="#" class="category-btn">Show all</a>
-
             </div>
+          </a>
 
-          </div>
-
-          <div class="category-item">
-
-            <div class="category-img-box">
-              <img src="./assets/images/icons/coat.svg" alt="winter wear" width="30">
+          <!-- WOMENS CLOTHING -->
+          <a href="category?cat=Womens" class="category-item"
+            style="text-decoration:none; display:flex; align-items:center; gap:10px; padding:15px; border:1px solid #eee; border-radius:10px; transition:all 0.3s;"
+            onmouseover="this.style.boxShadow='0 4px 15px rgba(0,0,0,0.1)';this.style.transform='translateY(-2px)'"
+            onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+            <div class="category-img-box" style="background:#f8f9fa; padding:10px; border-radius:8px;">
+              <img src="./assets/images/icons/coat.svg" alt="womens clothing" width="30">
             </div>
-
-            <div class="category-content-box">
-
-              <div class="category-content-flex">
-                <h3 class="category-item-title">Winter wear</h3>
-
-                <p class="category-item-amount">(58)</p>
+            <div class="category-content-box" style="flex-grow:1;">
+              <div class="category-content-flex"
+                style="display:flex; justify-content:space-between; align-items:center;">
+                <h3 class="category-item-title"
+                  style="font-size:14px; font-weight:700; color:#333; margin:0; text-transform:uppercase;">Womens
+                  Clothing</h3>
+                <p class="category-item-amount" style="font-size:12px; color:#888; font-weight:600; margin:0;">(25)</p>
               </div>
-
-              <a href="#" class="category-btn">Show all</a>
-
             </div>
+          </a>
 
-          </div>
-
-          <div class="category-item">
-
-            <div class="category-img-box">
-              <img src="./assets/images/icons/glasses.svg" alt="glasses & lens" width="30">
+          <!-- HOME DECOR -->
+          <a href="category?cat=Home%20decor" class="category-item"
+            style="text-decoration:none; display:flex; align-items:center; gap:10px; padding:15px; border:1px solid #eee; border-radius:10px; transition:all 0.3s;"
+            onmouseover="this.style.boxShadow='0 4px 15px rgba(0,0,0,0.1)';this.style.transform='translateY(-2px)'"
+            onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+            <div class="category-img-box" style="background:#f8f9fa; padding:10px; border-radius:8px;">
+              <img src="./assets/images/icons/bag.svg" alt="home decor" width="30" style="opacity:0.7;">
             </div>
-
-            <div class="category-content-box">
-
-              <div class="category-content-flex">
-                <h3 class="category-item-title">Glasses & lens</h3>
-
-                <p class="category-item-amount">(68)</p>
+            <div class="category-content-box" style="flex-grow:1;">
+              <div class="category-content-flex"
+                style="display:flex; justify-content:space-between; align-items:center;">
+                <h3 class="category-item-title"
+                  style="font-size:14px; font-weight:700; color:#333; margin:0; text-transform:uppercase;">Home decor
+                </h3>
+                <p class="category-item-amount" style="font-size:12px; color:#888; font-weight:600; margin:0;">(1)</p>
               </div>
-
-              <a href="#" class="category-btn">Show all</a>
-
             </div>
-
-          </div>
-
-          <div class="category-item">
-
-            <div class="category-img-box">
-              <img src="./assets/images/icons/shorts.svg" alt="shorts & jeans" width="30">
-            </div>
-
-            <div class="category-content-box">
-
-              <div class="category-content-flex">
-                <h3 class="category-item-title">Shorts & jeans</h3>
-
-                <p class="category-item-amount">(84)</p>
-              </div>
-
-              <a href="#" class="category-btn">Show all</a>
-
-            </div>
-
-          </div>
-
-          <div class="category-item">
-
-            <div class="category-img-box">
-              <img src="./assets/images/icons/tee.svg" alt="t-shirts" width="30">
-            </div>
-
-            <div class="category-content-box">
-
-              <div class="category-content-flex">
-                <h3 class="category-item-title">T-shirts</h3>
-
-                <p class="category-item-amount">(35)</p>
-              </div>
-
-              <a href="#" class="category-btn">Show all</a>
-
-            </div>
-
-          </div>
-
-          <div class="category-item">
-
-            <div class="category-img-box">
-              <img src="./assets/images/icons/jacket.svg" alt="jacket" width="30">
-            </div>
-
-            <div class="category-content-box">
-
-              <div class="category-content-flex">
-                <h3 class="category-item-title">Jacket</h3>
-
-                <p class="category-item-amount">(16)</p>
-              </div>
-
-              <a href="#" class="category-btn">Show all</a>
-
-            </div>
-
-          </div>
-
-          <div class="category-item">
-
-            <div class="category-img-box">
-              <img src="./assets/images/icons/watch.svg" alt="watch" width="30">
-            </div>
-
-            <div class="category-content-box">
-
-              <div class="category-content-flex">
-                <h3 class="category-item-title">Watch</h3>
-
-                <p class="category-item-amount">(27)</p>
-              </div>
-
-              <a href="#" class="category-btn">Show all</a>
-
-            </div>
-
-          </div>
-
-          <div class="category-item">
-
-            <div class="category-img-box">
-              <img src="./assets/images/icons/hat.svg" alt="hat & caps" width="30">
-            </div>
-
-            <div class="category-content-box">
-
-              <div class="category-content-flex">
-                <h3 class="category-item-title">Hat & caps</h3>
-
-                <p class="category-item-amount">(39)</p>
-              </div>
-
-              <a href="#" class="category-btn">Show all</a>
-
-            </div>
-
-          </div>
+          </a>
 
         </div>
 
@@ -992,10 +657,9 @@
                 <button class="sidebar-accordion-menu" data-accordion-btn>
 
                   <div class="menu-title-flex">
-                    <img src="./assets/images/icons/dress.svg" alt="clothes" width="20" height="20"
-                      class="menu-title-img">
+                    <img src="./assets/images/icons/dress.svg" alt="mens" width="20" height="20" class="menu-title-img">
 
-                    <p class="menu-title">Clothes</p>
+                    <p class="menu-title">Mens Clothing</p>
                   </div>
 
                   <div>
@@ -1008,30 +672,32 @@
                 <ul class="sidebar-submenu-category-list" data-accordion>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Shirt</p>
-                      <data value="300" class="stock" title="Available Stock">300</data>
+                    <a href="category?cat=Mens&sub=Shirt" class="sidebar-submenu-title">
+                      <p class="product-name">Shirts</p>
                     </a>
                   </li>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">shorts & jeans</p>
-                      <data value="60" class="stock" title="Available Stock">60</data>
+                    <a href="category?cat=Mens&sub=Jeans" class="sidebar-submenu-title">
+                      <p class="product-name">Jeans</p>
                     </a>
                   </li>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">jacket</p>
-                      <data value="50" class="stock" title="Available Stock">50</data>
+                    <a href="category?cat=Mens&sub=Jacket" class="sidebar-submenu-title">
+                      <p class="product-name">Jackets</p>
                     </a>
                   </li>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">dress & frock</p>
-                      <data value="87" class="stock" title="Available Stock">87</data>
+                    <a href="category?cat=Mens&sub=T-shirt" class="sidebar-submenu-title">
+                      <p class="product-name">T-shirts</p>
+                    </a>
+                  </li>
+
+                  <li class="sidebar-submenu-category">
+                    <a href="category?cat=Mens&sub=Kurta" class="sidebar-submenu-title">
+                      <p class="product-name">Kurtas</p>
                     </a>
                   </li>
 
@@ -1044,10 +710,10 @@
                 <button class="sidebar-accordion-menu" data-accordion-btn>
 
                   <div class="menu-title-flex">
-                    <img src="./assets/images/icons/shoes.svg" alt="footwear" class="menu-title-img" width="20"
+                    <img src="./assets/images/icons/dress.svg" alt="womens" class="menu-title-img" width="20"
                       height="20">
 
-                    <p class="menu-title">Footwear</p>
+                    <p class="menu-title">Womens Clothing</p>
                   </div>
 
                   <div>
@@ -1060,30 +726,26 @@
                 <ul class="sidebar-submenu-category-list" data-accordion>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Sports</p>
-                      <data value="45" class="stock" title="Available Stock">45</data>
+                    <a href="category?cat=Womens&sub=Dress" class="sidebar-submenu-title">
+                      <p class="product-name">Dresses</p>
                     </a>
                   </li>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Formal</p>
-                      <data value="75" class="stock" title="Available Stock">75</data>
+                    <a href="category?cat=Womens&sub=Top" class="sidebar-submenu-title">
+                      <p class="product-name">Tops</p>
                     </a>
                   </li>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Casual</p>
-                      <data value="35" class="stock" title="Available Stock">35</data>
+                    <a href="category?cat=Womens&sub=Kurti" class="sidebar-submenu-title">
+                      <p class="product-name">Kurtis</p>
                     </a>
                   </li>
 
                   <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Safety Shoes</p>
-                      <data value="26" class="stock" title="Available Stock">26</data>
+                    <a href="category?cat=Womens&sub=Jeans" class="sidebar-submenu-title">
+                      <p class="product-name">Jeans</p>
                     </a>
                   </li>
 
@@ -1094,194 +756,14 @@
 
               <li class="sidebar-menu-category">
 
-                <button class="sidebar-accordion-menu" data-accordion-btn>
-
+                <a href="category?cat=Home%20decor" class="sidebar-accordion-menu"
+                  style="display:flex; justify-content:space-between; align-items:center; width:100%; padding: 10px 0;">
                   <div class="menu-title-flex">
-                    <img src="./assets/images/icons/perfume.svg" alt="perfume" class="menu-title-img" width="20"
+                    <img src="./assets/images/icons/dress.svg" alt="home decor" class="menu-title-img" width="20"
                       height="20">
-
-                    <p class="menu-title">Perfume</p>
+                    <p class="menu-title">Home Decor</p>
                   </div>
-
-                  <div>
-                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
-                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-                  </div>
-
-                </button>
-
-                <ul class="sidebar-submenu-category-list" data-accordion>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Clothes Perfume</p>
-                      <data value="12" class="stock" title="Available Stock">12 pcs</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Deodorant</p>
-                      <data value="60" class="stock" title="Available Stock">60 pcs</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">jacket</p>
-                      <data value="50" class="stock" title="Available Stock">50 pcs</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">dress & frock</p>
-                      <data value="87" class="stock" title="Available Stock">87 pcs</data>
-                    </a>
-                  </li>
-
-                </ul>
-
-              </li>
-
-              <li class="sidebar-menu-category">
-
-                <button class="sidebar-accordion-menu" data-accordion-btn>
-
-                  <div class="menu-title-flex">
-                    <img src="./assets/images/icons/cosmetics.svg" alt="cosmetics" class="menu-title-img" width="20"
-                      height="20">
-
-                    <p class="menu-title">Cosmetics</p>
-                  </div>
-
-                  <div>
-                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
-                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-                  </div>
-
-                </button>
-
-                <ul class="sidebar-submenu-category-list" data-accordion>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Shampoo</p>
-                      <data value="68" class="stock" title="Available Stock">68</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Sunscreen</p>
-                      <data value="46" class="stock" title="Available Stock">46</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Body Wash</p>
-                      <data value="79" class="stock" title="Available Stock">79</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Makeup Kit</p>
-                      <data value="23" class="stock" title="Available Stock">23</data>
-                    </a>
-                  </li>
-
-                </ul>
-
-              </li>
-
-              <li class="sidebar-menu-category">
-
-                <button class="sidebar-accordion-menu" data-accordion-btn>
-
-                  <div class="menu-title-flex">
-                    <img src="./assets/images/icons/glasses.svg" alt="glasses" class="menu-title-img" width="20"
-                      height="20">
-
-                    <p class="menu-title">Glasses</p>
-                  </div>
-
-                  <div>
-                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
-                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-                  </div>
-
-                </button>
-
-                <ul class="sidebar-submenu-category-list" data-accordion>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Sunglasses</p>
-                      <data value="50" class="stock" title="Available Stock">50</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Lenses</p>
-                      <data value="48" class="stock" title="Available Stock">48</data>
-                    </a>
-                  </li>
-
-                </ul>
-
-              </li>
-
-              <li class="sidebar-menu-category">
-
-                <button class="sidebar-accordion-menu" data-accordion-btn>
-
-                  <div class="menu-title-flex">
-                    <img src="./assets/images/icons/bag.svg" alt="bags" class="menu-title-img" width="20" height="20">
-
-                    <p class="menu-title">Bags</p>
-                  </div>
-
-                  <div>
-                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
-                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-                  </div>
-
-                </button>
-
-                <ul class="sidebar-submenu-category-list" data-accordion>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Shopping Bag</p>
-                      <data value="62" class="stock" title="Available Stock">62</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Gym Backpack</p>
-                      <data value="35" class="stock" title="Available Stock">35</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Purse</p>
-                      <data value="80" class="stock" title="Available Stock">80</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Wallet</p>
-                      <data value="75" class="stock" title="Available Stock">75</data>
-                    </a>
-                  </li>
-
-                </ul>
+                </a>
 
               </li>
 
@@ -1425,14 +907,16 @@
 
 
         <div class="product-box" style="width: 100%">
-  <div class="product-main">
-    <h2 class="title" style="margin-bottom: 20px;">New Products</h2>
-    <div id="product-container" class="product-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px;">
+          <div class="product-main">
+            <h2 class="title" style="margin-bottom: 20px;">New Products</h2>
+            <div id="product-container" class="product-grid"
+              style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px;">
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-</div></div>
-<!--
+    <!--
       - TESTIMONIALS, CTA & SERVICE
     -->
 
@@ -1445,14 +929,15 @@
           <!--
             - TESTIMONIALS
           -->
-
+          <!-- 
           <div class="testimonial">
 
             <h2 class="title">testimonial</h2>
 
             <div class="testimonial-card">
 
-              <img src="./assets/images/testimonial-1.jpg" alt="alan doe" class="testimonial-banner" width="80" height="80">
+              <img src="./assets/images/testimonial-1.jpg" alt="alan doe" class="testimonial-banner" width="80"
+                height="80">
 
               <p class="testimonial-name">Alan Doe</p>
 
@@ -1467,7 +952,7 @@
 
             </div>
 
-          </div>
+          </div> -->
 
 
 
@@ -1521,63 +1006,63 @@
               </a>
 
               <a href="#" class="service-item">
-              
+
                 <div class="service-icon">
                   <ion-icon name="rocket-outline"></ion-icon>
                 </div>
-              
+
                 <div class="service-content">
-              
+
                   <h3 class="service-title">Next Day delivery</h3>
                   <p class="service-desc">UK Orders Only</p>
-              
+
                 </div>
-              
+
               </a>
 
               <a href="#" class="service-item">
-              
+
                 <div class="service-icon">
                   <ion-icon name="call-outline"></ion-icon>
                 </div>
-              
+
                 <div class="service-content">
-              
+
                   <h3 class="service-title">Best Online Support</h3>
                   <p class="service-desc">Hours: 8AM - 11PM</p>
-              
+
                 </div>
-              
+
               </a>
 
               <a href="#" class="service-item">
-              
+
                 <div class="service-icon">
                   <ion-icon name="arrow-undo-outline"></ion-icon>
                 </div>
-              
+
                 <div class="service-content">
-              
+
                   <h3 class="service-title">Return Policy</h3>
                   <p class="service-desc">Easy & Free Return</p>
-              
+
                 </div>
-              
+
               </a>
 
               <a href="#" class="service-item">
-              
+
                 <div class="service-icon">
                   <ion-icon name="ticket-outline"></ion-icon>
                 </div>
-              
+
                 <div class="service-content">
-              
+
                   <h3 class="service-title">30% money back</h3>
                   <p class="service-desc">For Order Over ₹100</p>
-              
+
                 </div>
-              
+
               </a>
 
             </div>
@@ -1607,7 +1092,8 @@
           <div class="blog-card">
 
             <a href="#">
-              <img src="./assets/images/blog-1.jpg" alt="Clothes Retail KPIs 2021 Guide for Clothes Executives" width="300" class="blog-banner">
+              <img src="./assets/images/blog-1.jpg" alt="Clothes Retail KPIs 2021 Guide for Clothes Executives"
+                width="300" class="blog-banner">
             </a>
 
             <div class="blog-content">
@@ -1627,72 +1113,72 @@
           </div>
 
           <div class="blog-card">
-          
+
             <a href="#">
               <img src="./assets/images/blog-2.jpg" alt="Curbside fashion Trends: How to Win the Pickup Battle."
                 class="blog-banner" width="300">
             </a>
-          
+
             <div class="blog-content">
-          
+
               <a href="#" class="blog-category">Clothes</a>
-          
+
               <h3>
                 <a href="#" class="blog-title">Curbside fashion Trends: How to Win the Pickup Battle.</a>
               </h3>
-          
+
               <p class="blog-meta">
                 By <cite>Mr Robin</cite> / <time datetime="2022-01-18">Jan 18, 2022</time>
               </p>
-          
+
             </div>
-          
+
           </div>
 
           <div class="blog-card">
-          
+
             <a href="#">
               <img src="./assets/images/blog-3.jpg" alt="EBT vendors: Claim Your Share of SNAP Online Revenue."
                 class="blog-banner" width="300">
             </a>
-          
+
             <div class="blog-content">
-          
+
               <a href="#" class="blog-category">Shoes</a>
-          
+
               <h3>
                 <a href="#" class="blog-title">EBT vendors: Claim Your Share of SNAP Online Revenue.</a>
               </h3>
-          
+
               <p class="blog-meta">
                 By <cite>Mr Selsa</cite> / <time datetime="2022-02-10">Feb 10, 2022</time>
               </p>
-          
+
             </div>
-          
+
           </div>
 
           <div class="blog-card">
-          
+
             <a href="#">
               <img src="./assets/images/blog-4.jpg" alt="Curbside fashion Trends: How to Win the Pickup Battle."
                 class="blog-banner" width="300">
             </a>
-          
+
             <div class="blog-content">
-          
+
               <a href="#" class="blog-category">Electronics</a>
-          
+
               <h3>
                 <a href="#" class="blog-title">Curbside fashion Trends: How to Win the Pickup Battle.</a>
               </h3>
-          
+
               <p class="blog-meta">
                 By <cite>Mr Pawar</cite> / <time datetime="2022-03-15">Mar 15, 2022</time>
               </p>
-          
+
             </div>
-          
+
           </div>
 
         </div>
@@ -1711,46 +1197,79 @@
     - FOOTER
   -->
 
-    <!-- FOOTER -->
+  <!-- FOOTER -->
   <footer style="background:#fff; border-top:1px solid #e8e8e8; font-family:'Poppins',sans-serif;">
-    <div style="max-width:1200px; margin:0 auto; padding:52px 24px 36px; display:grid; grid-template-columns:1fr 1.2fr 1fr 1fr; gap:48px;">
+    <div
+      style="max-width:1200px; margin:0 auto; padding:52px 24px 36px; display:grid; grid-template-columns:1fr 1.2fr 1fr 1fr; gap:48px;">
       <div>
-        <a href="index.html" style="display:inline-block; margin-bottom:14px;"><img src="./assets/images/logo/logo.svg" alt="Crawlcore Solutions" style="height:48px; width:auto;"></a>
-        <p style="font-size:13px; font-weight:700; color:#222; line-height:1.55; margin:0; text-transform:uppercase; letter-spacing:0.3px;">Crawlcore Solutions<br>Private Limited</p>
+        <a href="index.html" style="display:inline-block; margin-bottom:14px;"><img src="./assets/images/logo/logo.png"
+            alt="Crawlcore Solutions" style="height:48px; width:auto;"></a>
+        <p
+          style="font-size:13px; font-weight:700; color:#222; line-height:1.55; margin:0; text-transform:uppercase; letter-spacing:0.3px;">
+          Crawlcore Solutions<br>Private Limited</p>
       </div>
       <div>
         <h3 style="font-size:15px; font-weight:700; color:#111; margin:0 0 20px; letter-spacing:0.2px;">Company</h3>
         <div style="display:flex; gap:10px; margin-bottom:16px; align-items:flex-start;">
-          <span style="margin-top:2px; flex-shrink:0; color:#555;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-          <p style="font-size:13px; color:#555; line-height:1.7; margin:0;">UG 27, Shakuntala Complex,<br>Aurangabad, Mathura,<br>Uttar Pradesh – 281006</p>
+          <span style="margin-top:2px; flex-shrink:0; color:#555;"><svg width="16" height="16" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg></span>
+          <p style="font-size:13px; color:#555; line-height:1.7; margin:0;">UG 27, Shakuntala Complex,<br>Aurangabad,
+            Mathura,<br>Uttar Pradesh – 281006</p>
         </div>
         <div style="display:flex; gap:10px; margin-bottom:14px; align-items:center;">
-          <span style="color:#555; flex-shrink:0;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.1 11.6a19.53 19.53 0 0 1-3.07-8.67A2 2 0 0 1 3 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg></span>
+          <span style="color:#555; flex-shrink:0;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.1 11.6a19.53 19.53 0 0 1-3.07-8.67A2 2 0 0 1 3 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z" />
+            </svg></span>
           <a href="tel:+919983685627" style="font-size:13px; color:#555; text-decoration:none;">+91 9983685627</a>
         </div>
         <div style="display:flex; gap:10px; align-items:center;">
-          <span style="color:#555; flex-shrink:0;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
-          <a href="mailto:support@crawlcoresolutions.com" style="font-size:13px; color:#555; text-decoration:none;">support@crawlcoresolutions.com</a>
+          <span style="color:#555; flex-shrink:0;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg></span>
+          <a href="mailto:Crawlcoresolution@gmail.com"
+            style="font-size:13px; color:#555; text-decoration:none;">Crawlcoresolution@gmail.com</a>
         </div>
       </div>
       <div>
         <h3 style="font-size:15px; font-weight:700; color:#111; margin:0 0 20px; letter-spacing:0.2px;">Information</h3>
         <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px;">
-          <li><a href="index.html" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Home</a></li>
-          <li><a href="category.html" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Shop</a></li>
-          <li><a href="services.html" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Services</a></li>
-          <li><a href="#" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">About</a></li>
-          <li><a href="#" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Contact</a></li>
+          <li><a href="index.html"
+              style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Home</a></li>
+          <li><a href="category"
+              style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Shop</a></li>
+          <li><a href="services.html"
+              style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Services</a></li>
+          <li><a href="about.html"
+              style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">About</a>
+          </li>
+          <li><a href="contact.html"
+              style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Contact</a>
+          </li>
         </ul>
       </div>
       <div>
         <h3 style="font-size:15px; font-weight:700; color:#111; margin:0 0 20px; letter-spacing:0.2px;">Contact</h3>
         <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px;">
-          <li><a href="terms-conditions.html" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Terms &amp; Conditions</a></li>
-          <li><a href="privacy-policy.html" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Privacy Policy</a></li>
-          <li><a href="refund-returns.html" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s; line-height:1.5;">Refund &amp; Returns</a></li>
-          <li><a href="cancellation-policy.html" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Cancellation Policy</a></li>
-          <li><a href="shipping-policy.html" style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Shipping Policy</a></li>
+          <li><a href="terms-conditions.html"
+              style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Terms &amp;
+              Conditions</a></li>
+          <li><a href="privacy-policy.html"
+              style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Privacy Policy</a></li>
+          <li><a href="refund-returns.html"
+              style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s; line-height:1.5;">Refund
+              &amp; Returns</a></li>
+          <li><a href="cancellation-policy.html"
+              style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Cancellation Policy</a>
+          </li>
+          <li><a href="shipping-policy.html"
+              style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Shipping Policy</a></li>
         </ul>
       </div>
     </div>
@@ -1775,8 +1294,25 @@
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-<script src="./assets/js/products.js"></script>
-<script src="./assets/js/cart_wishlist.js"></script>
+  <script src="./assets/js/products.js"></script>
+  <script src="./assets/js/cart_wishlist.js"></script>
+
+  <script>
+    function handleGlobalSearch() {
+      const val = document.getElementById('search-input').value.trim();
+      if (val) {
+        window.location.href = `category?q=${encodeURIComponent(val)}`;
+      }
+    }
+    // Handle Enter key on search input
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+      searchInput.addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') handleGlobalSearch();
+      });
+    }
+  </script>
+
 </body>
 
 </html>
