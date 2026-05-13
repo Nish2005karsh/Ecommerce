@@ -41,34 +41,66 @@ if (toastCloseBtn && notificationToast) {
 
 
 
-// mobile menu variables
+/**
+ * Mobile slide-out panels:
+ * - nav.mobile-navigation-menu = hamburger menu (dropdowns)
+ * - [data-category-sidebar] = grid “categories” panel (separate from nav)
+ * Previously both used data-mobile-menu, so the 2nd button opened the wrong panel.
+ */
 const mobileMenuOpenBtns = document.querySelectorAll('[data-mobile-menu-open-btn]');
-const mobileMenus = document.querySelectorAll('[data-mobile-menu]');
+const mobileNavPanels = document.querySelectorAll('nav.mobile-navigation-menu');
+const categorySidebars = document.querySelectorAll('[data-category-sidebar]');
 const mobileMenuCloseBtns = document.querySelectorAll('[data-mobile-menu-close-btn]');
 const overlay = document.querySelector('[data-overlay]');
 
+const closeAllMobileMenus = function () {
+  for (let i = 0; i < mobileNavPanels.length; i++) {
+    if (mobileNavPanels[i]) mobileNavPanels[i].classList.remove('active');
+  }
+  for (let i = 0; i < categorySidebars.length; i++) {
+    if (categorySidebars[i]) categorySidebars[i].classList.remove('active');
+  }
+  if (overlay) overlay.classList.remove('active');
+};
+
 if (mobileMenuOpenBtns.length > 0) {
   for (let i = 0; i < mobileMenuOpenBtns.length; i++) {
-
-    // mobile menu function
-    const mobileMenuCloseFunc = function () {
-      if (mobileMenus[i]) mobileMenus[i].classList.remove('active');
-      if (overlay) overlay.classList.remove('active');
-    }
-
     mobileMenuOpenBtns[i].addEventListener('click', function () {
-      if (mobileMenus[i]) mobileMenus[i].classList.add('active');
+      closeAllMobileMenus();
+      if (i === 0) {
+        if (mobileNavPanels[0]) mobileNavPanels[0].classList.add('active');
+      } else {
+        if (categorySidebars[0]) categorySidebars[0].classList.add('active');
+        else if (mobileNavPanels[0]) mobileNavPanels[0].classList.add('active');
+      }
       if (overlay) overlay.classList.add('active');
     });
-
-    if (mobileMenuCloseBtns[i]) {
-      mobileMenuCloseBtns[i].addEventListener('click', mobileMenuCloseFunc);
-    }
-    
-    if (overlay) {
-      overlay.addEventListener('click', mobileMenuCloseFunc);
-    }
   }
+}
+
+if (mobileMenuCloseBtns.length > 0) {
+  addEventOnElements(mobileMenuCloseBtns, 'click', closeAllMobileMenus);
+}
+
+if (overlay) {
+  overlay.addEventListener('click', closeAllMobileMenus);
+}
+
+// Link taps inside drawers close them (same-page nav, etc.)
+const mobileDrawerLinks = document.querySelectorAll(
+  'nav.mobile-navigation-menu a, [data-category-sidebar] a'
+);
+if (mobileDrawerLinks.length > 0) {
+  addEventOnElements(mobileDrawerLinks, 'click', function () {
+    closeAllMobileMenus();
+  });
+}
+
+const mobileBottomLinks = document.querySelectorAll('.mobile-bottom-navigation a');
+if (mobileBottomLinks.length > 0) {
+  addEventOnElements(mobileBottomLinks, 'click', function () {
+    closeAllMobileMenus();
+  });
 }
 
 
@@ -76,30 +108,30 @@ if (mobileMenuOpenBtns.length > 0) {
 
 // accordion variables
 const accordionBtn = document.querySelectorAll('[data-accordion-btn]');
-const accordion = document.querySelectorAll('[data-accordion]');
 
 if (accordionBtn.length > 0) {
   for (let i = 0; i < accordionBtn.length; i++) {
 
     accordionBtn[i].addEventListener('click', function () {
-
       const nextElem = this.nextElementSibling;
-      const clickedBtnActive = nextElem && nextElem.classList.contains('active');
+      if (!nextElem || !nextElem.matches('[data-accordion]')) return;
 
-      for (let j = 0; j < accordion.length; j++) {
-        if (clickedBtnActive) break;
-        if (accordion[j] && accordion[j].classList.contains('active')) {
-          accordion[j].classList.remove('active');
-          if (accordionBtn[j]) accordionBtn[j].classList.remove('active');
+      const isActive = nextElem.classList.contains('active');
+      const menuRoot = this.closest('nav.mobile-navigation-menu, [data-category-sidebar]') || document;
+      const localBtns = menuRoot.querySelectorAll('[data-accordion-btn]');
+
+      for (let j = 0; j < localBtns.length; j++) {
+        const panel = localBtns[j].nextElementSibling;
+        if (panel && panel.matches('[data-accordion]')) {
+          panel.classList.remove('active');
+          localBtns[j].classList.remove('active');
         }
       }
 
-      if (nextElem) {
-        nextElem.classList.toggle('active');
+      if (!isActive) {
+        nextElem.classList.add('active');
+        this.classList.add('active');
       }
-      this.classList.toggle('active');
-
     });
   }
 }
-

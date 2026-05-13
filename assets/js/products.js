@@ -11,12 +11,169 @@ const USD_TO_INR = 83;
 // --------------------------------------------------------------------------
 const curatedClothes = [
   {
-    id: 1001, name: "3D Moon Night Lamp – Rechargeable With 7 Color Changing Features, 15CM – Elegant Plastic Design For Beautiful Indoor Lighting",
+    id: 1001,
+    name: "3D Moon Night Lamp – Rechargeable With 7 Color Changing Features, 15CM – Elegant Plastic Design For Beautiful Indoor Lighting",
     category: "Home decor",
     tags: ["lamp", "decor", "lighting", "gift"],
-    price: 500, originalPrice: 999, rating: 5,
+    price: 500,
+    originalPrice: 999,
+    rating: 5,
     image: "https://www.jaipurcraftonline.com/cdn/shop/files/71YCIVElApL._SL1500.jpg",
     description: "Bring the moon to your room with this stunning 3D Moon Lamp. Features 7 color-changing modes, rechargeable battery, and a sleek wooden stand. Perfect for living rooms, bedrooms, and as a unique gift."
+  },
+  {
+    id: 1002,
+    name: "Macrame Wall Hanging – Boho Woven Tapestry for Living Room & Bedroom",
+    category: "Home decor",
+    tags: ["wall-hanging", "macrame", "boho", "handmade"],
+    price: 699,
+    originalPrice: 1299,
+    rating: 4,
+    image: "https://images.unsplash.com/photo-1528578577235-b963df6db908?w=400&h=500&fit=crop",
+    description: "Handwoven cotton macrame wall hanging with intricate knot patterns. Adds a warm, bohemian touch to any wall. Lightweight and easy to mount."
+  },
+  {
+    id: 1003,
+    name: "Ceramic Minimalist Vase Set – 3 Pcs Modern Flower Pots for Table Decor",
+    category: "Home decor",
+    tags: ["vase", "ceramic", "minimalist", "table-decor"],
+    price: 899,
+    originalPrice: 1499,
+    rating: 4,
+    image: "https://tinyporcelainstore.com/cdn/shop/products/modern-off-white-ceramic-vase-set-minimalist-sculptural-decor-6797384.jpg?v=1751685784",
+    description: "Set of 3 elegant ceramic vases in matte white finish. Perfect for dried flowers, pampas grass, or as standalone shelf accents. Modern and versatile."
+  },
+  {
+    id: 1004,
+    name: "Vintage Roman Numeral Wall Clock – 30CM Silent Non-Ticking Decor Clock",
+    category: "Home decor",
+    tags: ["clock", "wall-clock", "vintage", "silent"],
+    price: 799,
+    originalPrice: 1399,
+    rating: 4,
+    image: "https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?w=400&h=500&fit=crop",
+    description: "Classic round wall clock with large Roman numerals and silent quartz movement. Iron frame with distressed finish. Ideal for living rooms and offices."
+  },
+  {
+    id: 1005,
+    name: "Scented Soy Wax Candles Gift Set – Lavender, Vanilla & Rose (Pack of 3)",
+    category: "Home decor",
+    tags: ["candles", "scented", "gift", "aromatherapy"],
+    price: 599,
+    originalPrice: 999,
+    rating: 5,
+    image: "https://images.unsplash.com/photo-1603006905003-be475563bc59?w=400&h=500&fit=crop",
+    description: "Premium soy wax candles in frosted glass jars. Long-lasting burn time of 25+ hours each. Perfect for relaxation, gifting, or setting a cozy mood."
+  },
+  {
+    id: 1006,
+    name: "Round Rattan Wall Mirror – 40CM Boho Wicker Mirror for Entryway",
+    category: "Home decor",
+    tags: ["mirror", "wall-mirror", "rattan", "boho"],
+    price: 1299,
+    originalPrice: 1999,
+    rating: 4,
+    image: "https://m.media-amazon.com/images/I/61+OA5LXSuL._AC_UF1000,1000_QL80_.jpg",
+    description: "Beautiful handwoven rattan frame mirror with a natural finish. Lightweight and easy to hang. Adds texture and warmth to hallways and bedrooms."
+  },
+  {
+    id: 1007,
+    name: "LED Fairy String Lights – 10M USB Powered Copper Wire Lights for Bedroom",
+    category: "Home decor",
+    tags: ["lights", "fairy-lights", "led", "bedroom"],
+    price: 349,
+    originalPrice: 699,
+    rating: 4,
+    image: "https://m.media-amazon.com/images/I/71-VtMc6ebL._AC_UF894,1000_QL80_.jpg",
+    description: "Warm white LED string lights on flexible copper wire. USB powered with 8 lighting modes. Perfect for decorating bedrooms, balconies, and festivals."
+  },
+  {
+    id: 1008,
+    name: "Abstract Geometric Metal Bookends – Gold Finish Shelf Organizer (Set of 2)",
+    category: "Home decor",
+    tags: ["bookends", "metal", "geometric", "shelf-decor"],
+    price: 749,
+    originalPrice: 1199,
+    rating: 4,
+    image: "https://images.thdstatic.com/productImages/e43f06a5-f42c-42bd-9dc0-98adcfab1c03/svn/gold-bookends-hd89y7rn27-64_600.jpg",
+    description: "Sturdy iron bookends with a modern geometric design and gold powder coating. Keeps books upright while adding a stylish accent to shelves and desks."
+  },
+  {
+    id: 1009,
+    name: "Handmade Terracotta Plant Pots – Set of 3 with Drainage Trays",
+    category: "Home decor",
+    tags: ["planter", "terracotta", "plants", "garden"],
+    price: 549,
+    originalPrice: 899,
+    rating: 4,
+    image: "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=400&h=500&fit=crop",
+    description: "Natural terracotta pots in three sizes with matching saucers. Unglazed clay promotes healthy root growth. Ideal for indoor succulents and herbs."
+  },
+  {
+    id: 1010,
+    name: "Floating Wall Shelves – Set of 3 Rustic Wood Storage Shelves for Display",
+    category: "Home decor",
+    tags: ["shelves", "wall-shelf", "storage", "rustic"],
+    price: 999,
+    originalPrice: 1699,
+    rating: 4,
+    image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=400&h=500&fit=crop",
+    description: "Set of 3 floating shelves in distressed wood finish with invisible brackets. Perfect for displaying photos, plants, and small decor items."
+  },
+  {
+    id: 1011,
+    name: "Aromatherapy Essential Oil Diffuser – 300ML Ultrasonic Mist Humidifier",
+    category: "Home decor",
+    tags: ["diffuser", "humidifier", "aromatherapy", "wellness"],
+    price: 1199,
+    originalPrice: 1999,
+    rating: 5,
+    image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=400&h=500&fit=crop",
+    description: "Ultrasonic diffuser with 7-color LED mood light and auto shut-off. Whisper-quiet operation. Creates a spa-like atmosphere in any room."
+  },
+  {
+    id: 1012,
+    name: "Decorative Throw Pillow Covers – Set of 4 Boho Geometric Cushion Covers",
+    category: "Home decor",
+    tags: ["cushion", "pillow-cover", "boho", "living-room"],
+    price: 649,
+    originalPrice: 1099,
+    rating: 4,
+    image: "https://cdn.manomano.com/images/images_products/24636306/P/137471095_1.jpg",
+    description: "Soft cotton-linen blend cushion covers with hidden zipper. 18x18 inches. Geometric patterns in earthy tones to refresh your sofa or bed."
+  },
+  {
+    id: 1013,
+    name: "Artificial Greenery Wall Panels – Pack of 6 Large Leaf Hedge Tiles for Vertical Garden",
+    category: "Home decor",
+    tags: ["artificial-plants", "wall-decor", "greenery", "outdoor"],
+    price: 1899,
+    originalPrice: 2999,
+    rating: 4,
+    image: "https://m.media-amazon.com/images/I/81m5n4SPiCS._AC_UF894,1000_QL80_.jpg",
+    description: "UV-protected artificial hedge panels that look realistic and require no maintenance. Snap-together design for easy installation on walls or fences."
+  },
+  {
+    id: 1014,
+    name: "LED Neon Sign – 'Good Vibes Only' Wall Art Light for Bedroom & Party",
+    category: "Home decor",
+    tags: ["neon-light", "wall-art", "led", "decor"],
+    price: 699,
+    originalPrice: 1299,
+    rating: 5,
+    image: "https://i.etsystatic.com/25558686/r/il/b493fb/4253787293/il_570xN.4253787293_l9cq.jpg",
+    description: "Energy-efficient LED neon sign with warm white glow. USB powered with dimmer control. Lightweight acrylic backing for easy mounting."
+  },
+  {
+    id: 1015,
+    name: "Peacock Feather Decorative Wall Art – Handmade Framed Painting for Living Room",
+    category: "Home decor",
+    tags: ["wall-art", "painting", "peacock", "handmade"],
+    price: 1499,
+    originalPrice: 2499,
+    rating: 4,
+    image: "https://i.etsystatic.com/60242763/r/il/423e52/6992345248/il_570xN.6992345248_cyin.jpg",
+    description: "Traditional Indian peacock painting on canvas with vibrant colors and intricate detailing. Comes in a ready-to-hang wooden frame."
   },
 
   // ── MEN'S CLOTHING (25 items) ──────────────────────────────────────────

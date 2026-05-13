@@ -170,7 +170,79 @@
 
 <body>
 
+
   <div class="overlay" data-overlay></div>
+
+  <nav class="mobile-navigation-menu has-scrollbar" data-mobile-menu>
+    <div class="menu-top">
+      <h2 class="menu-title">Menu</h2>
+      <button class="menu-close-btn" data-mobile-menu-close-btn>
+        <ion-icon name="close-outline"></ion-icon>
+      </button>
+    </div>
+    <ul class="mobile-menu-category-list">
+      <li class="menu-category">
+        <a href="index.html" class="menu-title">Home</a>
+      </li>
+      <li class="menu-category">
+        <button class="accordion-menu" data-accordion-btn>
+          <p class="menu-title">Men's</p>
+          <div>
+            <ion-icon name="add-outline" class="add-icon"></ion-icon>
+            <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+          </div>
+        </button>
+        <ul class="submenu-category-list" data-accordion>
+          <li class="submenu-category"><a href="category.html?cat=Mens&tag=shirt" class="submenu-title">Shirts</a></li>
+          <li class="submenu-category"><a href="category.html?cat=Mens&tag=jeans" class="submenu-title">Jeans</a></li>
+          <li class="submenu-category"><a href="category.html?cat=Mens&tag=jacket" class="submenu-title">Jackets</a></li>
+          <li class="submenu-category"><a href="category.html?cat=Mens&tag=t-shirt" class="submenu-title">T-shirts</a></li>
+          <li class="submenu-category"><a href="category.html?cat=Mens&tag=kurta" class="submenu-title">Kurtas</a></li>
+        </ul>
+      </li>
+      <li class="menu-category">
+        <button class="accordion-menu" data-accordion-btn>
+          <p class="menu-title">Women's</p>
+          <div>
+            <ion-icon name="add-outline" class="add-icon"></ion-icon>
+            <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+          </div>
+        </button>
+        <ul class="submenu-category-list" data-accordion>
+          <li class="submenu-category"><a href="category.html?cat=Womens&tag=dress" class="submenu-title">Dresses</a></li>
+          <li class="submenu-category"><a href="category.html?cat=Womens&tag=top" class="submenu-title">Tops</a></li>
+          <li class="submenu-category"><a href="category.html?cat=Womens&tag=kurti" class="submenu-title">Kurtis</a></li>
+          <li class="submenu-category"><a href="category.html?cat=Womens&tag=jeans" class="submenu-title">Jeans</a></li>
+        </ul>
+      </li>
+      <li class="menu-category">
+        <button class="accordion-menu" data-accordion-btn>
+          <p class="menu-title">Home Decor</p>
+          <div>
+            <ion-icon name="add-outline" class="add-icon"></ion-icon>
+            <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+          </div>
+        </button>
+        <ul class="submenu-category-list" data-accordion>
+          <li class="submenu-category"><a href="category.html?cat=Home%20decor&tag=lamp" class="submenu-title">Lamps</a></li>
+          <li class="submenu-category"><a href="category.html?cat=Home%20decor&tag=decor" class="submenu-title">Decor</a></li>
+          <li class="submenu-category"><a href="category.html?cat=Home%20decor&tag=lighting" class="submenu-title">Lighting</a></li>
+          <li class="submenu-category"><a href="category.html?cat=Home%20decor&tag=gift" class="submenu-title">Gifts</a></li>
+        </ul>
+      </li>
+      <li class="menu-category">
+        <a href="category.html?cat=offers" class="menu-title">Hot Offers</a>
+      </li>
+    </ul>
+    <div class="menu-bottom">
+      <ul class="menu-social-container">
+        <li><a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
+        <li><a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
+        <li><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
+        <li><a href="#" class="social-link"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+      </ul>
+    </div>
+  </nav>
 
   <!--
     - HEADER
@@ -226,32 +298,32 @@
             <a href="index.html" class="menu-title">Home</a>
           </li>
           <li class="menu-category">
-            <a href="category" class="menu-title">All Categories</a>
+            <a href="category.html" class="menu-title">All Categories</a>
           </li>
           <li class="menu-category">
-            <a href="category?cat=Mens" class="menu-title">Men's</a>
+            <a href="category.html?cat=Mens" class="menu-title">Men's</a>
             <ul class="dropdown-list">
-              <li class="dropdown-item"><a href="category?cat=Mens&tag=shirt">Shirts</a></li>
-              <li class="dropdown-item"><a href="category?cat=Mens&tag=jeans">Jeans</a></li>
-              <li class="dropdown-item"><a href="category?cat=Mens&tag=jacket">Jackets</a></li>
-              <li class="dropdown-item"><a href="category?cat=Mens&tag=t-shirt">T-shirts</a></li>
-              <li class="dropdown-item"><a href="category?cat=Mens&tag=kurta">Kurtas</a></li>
+              <li class="dropdown-item"><a href="category.html?cat=Mens&tag=shirt">Shirts</a></li>
+              <li class="dropdown-item"><a href="category.html?cat=Mens&tag=jeans">Jeans</a></li>
+              <li class="dropdown-item"><a href="category.html?cat=Mens&tag=jacket">Jackets</a></li>
+              <li class="dropdown-item"><a href="category.html?cat=Mens&tag=t-shirt">T-shirts</a></li>
+              <li class="dropdown-item"><a href="category.html?cat=Mens&tag=kurta">Kurtas</a></li>
             </ul>
           </li>
           <li class="menu-category">
-            <a href="category?cat=Womens" class="menu-title">Women's</a>
+            <a href="category.html?cat=Womens" class="menu-title">Women's</a>
             <ul class="dropdown-list">
-              <li class="dropdown-item"><a href="category?cat=Womens&tag=dress">Dresses</a></li>
-              <li class="dropdown-item"><a href="category?cat=Womens&tag=top">Tops</a></li>
-              <li class="dropdown-item"><a href="category?cat=Womens&tag=kurti">Kurtis</a></li>
-              <li class="dropdown-item"><a href="category?cat=Womens&tag=jeans">Jeans</a></li>
+              <li class="dropdown-item"><a href="category.html?cat=Womens&tag=dress">Dresses</a></li>
+              <li class="dropdown-item"><a href="category.html?cat=Womens&tag=top">Tops</a></li>
+              <li class="dropdown-item"><a href="category.html?cat=Womens&tag=kurti">Kurtis</a></li>
+              <li class="dropdown-item"><a href="category.html?cat=Womens&tag=jeans">Jeans</a></li>
             </ul>
           </li>
           <li class="menu-category">
-            <a href="category?cat=Home%20decor" class="menu-title">Home Decor</a>
+            <a href="category.html?cat=Home%20decor" class="menu-title">Home Decor</a>
           </li>
           <li class="menu-category">
-            <a href="category?cat=offers" class="menu-title">Hot Offers</a>
+            <a href="category.html?cat=offers" class="menu-title">Hot Offers</a>
           </li>
         </ul>
       </div>
@@ -277,56 +349,7 @@
       </button>
     </div>
 
-    <nav class="mobile-navigation-menu has-scrollbar" data-mobile-menu>
-      <div class="menu-top">
-        <h2 class="menu-title">Menu</h2>
-        <button class="menu-close-btn" data-mobile-menu-close-btn>
-          <ion-icon name="close-outline"></ion-icon>
-        </button>
-      </div>
-      <ul class="mobile-menu-category-list">
-        <li class="menu-category">
-          <a href="index.html" class="menu-title">Home</a>
-        </li>
-        <li class="menu-category">
-          <button class="accordion-menu" data-accordion-btn>
-            <p class="menu-title">Men's</p>
-            <div>
-              <ion-icon name="add-outline" class="add-icon"></ion-icon>
-              <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-            </div>
-          </button>
-          <ul class="submenu-category-list" data-accordion>
-            <li class="submenu-category"><a href="category?cat=Mens&tag=shirt" class="submenu-title">Shirts</a></li>
-            <li class="submenu-category"><a href="category?cat=Mens&tag=jeans" class="submenu-title">Jeans</a></li>
-            <li class="submenu-category"><a href="category?cat=Mens&tag=jacket" class="submenu-title">Jackets</a></li>
-            <li class="submenu-category"><a href="category?cat=Mens&tag=t-shirt" class="submenu-title">T-shirts</a></li>
-            <li class="submenu-category"><a href="category?cat=Mens&tag=kurta" class="submenu-title">Kurtas</a></li>
-          </ul>
-        </li>
-        <li class="menu-category">
-          <button class="accordion-menu" data-accordion-btn>
-            <p class="menu-title">Women's</p>
-            <div>
-              <ion-icon name="add-outline" class="add-icon"></ion-icon>
-              <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-            </div>
-          </button>
-          <ul class="submenu-category-list" data-accordion>
-            <li class="submenu-category"><a href="category?cat=Womens&tag=dress" class="submenu-title">Dresses</a></li>
-            <li class="submenu-category"><a href="category?cat=Womens&tag=top" class="submenu-title">Tops</a></li>
-            <li class="submenu-category"><a href="category?cat=Womens&tag=kurti" class="submenu-title">Kurtis</a></li>
-            <li class="submenu-category"><a href="category?cat=Womens&tag=jeans" class="submenu-title">Jeans</a></li>
-          </ul>
-        </li>
-        <li class="menu-category">
-          <a href="category?cat=Home%20decor" class="menu-title">Home Decor</a>
-        </li>
-        <li class="menu-category">
-          <a href="category?cat=offers" class="menu-title">Hot Offers</a>
-        </li>
-      </ul>
-    </nav>
+
 
   </header>
 
@@ -355,11 +378,11 @@
   <div class="category-filter-bar">
     <div class="container">
       <div class="filter-pills" id="filter-pills">
-        <a href="category" class="filter-pill" data-cat="">All</a>
-        <a href="category?cat=Mens" class="filter-pill" data-cat="Mens">Men's</a>
-        <a href="category?cat=Womens" class="filter-pill" data-cat="Womens">Women's</a>
-        <a href="category?cat=Home decor" class="filter-pill" data-cat="Home decor">Home Decor</a>
-        <a href="category?cat=offers" class="filter-pill" data-cat="offers">Hot Offers</a>
+        <a href="category.html" class="filter-pill" data-cat="">All</a>
+        <a href="category.html?cat=Mens" class="filter-pill" data-cat="Mens">Men's</a>
+        <a href="category.html?cat=Womens" class="filter-pill" data-cat="Womens">Women's</a>
+        <a href="category.html?cat=Home decor" class="filter-pill" data-cat="Home decor">Home Decor</a>
+        <a href="category.html?cat=offers" class="filter-pill" data-cat="offers">Hot Offers</a>
       </div>
       <select class="sort-select" id="sort-select" onchange="applySortAndRender()">
         <option value="default">Sort: Default</option>
@@ -384,7 +407,7 @@
           - SIDEBAR
         -->
 
-        <div class="sidebar  has-scrollbar" data-mobile-menu>
+        <div class="sidebar  has-scrollbar" data-category-sidebar>
 
           <div class="sidebar-category">
 
@@ -418,31 +441,31 @@
                 <ul class="sidebar-submenu-category-list" data-accordion>
 
                   <li class="sidebar-submenu-category">
-                    <a href="category?cat=Mens&sub=Shirt" class="sidebar-submenu-title">
+                    <a href="category.html?cat=Mens&sub=Shirt" class="sidebar-submenu-title">
                       <p class="product-name">Shirts</p>
                     </a>
                   </li>
 
                   <li class="sidebar-submenu-category">
-                    <a href="category?cat=Mens&sub=Jeans" class="sidebar-submenu-title">
+                    <a href="category.html?cat=Mens&sub=Jeans" class="sidebar-submenu-title">
                       <p class="product-name">Jeans</p>
                     </a>
                   </li>
 
                   <li class="sidebar-submenu-category">
-                    <a href="category?cat=Mens&sub=Jacket" class="sidebar-submenu-title">
+                    <a href="category.html?cat=Mens&sub=Jacket" class="sidebar-submenu-title">
                       <p class="product-name">Jackets</p>
                     </a>
                   </li>
 
                   <li class="sidebar-submenu-category">
-                    <a href="category?cat=Mens&sub=T-shirt" class="sidebar-submenu-title">
+                    <a href="category.html?cat=Mens&sub=T-shirt" class="sidebar-submenu-title">
                       <p class="product-name">T-shirts</p>
                     </a>
                   </li>
 
                   <li class="sidebar-submenu-category">
-                    <a href="category?cat=Mens&sub=Kurta" class="sidebar-submenu-title">
+                    <a href="category.html?cat=Mens&sub=Kurta" class="sidebar-submenu-title">
                       <p class="product-name">Kurtas</p>
                     </a>
                   </li>
@@ -472,25 +495,25 @@
                 <ul class="sidebar-submenu-category-list" data-accordion>
 
                   <li class="sidebar-submenu-category">
-                    <a href="category?cat=Womens&sub=Dress" class="sidebar-submenu-title">
+                    <a href="category.html?cat=Womens&sub=Dress" class="sidebar-submenu-title">
                       <p class="product-name">Dresses</p>
                     </a>
                   </li>
 
                   <li class="sidebar-submenu-category">
-                    <a href="category?cat=Womens&sub=Top" class="sidebar-submenu-title">
+                    <a href="category.html?cat=Womens&sub=Top" class="sidebar-submenu-title">
                       <p class="product-name">Tops</p>
                     </a>
                   </li>
 
                   <li class="sidebar-submenu-category">
-                    <a href="category?cat=Womens&sub=Kurti" class="sidebar-submenu-title">
+                    <a href="category.html?cat=Womens&sub=Kurti" class="sidebar-submenu-title">
                       <p class="product-name">Kurtis</p>
                     </a>
                   </li>
 
                   <li class="sidebar-submenu-category">
-                    <a href="category?cat=Womens&sub=Jeans" class="sidebar-submenu-title">
+                    <a href="category.html?cat=Womens&sub=Jeans" class="sidebar-submenu-title">
                       <p class="product-name">Jeans</p>
                     </a>
                   </li>
@@ -500,7 +523,7 @@
               </li>
 
               <li class="sidebar-menu-category">
-                <a href="category?cat=Home%20decor" class="sidebar-accordion-menu"
+                <a href="category.html?cat=Home%20decor" class="sidebar-accordion-menu"
                   style="display:flex; justify-content:space-between; align-items:center; width:100%; padding: 10px 0;">
                   <div class="menu-title-flex">
                     <img src="./assets/images/icons/dress.svg" alt="home decor" class="menu-title-img" width="20"
@@ -578,7 +601,7 @@
         <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px;">
           <li><a href="index.html"
               style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Home</a></li>
-          <li><a href="category"
+          <li><a href="category.html"
               style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Shop</a></li>
           <li><a href="services.html"
               style="font-size:13px; color:#555; text-decoration:none; transition:color 0.2s;">Services</a></li>
@@ -713,7 +736,7 @@
         container.innerHTML = `<div class="no-results">
           <ion-icon name="bag-outline"></ion-icon>
           <p>No products found in this category.</p>
-          <a href="category" style="display:inline-block;margin-top:20px;padding:12px 28px;background:#ff8f9c;color:white;border-radius:8px;text-decoration:none;font-weight:600;">Browse All Products</a>
+          <a href="category.html" style="display:inline-block;margin-top:20px;padding:12px 28px;background:#ff8f9c;color:white;border-radius:8px;text-decoration:none;font-weight:600;">Browse All Products</a>
         </div>`;
         return;
       }

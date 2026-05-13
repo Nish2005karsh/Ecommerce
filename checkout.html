@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,125 +9,600 @@
   <link rel="stylesheet" href="./assets/css/style-prefix.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
   <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Poppins',sans-serif;background:#f5f5f7;color:#222;min-height:100vh}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f5f5f7;
+      color: #222;
+      min-height: 100vh
+    }
 
     /* ── Stepper ── */
-    .checkout-stepper{background:#fff;border-bottom:1px solid #eee;padding:20px 0}
-    .stepper-inner{max-width:900px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:0}
-    .step{display:flex;align-items:center;gap:10px;flex:1}
-    .step-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;border:2px solid #ddd;color:#aaa;background:#fff;transition:all .3s}
-    .step.active .step-num{background:#222;border-color:#222;color:#fff}
-    .step.done .step-num{background:#27ae60;border-color:#27ae60;color:#fff}
-    .step-label{font-size:13px;font-weight:500;color:#aaa;transition:color .3s}
-    .step.active .step-label,.step.done .step-label{color:#222}
-    .step-line{flex:1;height:2px;background:#ddd;margin:0 12px}
-    .step-line.done-line{background:#27ae60}
+    .checkout-stepper {
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      padding: 20px 0
+    }
+
+    .stepper-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      gap: 0
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1
+    }
+
+    .step-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+      border: 2px solid #ddd;
+      color: #aaa;
+      background: #fff;
+      transition: all .3s
+    }
+
+    .step.active .step-num {
+      background: #222;
+      border-color: #222;
+      color: #fff
+    }
+
+    .step.done .step-num {
+      background: #27ae60;
+      border-color: #27ae60;
+      color: #fff
+    }
+
+    .step-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: #aaa;
+      transition: color .3s
+    }
+
+    .step.active .step-label,
+    .step.done .step-label {
+      color: #222
+    }
+
+    .step-line {
+      flex: 1;
+      height: 2px;
+      background: #ddd;
+      margin: 0 12px
+    }
+
+    .step-line.done-line {
+      background: #27ae60
+    }
 
     /* ── Layout ── */
-    .checkout-wrap{max-width:1100px;margin:36px auto;padding:0 20px;display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start}
-    @media(max-width:768px){.checkout-wrap{grid-template-columns:1fr}}
+    .checkout-wrap {
+      max-width: 1100px;
+      margin: 36px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 28px;
+      align-items: start
+    }
+
+    @media(max-width:768px) {
+      .checkout-wrap {
+        grid-template-columns: 1fr
+      }
+    }
 
     /* ── Cards ── */
-    .co-card{background:#fff;border-radius:14px;box-shadow:0 2px 16px rgba(0,0,0,.06);padding:32px;margin-bottom:20px}
-    .co-card h2{font-size:20px;font-weight:700;margin-bottom:24px;color:#111}
+    .co-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, .06);
+      padding: 32px;
+      margin-bottom: 20px
+    }
+
+    .co-card h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: #111
+    }
 
     /* ── Auth notice banner ── */
-    .auth-notice{background:#f8f4e8;border:1px solid #e8d870;border-radius:10px;padding:14px 18px;display:flex;align-items:center;gap:10px;margin-bottom:24px;font-size:13px;color:#7a6500}
+    .auth-notice {
+      background: #f8f4e8;
+      border: 1px solid #e8d870;
+      border-radius: 10px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      font-size: 13px;
+      color: #7a6500
+    }
 
     /* ── Auth side-by-side ── */
-    .auth-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
-    @media(max-width:600px){.auth-grid{grid-template-columns:1fr}}
-    .auth-box{border:1px solid #e8e8e8;border-radius:12px;padding:28px}
-    .auth-box h3{font-size:18px;font-weight:700;margin-bottom:22px;color:#111}
+    .auth-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px
+    }
+
+    @media(max-width:600px) {
+      .auth-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .auth-box {
+      border: 1px solid #e8e8e8;
+      border-radius: 12px;
+      padding: 28px
+    }
+
+    .auth-box h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 22px;
+      color: #111
+    }
 
     /* ── Form inputs ── */
-    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    @media(max-width:500px){.form-row{grid-template-columns:1fr}}
-    .form-group{margin-bottom:16px}
-    .form-group label{display:block;font-size:12px;font-weight:600;color:#555;margin-bottom:6px}
-    .form-group label span{color:#e74c3c}
-    .form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;border:1px solid #ddd;border-radius:8px;font-size:14px;font-family:'Poppins',sans-serif;outline:none;transition:border .2s}
-    .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:#222}
-    .form-group .pw-wrap{position:relative}
-    .form-group .pw-wrap input{padding-right:44px}
-    .form-group .pw-toggle{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:#888;font-size:18px;line-height:1}
-    .form-group .hint{font-size:11px;color:#888;margin-top:6px;line-height:1.5}
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px
+    }
+
+    @media(max-width:500px) {
+      .form-row {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .form-group {
+      margin-bottom: 16px
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 6px
+    }
+
+    .form-group label span {
+      color: #e74c3c
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: 'Poppins', sans-serif;
+      outline: none;
+      transition: border .2s
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: #222
+    }
+
+    .form-group .pw-wrap {
+      position: relative
+    }
+
+    .form-group .pw-wrap input {
+      padding-right: 44px
+    }
+
+    .form-group .pw-toggle {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #888;
+      font-size: 18px;
+      line-height: 1
+    }
+
+    .form-group .hint {
+      font-size: 11px;
+      color: #888;
+      margin-top: 6px;
+      line-height: 1.5
+    }
 
     /* ── Checkbox row ── */
-    .check-row{display:flex;align-items:center;gap:8px;font-size:13px;color:#555;margin-bottom:16px}
-    .check-row input[type=checkbox]{width:16px;height:16px;accent-color:#222;cursor:pointer}
-    .check-row a{color:#e74c3c;text-decoration:none}
-    .forgot{margin-left:auto;font-size:12px;color:#e74c3c;text-decoration:none}
+    .check-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #555;
+      margin-bottom: 16px
+    }
+
+    .check-row input[type=checkbox] {
+      width: 16px;
+      height: 16px;
+      accent-color: #222;
+      cursor: pointer
+    }
+
+    .check-row a {
+      color: #e74c3c;
+      text-decoration: none
+    }
+
+    .forgot {
+      margin-left: auto;
+      font-size: 12px;
+      color: #e74c3c;
+      text-decoration: none
+    }
 
     /* ── Buttons ── */
-    .btn-primary{width:100%;padding:13px;background:#111;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Poppins',sans-serif;transition:background .2s;letter-spacing:0.3px}
-    .btn-primary:hover{background:#333}
-    .btn-secondary{padding:11px 24px;background:#fff;color:#111;border:2px solid #111;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Poppins',sans-serif;transition:all .2s}
-    .btn-secondary:hover{background:#111;color:#fff}
-    .btn-red{background:#e74c3c}
-    .btn-red:hover{background:#c0392b}
+    .btn-primary {
+      width: 100%;
+      padding: 13px;
+      background: #111;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      transition: background .2s;
+      letter-spacing: 0.3px
+    }
+
+    .btn-primary:hover {
+      background: #333
+    }
+
+    .btn-secondary {
+      padding: 11px 24px;
+      background: #fff;
+      color: #111;
+      border: 2px solid #111;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      transition: all .2s
+    }
+
+    .btn-secondary:hover {
+      background: #111;
+      color: #fff
+    }
+
+    .btn-red {
+      background: #e74c3c
+    }
+
+    .btn-red:hover {
+      background: #c0392b
+    }
 
     /* ── Payment options ── */
-    .payment-option{border:2px solid #e8e8e8;border-radius:12px;padding:18px 20px;cursor:pointer;display:flex;align-items:center;gap:16px;margin-bottom:12px;transition:all .2s}
-    .payment-option.selected{border-color:#222;background:#fafafa}
-    .payment-option.disabled{opacity:.6;cursor:not-allowed}
-    .payment-option input[type=radio]{width:18px;height:18px;accent-color:#222;flex-shrink:0}
-    .payment-option .po-icon{font-size:26px;flex-shrink:0}
-    .payment-option .po-info h4{font-size:14px;font-weight:700;margin-bottom:2px}
-    .payment-option .po-info p{font-size:12px;color:#888}
-    .coming-soon-badge{background:#f39c12;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;margin-left:8px;letter-spacing:0.5px}
+    .payment-option {
+      border: 2px solid #e8e8e8;
+      border-radius: 12px;
+      padding: 18px 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 12px;
+      transition: all .2s
+    }
+
+    .payment-option.selected {
+      border-color: #222;
+      background: #fafafa
+    }
+
+    .payment-option.disabled {
+      opacity: .6;
+      cursor: not-allowed
+    }
+
+    .payment-option input[type=radio] {
+      width: 18px;
+      height: 18px;
+      accent-color: #222;
+      flex-shrink: 0
+    }
+
+    .payment-option .po-icon {
+      font-size: 26px;
+      flex-shrink: 0
+    }
+
+    .payment-option .po-info h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 2px
+    }
+
+    .payment-option .po-info p {
+      font-size: 12px;
+      color: #888
+    }
+
+    .coming-soon-badge {
+      background: #f39c12;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-left: 8px;
+      letter-spacing: 0.5px
+    }
 
     /* ── Order summary card ── */
-    .summary-card{background:#fff;border-radius:14px;box-shadow:0 2px 16px rgba(0,0,0,.06);padding:24px;position:sticky;top:20px}
-    .summary-card h3{font-size:16px;font-weight:700;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid #f0f0f0}
-    .summary-item{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
-    .summary-item img{width:56px;height:56px;object-fit:contain;border-radius:8px;background:#f8f8f8;flex-shrink:0}
-    .summary-item .si-name{font-size:13px;font-weight:600;color:#222;margin-bottom:3px;line-height:1.4}
-    .summary-item .si-qty{font-size:12px;color:#888}
-    .summary-item .si-price{font-size:13px;font-weight:700;color:#e74c3c;margin-left:auto;white-space:nowrap}
-    .summary-divider{border:none;border-top:1px solid #f0f0f0;margin:14px 0}
-    .summary-row{display:flex;justify-content:space-between;font-size:13px;color:#555;margin-bottom:8px}
-    .summary-row.total{font-size:16px;font-weight:800;color:#111;margin-top:12px;padding-top:12px;border-top:2px solid #f0f0f0}
+    .summary-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, .06);
+      padding: 24px;
+      position: sticky;
+      top: 20px
+    }
+
+    .summary-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #f0f0f0
+    }
+
+    .summary-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 14px;
+      align-items: flex-start
+    }
+
+    .summary-item img {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: #f8f8f8;
+      flex-shrink: 0
+    }
+
+    .summary-item .si-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: #222;
+      margin-bottom: 3px;
+      line-height: 1.4
+    }
+
+    .summary-item .si-qty {
+      font-size: 12px;
+      color: #888
+    }
+
+    .summary-item .si-price {
+      font-size: 13px;
+      font-weight: 700;
+      color: #e74c3c;
+      margin-left: auto;
+      white-space: nowrap
+    }
+
+    .summary-divider {
+      border: none;
+      border-top: 1px solid #f0f0f0;
+      margin: 14px 0
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: #555;
+      margin-bottom: 8px
+    }
+
+    .summary-row.total {
+      font-size: 16px;
+      font-weight: 800;
+      color: #111;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 2px solid #f0f0f0
+    }
 
     /* ── Error ── */
-    .err-msg{color:#e74c3c;font-size:12px;margin-top:6px;display:none}
-    .err-msg.show{display:block}
+    .err-msg {
+      color: #e74c3c;
+      font-size: 12px;
+      margin-top: 6px;
+      display: none
+    }
+
+    .err-msg.show {
+      display: block
+    }
 
     /* ── Success Confirmation ── */
-    .confirm-box{text-align:center;padding:40px 20px}
-    .confirm-icon{width:72px;height:72px;background:#e8f8ee;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:32px}
-    .confirm-box h2{font-size:24px;font-weight:800;color:#111;margin-bottom:10px}
-    .confirm-box p{font-size:14px;color:#666;line-height:1.7;margin-bottom:6px}
-    .order-id{font-weight:700;color:#e74c3c}
-    .confirm-actions{display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap}
+    .confirm-box {
+      text-align: center;
+      padding: 40px 20px
+    }
+
+    .confirm-icon {
+      width: 72px;
+      height: 72px;
+      background: #e8f8ee;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 32px
+    }
+
+    .confirm-box h2 {
+      font-size: 24px;
+      font-weight: 800;
+      color: #111;
+      margin-bottom: 10px
+    }
+
+    .confirm-box p {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.7;
+      margin-bottom: 6px
+    }
+
+    .order-id {
+      font-weight: 700;
+      color: #e74c3c
+    }
+
+    .confirm-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 28px;
+      flex-wrap: wrap
+    }
 
     /* ── User chip (logged in) ── */
-    .user-chip{display:flex;align-items:center;gap:10px;padding:12px 16px;background:#f0faf4;border:1px solid #c3e8ce;border-radius:10px;margin-bottom:20px}
-    .user-chip-avatar{width:36px;height:36px;background:#27ae60;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:15px}
-    .user-chip-info{flex:1}
-    .user-chip-info p{font-size:13px;font-weight:600;color:#155724;margin-bottom:1px}
-    .user-chip-info span{font-size:12px;color:#555}
-    .user-chip-logout{font-size:12px;color:#e74c3c;text-decoration:none;cursor:pointer;background:none;border:none;font-family:'Poppins',sans-serif}
+    .user-chip {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      background: #f0faf4;
+      border: 1px solid #c3e8ce;
+      border-radius: 10px;
+      margin-bottom: 20px
+    }
+
+    .user-chip-avatar {
+      width: 36px;
+      height: 36px;
+      background: #27ae60;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 15px
+    }
+
+    .user-chip-info {
+      flex: 1
+    }
+
+    .user-chip-info p {
+      font-size: 13px;
+      font-weight: 600;
+      color: #155724;
+      margin-bottom: 1px
+    }
+
+    .user-chip-info span {
+      font-size: 12px;
+      color: #555
+    }
+
+    .user-chip-logout {
+      font-size: 12px;
+      color: #e74c3c;
+      text-decoration: none;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: 'Poppins', sans-serif
+    }
 
     /* ── Address display card ── */
-    .addr-display{border:1px solid #e8e8e8;border-radius:10px;padding:16px;margin-bottom:16px;font-size:13px;line-height:1.7;color:#555}
-    .addr-display h4{font-size:14px;font-weight:700;color:#111;margin-bottom:6px}
-    .section-hidden{display:none}
+    .addr-display {
+      border: 1px solid #e8e8e8;
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 16px;
+      font-size: 13px;
+      line-height: 1.7;
+      color: #555
+    }
+
+    .addr-display h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 6px
+    }
+
+    .section-hidden {
+      display: none
+    }
   </style>
 </head>
+
 <body>
 
   <!-- HEADER (slim checkout header) -->
   <header style="background:#fff;border-bottom:1px solid #eee;padding:14px 0;">
-    <div style="max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;">
+    <div
+      style="max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;">
       <a href="index.html">
         <img src="./assets/images/logo/logo.png" alt="Logo" style="height:36px;">
       </a>
       <div style="font-size:13px;color:#888;display:flex;align-items:center;gap:8px;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#27ae60" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#27ae60" stroke-width="2.5">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        </svg>
         Secure Checkout
       </div>
     </div>
@@ -165,8 +641,13 @@
       <!-- ════ STEP 1: AUTH ════ -->
       <div id="step-auth">
         <div class="auth-notice">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          Please <strong style="margin:0 3px;">log in</strong> or <strong style="margin:0 3px;">register</strong> to complete your purchase.
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10" />
+            <line x1="12" y1="8" x2="12" y2="12" />
+            <line x1="12" y1="16" x2="12.01" y2="16" />
+          </svg>
+          Please <strong style="margin:0 3px;">log in</strong> or <strong style="margin:0 3px;">register</strong> to
+          complete your purchase.
         </div>
 
         <div class="auth-grid">
@@ -220,8 +701,12 @@
               </div>
               <div class="err-msg" id="su-pw-err">Password must be at least 6 characters.</div>
             </div>
-            <div class="err-msg" id="su-dup-err" style="margin-bottom:10px;">An account with this email already exists. Please sign in.</div>
-            <p class="hint" style="font-size:12px;color:#888;margin-bottom:14px;line-height:1.6;">Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our <a href="privacy-policy.html" style="color:#e74c3c;">privacy policy</a>.</p>
+            <div class="err-msg" id="su-dup-err" style="margin-bottom:10px;">An account with this email already exists.
+              Please sign in.</div>
+            <p class="hint" style="font-size:12px;color:#888;margin-bottom:14px;line-height:1.6;">Your personal data
+              will be used to support your experience throughout this website, to manage access to your account, and for
+              other purposes described in our <a href="privacy-policy.html" style="color:#e74c3c;">privacy policy</a>.
+            </p>
             <button class="btn-primary" onclick="doSignUp()">Register</button>
           </div>
 
@@ -271,17 +756,35 @@
               <label>State <span>*</span></label>
               <select id="addr-state">
                 <option value="">Select State</option>
-                <option>Andhra Pradesh</option><option>Arunachal Pradesh</option>
-                <option>Assam</option><option>Bihar</option><option>Chhattisgarh</option>
-                <option>Goa</option><option>Gujarat</option><option>Haryana</option>
-                <option>Himachal Pradesh</option><option>Jharkhand</option>
-                <option>Karnataka</option><option>Kerala</option><option>Madhya Pradesh</option>
-                <option>Maharashtra</option><option>Manipur</option><option>Meghalaya</option>
-                <option>Mizoram</option><option>Nagaland</option><option>Odisha</option>
-                <option>Punjab</option><option>Rajasthan</option><option>Sikkim</option>
-                <option>Tamil Nadu</option><option>Telangana</option><option>Tripura</option>
-                <option selected>Uttar Pradesh</option><option>Uttarakhand</option>
-                <option>West Bengal</option><option>Delhi</option>
+                <option>Andhra Pradesh</option>
+                <option>Arunachal Pradesh</option>
+                <option>Assam</option>
+                <option>Bihar</option>
+                <option>Chhattisgarh</option>
+                <option>Goa</option>
+                <option>Gujarat</option>
+                <option>Haryana</option>
+                <option>Himachal Pradesh</option>
+                <option>Jharkhand</option>
+                <option>Karnataka</option>
+                <option>Kerala</option>
+                <option>Madhya Pradesh</option>
+                <option>Maharashtra</option>
+                <option>Manipur</option>
+                <option>Meghalaya</option>
+                <option>Mizoram</option>
+                <option>Nagaland</option>
+                <option>Odisha</option>
+                <option>Punjab</option>
+                <option>Rajasthan</option>
+                <option>Sikkim</option>
+                <option>Tamil Nadu</option>
+                <option>Telangana</option>
+                <option>Tripura</option>
+                <option selected>Uttar Pradesh</option>
+                <option>Uttarakhand</option>
+                <option>West Bengal</option>
+                <option>Delhi</option>
               </select>
             </div>
           </div>
@@ -297,7 +800,8 @@
             </div>
           </div>
 
-          <div class="err-msg" id="addr-err" style="margin-bottom:14px;font-size:13px;">Please fill all required fields correctly.</div>
+          <div class="err-msg" id="addr-err" style="margin-bottom:14px;font-size:13px;">Please fill all required fields
+            correctly.</div>
 
           <button class="btn-primary" onclick="goToPayment()">Continue to Payment →</button>
         </div>
@@ -352,10 +856,12 @@
             <p>Thank you for shopping with <strong>Crawlcore Solutions</strong>.</p>
             <p>Your Order ID: <span class="order-id" id="conf-order-id">—</span></p>
             <p>You will receive a confirmation on <strong id="conf-email">—</strong></p>
-            <p style="margin-top:8px;color:#888;font-size:13px;">Our team will process your COD order within 1–2 business days.</p>
+            <p style="margin-top:8px;color:#888;font-size:13px;">Our team will process your COD order within 1–2
+              business days.</p>
             <div class="confirm-actions">
               <a href="index.html"><button class="btn-secondary">← Continue Shopping</button></a>
-              <button class="btn-primary" style="width:auto;padding:12px 28px;" onclick="window.print()">🖨 Print Order</button>
+              <button class="btn-primary" style="width:auto;padding:12px 28px;" onclick="window.print()">🖨 Print
+                Order</button>
             </div>
           </div>
         </div>
@@ -384,13 +890,13 @@
     // ══════════════════════════════════════════════════════
     // UTIL: localStorage accounts DB
     // ══════════════════════════════════════════════════════
-    function getAccounts() { return JSON.parse(localStorage.getItem('_co_accounts')||'{}'); }
+    function getAccounts() { return JSON.parse(localStorage.getItem('_co_accounts') || '{}'); }
     function saveAccounts(a) { localStorage.setItem('_co_accounts', JSON.stringify(a)); }
-    function getSession() { return JSON.parse(localStorage.getItem('_co_session')||'null'); }
+    function getSession() { return JSON.parse(localStorage.getItem('_co_session') || 'null'); }
     function saveSession(u) { localStorage.setItem('_co_session', JSON.stringify(u)); }
     function clearSession() { localStorage.removeItem('_co_session'); }
 
-    function getCart() { return JSON.parse(localStorage.getItem('cart')||'[]'); }
+    function getCart() { return JSON.parse(localStorage.getItem('cart') || '[]'); }
 
     // ══════════════════════════════════════════════════════
     // INIT
@@ -452,23 +958,23 @@
     // STEP NAVIGATION
     // ══════════════════════════════════════════════════════
     function setStep(n) {
-      ['step-auth','step-address','step-payment','step-confirm'].forEach((id, i) => {
-        document.getElementById(id).classList.toggle('section-hidden', i+1 !== n);
+      ['step-auth', 'step-address', 'step-payment', 'step-confirm'].forEach((id, i) => {
+        document.getElementById(id).classList.toggle('section-hidden', i + 1 !== n);
       });
       for (let i = 1; i <= 4; i++) {
-        const ind = document.getElementById('step-indicator-'+i);
-        const num = document.getElementById('sn'+i);
-        ind.classList.remove('active','done');
+        const ind = document.getElementById('step-indicator-' + i);
+        const num = document.getElementById('sn' + i);
+        ind.classList.remove('active', 'done');
         if (i < n) { ind.classList.add('done'); num.textContent = '✓'; }
         else if (i === n) { ind.classList.add('active'); num.textContent = i; }
         else { num.textContent = i; }
       }
       for (let i = 1; i <= 3; i++) {
-        const line = document.getElementById('line-'+i);
+        const line = document.getElementById('line-' + i);
         if (line) line.classList.toggle('done-line', i < n);
       }
       currentStep = n;
-      window.scrollTo({top:0, behavior:'smooth'});
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     // ══════════════════════════════════════════════════════
@@ -549,7 +1055,7 @@
       if (!currentUser) return;
       const chip = `
         <div class="user-chip">
-          <div class="user-chip-avatar">${(currentUser.name||'U')[0].toUpperCase()}</div>
+          <div class="user-chip-avatar">${(currentUser.name || 'U')[0].toUpperCase()}</div>
           <div class="user-chip-info">
             <p>${currentUser.name}</p>
             <span>${currentUser.email}</span>
@@ -571,9 +1077,9 @@
       const lname = document.getElementById('addr-lname').value.trim();
       const phone = document.getElementById('addr-phone').value.trim();
       const line1 = document.getElementById('addr-line1').value.trim();
-      const city  = document.getElementById('addr-city').value.trim();
+      const city = document.getElementById('addr-city').value.trim();
       const state = document.getElementById('addr-state').value;
-      const pin   = document.getElementById('addr-pin').value.trim();
+      const pin = document.getElementById('addr-pin').value.trim();
 
       const errEl = document.getElementById('addr-err');
       if (!fname || !lname || !phone || phone.length < 10 || !line1 || !city || !state || pin.length !== 6) {
@@ -587,8 +1093,8 @@
       const lmark = document.getElementById('addr-landmark').value.trim();
       document.getElementById('addr-summary-display').innerHTML = `
         <h4>📍 Delivering to: ${fname} ${lname}</h4>
-        ${line1}${line2 ? ', '+line2 : ''}<br>
-        ${city}, ${state} – ${pin}${lmark ? '<br>Landmark: '+lmark : ''}<br>
+        ${line1}${line2 ? ', ' + line2 : ''}<br>
+        ${city}, ${state} – ${pin}${lmark ? '<br>Landmark: ' + lmark : ''}<br>
         📞 ${phone}
       `;
 
@@ -659,40 +1165,41 @@
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-<script>
-(function(){
-  const forms = document.querySelectorAll('.newsletter form, form:has(.btn-newsletter), form:has(.email-field)');
-  forms.forEach(function(form){
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      const emailEl = form.querySelector('input[type="email"]');
-      if(!emailEl || !emailEl.value) return;
-      // Store in localStorage
-      const subs = JSON.parse(localStorage.getItem('_subscribers')||'[]');
-      if(!subs.includes(emailEl.value)){
-        subs.push(emailEl.value);
-        localStorage.setItem('_subscribers', JSON.stringify(subs));
-      }
-      // Close modal if open
-      const modal = document.querySelector('[data-modal]');
-      const overlay = document.querySelector('[data-overlay]');
-      if(modal){ modal.classList.remove('active'); }
-      if(overlay){ overlay.classList.remove('active'); }
-      // Show toast
-      let toast = document.getElementById('_nl_toast');
-      if(!toast){
-        toast = document.createElement('div');
-        toast.id = '_nl_toast';
-        toast.style.cssText='position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#27ae60;color:#fff;padding:14px 28px;border-radius:10px;font-family:Poppins,sans-serif;font-size:14px;font-weight:600;z-index:9999;box-shadow:0 4px 20px rgba(0,0,0,0.2);transition:opacity 0.4s;';
-        document.body.appendChild(toast);
-      }
-      toast.textContent = '✅ Thank you for subscribing!';
-      toast.style.opacity='1';
-      emailEl.value='';
-      setTimeout(function(){ toast.style.opacity='0'; }, 3500);
-    });
-  });
-})();
-</script>
+  <script>
+    (function () {
+      const forms = document.querySelectorAll('.newsletter form, form:has(.btn-newsletter), form:has(.email-field)');
+      forms.forEach(function (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          const emailEl = form.querySelector('input[type="email"]');
+          if (!emailEl || !emailEl.value) return;
+          // Store in localStorage
+          const subs = JSON.parse(localStorage.getItem('_subscribers') || '[]');
+          if (!subs.includes(emailEl.value)) {
+            subs.push(emailEl.value);
+            localStorage.setItem('_subscribers', JSON.stringify(subs));
+          }
+          // Close modal if open
+          const modal = document.querySelector('[data-modal]');
+          const overlay = document.querySelector('[data-overlay]');
+          if (modal) { modal.classList.remove('active'); }
+          if (overlay) { overlay.classList.remove('active'); }
+          // Show toast
+          let toast = document.getElementById('_nl_toast');
+          if (!toast) {
+            toast = document.createElement('div');
+            toast.id = '_nl_toast';
+            toast.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#27ae60;color:#fff;padding:14px 28px;border-radius:10px;font-family:Poppins,sans-serif;font-size:14px;font-weight:600;z-index:9999;box-shadow:0 4px 20px rgba(0,0,0,0.2);transition:opacity 0.4s;';
+            document.body.appendChild(toast);
+          }
+          toast.textContent = '✅ Thank you for subscribing!';
+          toast.style.opacity = '1';
+          emailEl.value = '';
+          setTimeout(function () { toast.style.opacity = '0'; }, 3500);
+        });
+      });
+    })();
+  </script>
 </body>
+
 </html>
